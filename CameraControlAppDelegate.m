@@ -46,7 +46,7 @@
 	// to find the values of your camera.
 	
 	UInt32 locationID = 0;
-	sscanf( [[videoDevice uniqueID] UTF8String], "0x%8x", &locationID );
+	sscanf( [[videoDevice uniqueID] UTF8String], "0x%8x", (unsigned int*)&locationID );
 	cameraControl = [[UVCCameraControl alloc] initWithLocationID:locationID];
 	
 	[cameraControl setAutoExposure:YES];

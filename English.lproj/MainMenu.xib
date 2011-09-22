@@ -333,7 +333,7 @@
 							<reference key="NSSuperview" ref="931381460"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSliderCell" key="NSCell" id="752320853">
-								<int key="NSCellFlags">-1543373312</int>
+								<int key="NSCellFlags">-1543110912</int>
 								<int key="NSCellFlags2">0</int>
 								<string key="NSContents"/>
 								<object class="NSFont" key="NSSupport" id="245505640">
@@ -410,7 +410,7 @@
 							<reference key="NSSuperview" ref="931381460"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSliderCell" key="NSCell" id="485788965">
-								<int key="NSCellFlags">-1543373312</int>
+								<int key="NSCellFlags">-1543110912</int>
 								<int key="NSCellFlags2">0</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="245505640"/>
@@ -464,7 +464,7 @@
 							<reference key="NSSuperview" ref="931381460"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSliderCell" key="NSCell" id="878221262">
-								<int key="NSCellFlags">-2080244224</int>
+								<int key="NSCellFlags">-2079981824</int>
 								<int key="NSCellFlags2">0</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="245505640"/>
@@ -508,7 +508,7 @@
 							<reference key="NSSuperview" ref="931381460"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSSliderCell" key="NSCell" id="392519594">
-								<int key="NSCellFlags">-1543373312</int>
+								<int key="NSCellFlags">-1543110912</int>
 								<int key="NSCellFlags2">0</int>
 								<string key="NSContents"/>
 								<reference key="NSSupport" ref="245505640"/>

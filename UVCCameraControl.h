@@ -38,6 +38,9 @@ typedef struct {
 	uvc_control_info_t sharpness;
 	uvc_control_info_t whiteBalance;
 	uvc_control_info_t autoWhiteBalance;
+	uvc_control_info_t absoluteFocus;
+	uvc_control_info_t autoFocus;
+	
 } uvc_controls_t ;
 
 
@@ -79,5 +82,9 @@ typedef struct {
 - (BOOL)getAutoWhiteBalance;
 - (BOOL)setWhiteBalance:(float)value;
 - (float)getWhiteBalance;
+- (BOOL)setAbsoluteFocus:(float)value;
+- (float)getAbsoluteFocus;
+- (BOOL)getAutoFocus;
+- (BOOL)setAutoFocus:(BOOL)enabled;
 
 @end

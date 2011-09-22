@@ -51,6 +51,7 @@
 	
 	[cameraControl setAutoExposure:YES];
 	[cameraControl setAutoWhiteBalance:YES];
+	[cameraControl setAutoFocus:YES];
 }
 
 
@@ -69,6 +70,11 @@
 	// Gain Value
 	else if( [sender isEqualTo:gainSlider] ) {
 		[cameraControl setBrightness:gainSlider.floatValue];
+	}
+	
+	// Focus Value
+	else if( [sender isEqualTo:focusSlider] ) {
+		[cameraControl setAbsoluteFocus:focusSlider.floatValue];
 	}
 }
 
@@ -100,6 +106,20 @@
 			[cameraControl setWhiteBalance:whiteBalanceSlider.floatValue];
 		}
 	}
+	
+	// Auto Focus
+	else if( [sender isEqualTo:autoFocusCheckBox] ) {
+		if( autoFocusCheckBox.state == NSOnState ) {
+			[cameraControl setAutoFocus:YES];
+			[focusSlider setEnabled:NO];
+		} 
+		else {
+			[cameraControl setAutoFocus:NO];
+			[focusSlider setEnabled:YES];
+			[cameraControl setAbsoluteFocus:focusSlider.floatValue];
+		}
+	}
+	
 }
 
 

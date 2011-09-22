@@ -47,6 +47,16 @@ const uvc_controls_t uvc_controls = {
 		.selector = 0x0B,
 		.size = 1,
 	},
+	.absoluteFocus = {
+		.unit = 0x09,
+		.selector = 0x03,
+		.size = 8,
+	},	
+	.autoFocus = {
+		.unit = UVC_INPUT_TERMINAL_ID,
+		.selector = 0x08, //CT_FOCUS_AUTO_CONTROL
+		.size = 1,
+	},
 };
 
 
@@ -387,5 +397,37 @@ const uvc_controls_t uvc_controls = {
 	return [self getValueForControl:&uvc_controls.whiteBalance];
 }
 
+//-----focus
+- (BOOL)setAutoFocus:(BOOL)enabled {
+	//int intval = (enabled ? 0x08 : 0x01); //that's how eposure does it
+	int intval = (enabled ? 0x01 : 0x00); //that's how white balance does it
+	printf("setAutoFocus = %i \n",enabled);
+	return [self setData:intval 
+			  withLength:uvc_controls.autoFocus.size 
+			 forSelector:uvc_controls.autoFocus.selector 
+					  at:uvc_controls.autoFocus.unit];
+	
+}
+- (BOOL)getAutoFocus {
+	int intval = [self getDataFor:UVC_GET_CUR 
+					   withLength:uvc_controls.autoFocus.size 
+					 fromSelector:uvc_controls.autoFocus.selector 
+							   at:uvc_controls.autoFocus.unit];
+	
+	//return ( intval == 0x08 ? YES : NO );
+	//return ( intval ? YES : NO );
+	return ( intval == 0x01 ? YES : NO );
+}
+- (BOOL)setAbsoluteFocus:(float)value {
+	printf("focus value %f \n",value);
+	//value = 1 - value;
+	return [self setValue:value forControl:&uvc_controls.absoluteFocus];
+	
+}
+- (float)getAbsoluteFocus {
+	//float value = [self getValueForControl:&uvc_controls.absoluteFocus];
+	//return 1 - value;
+	return [self getValueForControl:&uvc_controls.absoluteFocus];
+}
 
 @end

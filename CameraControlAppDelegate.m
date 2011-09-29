@@ -97,6 +97,10 @@
 	[self populateDevices];
 }
 
+-(BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
+	return YES;
+}
+
 
 - (IBAction)sliderMoved:(id)sender {
 	

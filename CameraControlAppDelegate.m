@@ -89,8 +89,6 @@
 	
 	[self setSelectedDeviceId: selected];
 	[self deviceChanged:deviceCombobox];
-//	if([self selectedDeviceId] == nil)
-//		[deviceCombobox selectItemAtIndex: 0];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {		

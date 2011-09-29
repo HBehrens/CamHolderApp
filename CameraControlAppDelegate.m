@@ -6,6 +6,8 @@
 -(void)connectToVideoDevice:(QTCaptureDevice*)device {
 	[captureSession release];
 	
+	[[NSUserDefaults standardUserDefaults] setObject: [device uniqueID] forKey:@"deviceId"];
+
 	videoDevice = device;
 	[videoDevice open:nil];
 	
@@ -75,6 +77,8 @@
 
 -(void)populateDevices {
 	NSString *selected = [self selectedDeviceId];
+	if(!selected)
+		selected = [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceId"];
 	
 	[allDevices release];
 	allDevices = [[QTCaptureDevice inputDevicesWithMediaType:QTMediaTypeVideo] copy];
@@ -84,13 +88,13 @@
 	}
 	
 	[self setSelectedDeviceId: selected];
+	[self deviceChanged:deviceCombobox];
 //	if([self selectedDeviceId] == nil)
 //		[deviceCombobox selectItemAtIndex: 0];
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {		
 	[self populateDevices];
-	[self connectToVideoDevice: [[QTCaptureDevice inputDevicesWithMediaType:QTMediaTypeVideo] objectAtIndex:0] ];
 }
 
 

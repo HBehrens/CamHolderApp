@@ -3,8 +3,10 @@
 
 @implementation CameraControlAppDelegate
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {		
-	videoDevice = [[QTCaptureDevice inputDevicesWithMediaType:QTMediaTypeVideo] objectAtIndex:0];
+-(void)connectToVideoDevice:(QTCaptureDevice*)device {
+	[captureSession release];
+	
+	videoDevice = device;
 	[videoDevice open:nil];
 	
 	if( !videoDevice ) {
@@ -52,6 +54,43 @@
 	[cameraControl setAutoExposure:YES];
 	[cameraControl setAutoWhiteBalance:YES];
 	[cameraControl setAutoFocus:YES];
+}
+
+-(NSString*)selectedDeviceId {
+	int idx = [deviceCombobox indexOfSelectedItem];
+	if(idx >= 0 && idx < [allDevices count])
+		return [(QTCaptureDevice*)[allDevices objectAtIndex: idx] uniqueID];
+	return nil;
+}
+
+-(void)setSelectedDeviceId:(NSString*)id {
+	QTCaptureDevice* device = [QTCaptureDevice deviceWithUniqueID:id];
+	if(device) {
+		int idx = [allDevices indexOfObject:device];
+		[deviceCombobox selectItemAtIndex: idx];
+	} else {
+		[deviceCombobox selectItemAtIndex: 0];
+	}
+}
+
+-(void)populateDevices {
+	NSString *selected = [self selectedDeviceId];
+	
+	[allDevices release];
+	allDevices = [[QTCaptureDevice inputDevicesWithMediaType:QTMediaTypeVideo] copy];
+	[deviceCombobox removeAllItems];
+	for (QTCaptureDevice* d in allDevices) {
+		[deviceCombobox addItemWithObjectValue: [d localizedDisplayName]];
+	}
+	
+	[self setSelectedDeviceId: selected];
+//	if([self selectedDeviceId] == nil)
+//		[deviceCombobox selectItemAtIndex: 0];
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {		
+	[self populateDevices];
+	[self connectToVideoDevice: [[QTCaptureDevice inputDevicesWithMediaType:QTMediaTypeVideo] objectAtIndex:0] ];
 }
 
 
@@ -122,6 +161,11 @@
 	
 }
 
+-(IBAction)deviceChanged:(id)sender {
+	QTCaptureDevice *device = [QTCaptureDevice deviceWithUniqueID:[self selectedDeviceId]];
+	if(device)
+		[self connectToVideoDevice:device];
+}
 
 - (void)dealloc {
 	[captureSession release];
@@ -129,6 +173,7 @@
 	[videoDevice release];
 	
 	[cameraControl release];
+	[allDevices release];
 	[super dealloc];
 }
 

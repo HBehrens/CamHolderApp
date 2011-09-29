@@ -8,9 +8,11 @@
 	QTCaptureDeviceInput * videoInput;
 	
 	UVCCameraControl * cameraControl;
+	NSArray *allDevices;
 	
 	IBOutlet QTCaptureView * captureView;
 	
+	IBOutlet NSComboBox * deviceCombobox;
 	IBOutlet NSButton * autoExposureCheckBox;
 	IBOutlet NSButton * autoWhiteBalanceCheckBox;
 	IBOutlet NSButton * autoFocusCheckBox;
@@ -22,5 +24,6 @@
 
 - (IBAction)sliderMoved:(id)sender;
 - (IBAction)checkBoxChanged:(id)sender;
+- (IBAction)deviceChanged:(id)sender;
 
 @end

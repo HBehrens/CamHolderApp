@@ -24,6 +24,7 @@
 	
 	[captureView setCaptureSession:captureSession];
 	[captureView setVideoPreviewConnection:[[captureView availableVideoPreviewConnections] objectAtIndex:0]];
+	captureView.delegate = self;
 	
 	
 	// Setting a lower resolution for the CaptureOutput here, since otherwise QTCaptureView
@@ -181,6 +182,19 @@
 	[cameraControl release];
 	[allDevices release];
 	[super dealloc];
+}
+
+- (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage
+														  *)image{
+	return [image
+			imageByApplyingTransform:CGAffineTransformMakeRotation(rotation * M_PI /
+																   180.0)];
+}
+
+- (IBAction)rotatePreview:(id)sender {
+	NSMenuItem *i = sender;
+	rotation = (int)(rotation + i.tag) % 360;
+	while(rotation<0)rotation+=360;
 }
 
 @end

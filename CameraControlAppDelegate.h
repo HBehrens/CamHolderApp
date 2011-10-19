@@ -20,10 +20,13 @@
 	IBOutlet NSSlider * whiteBalanceSlider;
 	IBOutlet NSSlider * gainSlider;
 	IBOutlet NSSlider * focusSlider;
+	
+	float rotation;
 }
 
 - (IBAction)sliderMoved:(id)sender;
 - (IBAction)checkBoxChanged:(id)sender;
 - (IBAction)deviceChanged:(id)sender;
+- (IBAction)rotatePreview:(id)sender;
 
 @end

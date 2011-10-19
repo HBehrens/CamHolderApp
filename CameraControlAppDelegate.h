@@ -23,6 +23,8 @@
 	IBOutlet NSScrollView *inspector;
 	IBOutlet NSWindow *window;
 	
+	NSWindow *fullScreenWindow;
+	
 	float rotation;
 	int originalWindowStyleMask;
 }

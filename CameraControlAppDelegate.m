@@ -200,19 +200,38 @@
 	while(rotation<0)rotation+=360;
 }
 
+-(void)realignCaptureView {
+	NSRect r = [window.contentView bounds];
+	if(!inspector.isHidden)
+		r.size.width -= inspector.frame.size.width;
+	captureView.frame = r;
+}
+
 - (IBAction)toggleInspector:(id)sender {
 	NSMenuItem *i = sender;
 	[i setState: i.state == NSOnState ? NSOffState : NSOnState];
 	
 	[inspector setHidden: i.state == NSOffState];
-	NSRect r = captureView.frame;
-	r.size.width += inspector.isHidden ? inspector.frame.size.width : -inspector.frame.size.width;
-	captureView.frame = r;
+	[self realignCaptureView];
 }
 
 - (IBAction)toggleFullScreen:(id)sender {
-	[window zoom:nil];
-	// TODO: remove border
+	if(!fullScreenWindow) {
+		fullScreenWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, window.screen.frame.size.width, window.screen.frame.size.height)
+													   styleMask:NSBorderlessWindowMask
+														 backing:NSBackingStoreBuffered
+														   defer:NO screen:window.screen];
+		[fullScreenWindow setContentView:captureView];
+		[fullScreenWindow makeKeyAndOrderFront:nil];
+		[window orderOut:nil];
+	} else {
+		[window.contentView addSubview:captureView];
+		[self realignCaptureView];
+		[fullScreenWindow release];
+		fullScreenWindow = nil;
+		[window orderFront:nil];
+		[window makeKeyAndOrderFront:nil];
+	}
 }
 
 @end

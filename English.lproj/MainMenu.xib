@@ -21,8 +21,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="490"/>
 			<integer value="24"/>
-			<integer value="489"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -353,7 +353,7 @@
 						<object class="QTCaptureView" id="104553543">
 							<reference key="NSNextResponder" ref="931381460"/>
 							<int key="NSvFlags">274</int>
-							<string key="NSFrame">{{0, -2}, {640, 480}}</string>
+							<string key="NSFrameSize">{640, 480}</string>
 							<reference key="NSSuperview" ref="931381460"/>
 							<object class="NSColor" key="kQTCaptureViewCoderFillColor" id="725649001">
 								<int key="NSColorSpace">3</int>

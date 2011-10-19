@@ -26,6 +26,7 @@
 	NSWindow *borderlessWindow;
 	
 	float rotation;
+	BOOL mirrorX, mirrorY;
 	int originalWindowStyleMask;
 	BOOL didEnterFullscreenFromBorderless;
 }
@@ -36,5 +37,7 @@
 - (IBAction)rotatePreview:(id)sender;
 - (IBAction)toggleFullScreen:(id)sender;
 - (IBAction)toggleBorderless:(id)sender;
-
+- (IBAction)flipHorizontal:(id)sender;
+- (IBAction)flipVertical:(id)sender;
+	
 @end

@@ -187,11 +187,14 @@
 	[super dealloc];
 }
 
-- (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage
-														  *)image{
+- (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {
+	float scaleX = mirrorX ? -1 : 1;
+	float scaleY = mirrorY ? -1 : 1;
 	return [image
-			imageByApplyingTransform:CGAffineTransformMakeRotation(rotation * M_PI /
-																   180.0)];
+			imageByApplyingTransform:CGAffineTransformScale(
+															CGAffineTransformMakeRotation(rotation * M_PI /180.0),
+															scaleX, scaleY)
+			];
 }
 
 - (IBAction)rotatePreview:(id)sender {
@@ -200,14 +203,22 @@
 	while(rotation<0)rotation+=360;
 }
 
+- (IBAction)flipHorizontal:(id)sender {
+	mirrorX = !mirrorX;
+}
+
+- (IBAction)flipVertical:(id)sender {
+	mirrorY = !mirrorY;
+}
+								  
+#pragma mark -
+#pragma mark Full Screen Behavior
+														  
 -(void)realignCaptureView {
 	NSRect r = [window.contentView bounds];
 	r.size.width -= inspector.frame.size.width;
 	captureView.frame = r;
 }
-
-#pragma mark -
-#pragma mark Full Screen Behavior
 
 -(NSRect)frameWindowAfterHidingBorderless {
 	if(![borderlessWindow isZoomed]) {

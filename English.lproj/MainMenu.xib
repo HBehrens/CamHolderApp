@@ -22,7 +22,6 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="490"/>
-			<integer value="563"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -304,6 +303,22 @@
 									<reference key="NSOnImage" ref="35465992"/>
 									<reference key="NSMixedImage" ref="502551668"/>
 									<int key="NSTag">-90</int>
+								</object>
+								<object class="NSMenuItem" id="335464075">
+									<reference key="NSMenu" ref="762057772"/>
+									<string key="NSTitle">Flip Horizontal</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="596169348">
+									<reference key="NSMenu" ref="762057772"/>
+									<string key="NSTitle">Flip Vertical</string>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
 								</object>
 							</object>
 						</object>
@@ -1040,6 +1055,22 @@
 					</object>
 					<int key="connectionID">584</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">flipHorizontal:</string>
+						<reference key="source" ref="714345941"/>
+						<reference key="destination" ref="335464075"/>
+					</object>
+					<int key="connectionID">587</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">flipVertical:</string>
+						<reference key="source" ref="714345941"/>
+						<reference key="destination" ref="596169348"/>
+					</object>
+					<int key="connectionID">588</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1296,6 +1327,8 @@
 							<reference ref="925967485"/>
 							<reference ref="786098083"/>
 							<reference ref="537801342"/>
+							<reference ref="335464075"/>
+							<reference ref="596169348"/>
 						</object>
 						<reference key="parent" ref="239907821"/>
 					</object>
@@ -1533,6 +1566,16 @@
 						<reference key="object" ref="406771381"/>
 						<reference key="parent" ref="835318025"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">585</int>
+						<reference key="object" ref="335464075"/>
+						<reference key="parent" ref="762057772"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">586</int>
+						<reference key="object" ref="596169348"/>
+						<reference key="parent" ref="762057772"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1652,6 +1695,8 @@
 					<string>579.IBPluginDependency</string>
 					<string>58.IBPluginDependency</string>
 					<string>58.ImportedFromIB2</string>
+					<string>585.IBPluginDependency</string>
+					<string>586.IBPluginDependency</string>
 					<string>92.IBPluginDependency</string>
 					<string>92.ImportedFromIB2</string>
 				</object>
@@ -1708,9 +1753,9 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AQAAAABD2AAAA</bytes>
 					</object>
-					<string>{{340, 396}, {840, 478}}</string>
+					<string>{{328, 396}, {840, 478}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{340, 396}, {840, 478}}</string>
+					<string>{{328, 396}, {840, 478}}</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1778,7 +1823,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{378, 678}, {162, 73}}</string>
+					<string>{{378, 638}, {174, 113}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1799,6 +1844,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 				</object>
 			</object>
@@ -1818,7 +1865,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">584</int>
+			<int key="maxID">588</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1832,14 +1879,16 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>checkBoxChanged:</string>
 							<string>deviceChanged:</string>
+							<string>flipHorizontal:</string>
+							<string>flipVertical:</string>
 							<string>rotatePreview:</string>
 							<string>sliderMoved:</string>
 							<string>toggleBorderless:</string>
 							<string>toggleFullScreen:</string>
-							<string>toggleInspector:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1855,11 +1904,12 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>checkBoxChanged:</string>
 							<string>deviceChanged:</string>
+							<string>flipHorizontal:</string>
+							<string>flipVertical:</string>
 							<string>rotatePreview:</string>
 							<string>sliderMoved:</string>
 							<string>toggleBorderless:</string>
 							<string>toggleFullScreen:</string>
-							<string>toggleInspector:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1869,6 +1919,14 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">deviceChanged:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">flipHorizontal:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">flipVertical:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">
@@ -1885,10 +1943,6 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">toggleFullScreen:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">toggleInspector:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>

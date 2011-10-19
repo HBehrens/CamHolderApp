@@ -30,8 +30,8 @@
 	// Setting a lower resolution for the CaptureOutput here, since otherwise QTCaptureView
 	// pulls full-res frames from the camera, which is slow. This is just for cosmetics.
 	NSDictionary * pixelBufferAttr = [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithInt:800], kCVPixelBufferWidthKey,
-									  [NSNumber numberWithInt:600], kCVPixelBufferHeightKey, nil];
+									  [NSNumber numberWithInt:1024], kCVPixelBufferWidthKey,
+									  [NSNumber numberWithInt:768], kCVPixelBufferHeightKey, nil];
 	[[[captureSession outputs] objectAtIndex:0] setPixelBufferAttributes:pixelBufferAttr];
 	
 	

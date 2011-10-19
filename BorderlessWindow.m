@@ -97,7 +97,7 @@
 }
 
 +(NSRect)fullscreenRect:(NSScreen*)screen {
-	return NSMakeRect(0, 0, screen.frame.size.width, screen.frame.size.height);
+	return screen.frame;
 }
 
 -(BOOL)isZoomed {

@@ -239,10 +239,9 @@
 	}
 	
 	if(borderlessWindow) {
+		NSScreen *targetScreen = borderlessWindow.screen ? borderlessWindow.screen : window.screen;
 		[window setFrame:[self frameWindowAfterHidingBorderless] display:NO];
-		NSRect r = borderlessWindow.screen.frame;
-		r.origin = NSMakePoint(0, 0);
-		[borderlessWindow setFrame:r display: NO];
+		[borderlessWindow setFrame:targetScreen.frame display: NO];
 	}
 }
 
@@ -252,7 +251,7 @@
 		borderlessWindow = [[BorderlessWindow alloc] initWithContentRect:r
 													   styleMask:NSBorderlessWindowMask
 														 backing:NSBackingStoreBuffered
-														   defer:NO screen:window.screen];
+														   defer:NO screen:nil];
 		[borderlessWindow setContentView:captureView];
 		[borderlessWindow makeKeyAndOrderFront:nil];
 		[window orderOut:nil];

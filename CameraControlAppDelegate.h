@@ -20,6 +20,7 @@
 	IBOutlet NSSlider * whiteBalanceSlider;
 	IBOutlet NSSlider * gainSlider;
 	IBOutlet NSSlider * focusSlider;
+	IBOutlet NSScrollView *inspector;
 	
 	float rotation;
 }
@@ -28,5 +29,6 @@
 - (IBAction)checkBoxChanged:(id)sender;
 - (IBAction)deviceChanged:(id)sender;
 - (IBAction)rotatePreview:(id)sender;
+- (IBAction)toggleInspector:(id)sender;
 
 @end

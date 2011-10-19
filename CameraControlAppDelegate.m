@@ -30,8 +30,8 @@
 	// Setting a lower resolution for the CaptureOutput here, since otherwise QTCaptureView
 	// pulls full-res frames from the camera, which is slow. This is just for cosmetics.
 	NSDictionary * pixelBufferAttr = [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithInt:640], kCVPixelBufferWidthKey,
-									  [NSNumber numberWithInt:480], kCVPixelBufferHeightKey, nil];
+									  [NSNumber numberWithInt:800], kCVPixelBufferWidthKey,
+									  [NSNumber numberWithInt:600], kCVPixelBufferHeightKey, nil];
 	[[[captureSession outputs] objectAtIndex:0] setPixelBufferAttributes:pixelBufferAttr];
 	
 	
@@ -195,6 +195,16 @@
 	NSMenuItem *i = sender;
 	rotation = (int)(rotation + i.tag) % 360;
 	while(rotation<0)rotation+=360;
+}
+
+- (IBAction)toggleInspector:(id)sender {
+	NSMenuItem *i = sender;
+	[i setState: i.state == NSOnState ? NSOffState : NSOnState];
+	
+	[inspector setHidden: i.state == NSOffState];
+	NSRect r = captureView.frame;
+	r.size.width += inspector.isHidden ? inspector.frame.size.width : -inspector.frame.size.width;
+	captureView.frame = r;
 }
 
 @end

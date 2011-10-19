@@ -21,8 +21,10 @@
 	IBOutlet NSSlider * gainSlider;
 	IBOutlet NSSlider * focusSlider;
 	IBOutlet NSScrollView *inspector;
+	IBOutlet NSWindow *window;
 	
 	float rotation;
+	int originalWindowStyleMask;
 }
 
 - (IBAction)sliderMoved:(id)sender;
@@ -30,5 +32,6 @@
 - (IBAction)deviceChanged:(id)sender;
 - (IBAction)rotatePreview:(id)sender;
 - (IBAction)toggleInspector:(id)sender;
+- (IBAction)toggleFullScreen:(id)sender;
 
 @end

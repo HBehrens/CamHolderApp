@@ -94,6 +94,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {		
 	[self populateDevices];
+	originalWindowStyleMask = [window styleMask];
 }
 
 -(BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
@@ -205,6 +206,11 @@
 	NSRect r = captureView.frame;
 	r.size.width += inspector.isHidden ? inspector.frame.size.width : -inspector.frame.size.width;
 	captureView.frame = r;
+}
+
+- (IBAction)toggleFullScreen:(id)sender {
+	[window zoom:nil];
+	// TODO: remove border
 }
 
 @end

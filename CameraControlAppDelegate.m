@@ -25,6 +25,7 @@
 	[captureView setCaptureSession:captureSession];
 	[captureView setVideoPreviewConnection:[[captureView availableVideoPreviewConnections] objectAtIndex:0]];
 	captureView.delegate = self;
+	captureView.canSelectRect = YES;
 	
 	
 	// Setting a lower resolution for the CaptureOutput here, since otherwise QTCaptureView
@@ -187,9 +188,45 @@
 	[super dealloc];
 }
 
+#pragma mark -
+#pragma mark Image Transformation
+
+-(void)viewWillSelectRect:(QTCaptureView *)view {
+	mirrorX = NO;
+	mirrorY = NO;
+	rotation = 0;
+	normalizedCroppingRect = NSZeroRect;
+}
+
+
+-(void)view:(QTCaptureView *)view didSelectRect:(NSRect)rect {
+	float fx = 1 / view.frame.size.width;
+	float fy = 1 / view.frame.size.height;
+	
+	// scale to interval 0..1
+	rect.origin.x *= fx;
+	rect.origin.y *= fy;
+	rect.size.width *= fx;
+	rect.size.height *= fy;
+	normalizedCroppingRect = rect;
+
+	// TODO: apply transformation
+}
+
 - (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {
+	float w = image.extent.size.width;
+	float h = image.extent.size.height;
+	CGRect transformedCrop = NSRectToCGRect(normalizedCroppingRect);
+	transformedCrop.origin.x *= w;
+	transformedCrop.origin.y *= h;
+	transformedCrop.size.width *= w;
+	transformedCrop.size.height *= h;
+	
+	image = [image imageByCroppingToRect:transformedCrop];
+	
 	float scaleX = mirrorX ? -1 : 1;
 	float scaleY = mirrorY ? -1 : 1;
+	
 	return [image
 			imageByApplyingTransform:CGAffineTransformScale(
 															CGAffineTransformMakeRotation(rotation * M_PI /180.0),
@@ -275,6 +312,7 @@
 		[borderlessWindow release];
 		borderlessWindow = nil;
 	}
+	captureView.canSelectRect = borderlessWindow == nil;
 }
 
 @end

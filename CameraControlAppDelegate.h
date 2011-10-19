@@ -1,6 +1,7 @@
 #import <Foundation/Foundation.h>
 #import <QTKit/QTKit.h>
 #import "UVCCameraControl.h"
+#import "CroppingQTCaptureView.h"
 
 @interface CameraControlAppDelegate : NSObject {
 	QTCaptureSession * captureSession;
@@ -10,7 +11,7 @@
 	UVCCameraControl * cameraControl;
 	NSArray *allDevices;
 	
-	IBOutlet QTCaptureView * captureView;
+	IBOutlet CroppingQTCaptureView * captureView;
 	
 	IBOutlet NSComboBox * deviceCombobox;
 	IBOutlet NSButton * autoExposureCheckBox;
@@ -27,6 +28,8 @@
 	
 	float rotation;
 	BOOL mirrorX, mirrorY;
+	NSRect normalizedCroppingRect;
+	
 	int originalWindowStyleMask;
 	BOOL didEnterFullscreenFromBorderless;
 }

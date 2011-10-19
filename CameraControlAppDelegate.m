@@ -29,9 +29,11 @@
 	
 	// Setting a lower resolution for the CaptureOutput here, since otherwise QTCaptureView
 	// pulls full-res frames from the camera, which is slow. This is just for cosmetics.
+	
+	// NOTE: for Logitech QuickCam Pro 9000 Webcam everythin >=1280 or > 720  puts camera into widescreen
 	NSDictionary * pixelBufferAttr = [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithInt:1024], kCVPixelBufferWidthKey,
-									  [NSNumber numberWithInt:768], kCVPixelBufferHeightKey, nil];
+									  [NSNumber numberWithInt:1200], kCVPixelBufferWidthKey,
+									  [NSNumber numberWithInt:720], kCVPixelBufferHeightKey, nil];
 	[[[captureSession outputs] objectAtIndex:0] setPixelBufferAttributes:pixelBufferAttr];
 	
 	
@@ -44,7 +46,7 @@
 	//
 	// In most cases you'd be probably better of using the UVCCameraControls
 	// - (id)initWithVendorID:(long) productID:(long) 
-	// method instead. I.e. for the Logitech QuickCam9000:
+	// method instead. I.e. for the Logitech QuickCam9000 
 	// cameraControl = [[UVCCameraControl alloc] initWithVendorID:0x046d productID:0x0990];
 	//
 	// You can use USB Prober (should be in /Developer/Applications/Utilities/USB Prober.app) 

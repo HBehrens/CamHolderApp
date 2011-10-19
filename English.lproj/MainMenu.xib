@@ -22,7 +22,7 @@
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="490"/>
-			<integer value="24"/>
+			<integer value="563"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1009,14 +1009,6 @@
 					<int key="connectionID">571</int>
 				</object>
 				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">toggleInspector:</string>
-						<reference key="source" ref="714345941"/>
-						<reference key="destination" ref="955974326"/>
-					</object>
-					<int key="connectionID">576</int>
-				</object>
-				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
 						<string key="label">inspector</string>
 						<reference key="source" ref="714345941"/>
@@ -1039,6 +1031,14 @@
 						<reference key="destination" ref="406771381"/>
 					</object>
 					<int key="connectionID">580</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">toggleBorderless:</string>
+						<reference key="source" ref="714345941"/>
+						<reference key="destination" ref="955974326"/>
+					</object>
+					<int key="connectionID">584</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1818,7 +1818,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">580</int>
+			<int key="maxID">584</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1834,11 +1834,13 @@
 							<string>deviceChanged:</string>
 							<string>rotatePreview:</string>
 							<string>sliderMoved:</string>
+							<string>toggleBorderless:</string>
 							<string>toggleFullScreen:</string>
 							<string>toggleInspector:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1855,6 +1857,7 @@
 							<string>deviceChanged:</string>
 							<string>rotatePreview:</string>
 							<string>sliderMoved:</string>
+							<string>toggleBorderless:</string>
 							<string>toggleFullScreen:</string>
 							<string>toggleInspector:</string>
 						</object>
@@ -1874,6 +1877,10 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">sliderMoved:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">toggleBorderless:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 							<object class="IBActionInfo">

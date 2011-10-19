@@ -1,5 +1,5 @@
 #import "CameraControlAppDelegate.h"
-
+#import "BorderlessWindow.h"
 
 @implementation CameraControlAppDelegate
 
@@ -202,35 +202,68 @@
 
 -(void)realignCaptureView {
 	NSRect r = [window.contentView bounds];
-	if(!inspector.isHidden)
-		r.size.width -= inspector.frame.size.width;
+	r.size.width -= inspector.frame.size.width;
 	captureView.frame = r;
 }
 
-- (IBAction)toggleInspector:(id)sender {
-	NSMenuItem *i = sender;
-	[i setState: i.state == NSOnState ? NSOffState : NSOnState];
-	
-	[inspector setHidden: i.state == NSOffState];
-	[self realignCaptureView];
+#pragma mark -
+#pragma mark Full Screen Behavior
+
+-(NSRect)frameWindowAfterHidingBorderless {
+	if(![borderlessWindow isZoomed]) {
+		NSRect r = [window frameRectForContentRect:borderlessWindow.frame];
+		r.size.width += inspector.frame.size.width;
+		return r;
+	} else {
+		return window.frame;
+	}
+}
+
+-(NSRect)borderlessFrameFromWindowFrame {
+	NSRect r = [window contentRectForFrameRect:window.frame];
+	r.size.width -= inspector.frame.size.width;
+	r.origin = window.frame.origin;
+	return r;
 }
 
 - (IBAction)toggleFullScreen:(id)sender {
-	if(!fullScreenWindow) {
-		fullScreenWindow = [[NSWindow alloc] initWithContentRect:NSMakeRect(0, 0, window.screen.frame.size.width, window.screen.frame.size.height)
+	if(didEnterFullscreenFromBorderless) {
+		[borderlessWindow setFrame: [self borderlessFrameFromWindowFrame] display:NO];
+		didEnterFullscreenFromBorderless = NO;
+		return;
+	}
+	
+	didEnterFullscreenFromBorderless = borderlessWindow && ![borderlessWindow isZoomed];
+	if(!didEnterFullscreenFromBorderless) {
+		[self toggleBorderless:sender];
+	}
+	
+	if(borderlessWindow) {
+		[window setFrame:[self frameWindowAfterHidingBorderless] display:NO];
+		NSRect r = borderlessWindow.screen.frame;
+		r.origin = NSMakePoint(0, 0);
+		[borderlessWindow setFrame:r display: NO];
+	}
+}
+
+- (IBAction)toggleBorderless:(id)sender {
+	if(!borderlessWindow) {
+		NSRect r = [self borderlessFrameFromWindowFrame];
+		borderlessWindow = [[BorderlessWindow alloc] initWithContentRect:r
 													   styleMask:NSBorderlessWindowMask
 														 backing:NSBackingStoreBuffered
 														   defer:NO screen:window.screen];
-		[fullScreenWindow setContentView:captureView];
-		[fullScreenWindow makeKeyAndOrderFront:nil];
+		[borderlessWindow setContentView:captureView];
+		[borderlessWindow makeKeyAndOrderFront:nil];
 		[window orderOut:nil];
 	} else {
+		[window setFrame:[self frameWindowAfterHidingBorderless] display:NO];
 		[window.contentView addSubview:captureView];
 		[self realignCaptureView];
-		[fullScreenWindow release];
-		fullScreenWindow = nil;
 		[window orderFront:nil];
 		[window makeKeyAndOrderFront:nil];
+		[borderlessWindow release];
+		borderlessWindow = nil;
 	}
 }
 

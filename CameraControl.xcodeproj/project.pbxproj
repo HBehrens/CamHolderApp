@@ -16,6 +16,7 @@
 		B6BA231B0FFEB7B5009E4207 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6BA231A0FFEB7B5009E4207 /* IOKit.framework */; };
 		B6C49393100BA7D600475D9D /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6C49392100BA7D600475D9D /* CoreVideo.framework */; };
 		B6C495D1100D6FDE00475D9D /* CameraControlAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C495D0100D6FDE00475D9D /* CameraControlAppDelegate.m */; };
+		CB246680144F5B2400670C41 /* BorderlessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24667F144F5B2400670C41 /* BorderlessWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		B6C49392100BA7D600475D9D /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		B6C495CF100D6FDE00475D9D /* CameraControlAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraControlAppDelegate.h; sourceTree = "<group>"; };
 		B6C495D0100D6FDE00475D9D /* CameraControlAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraControlAppDelegate.m; sourceTree = "<group>"; };
+		CB24667E144F5B2400670C41 /* BorderlessWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderlessWindow.h; sourceTree = "<group>"; };
+		CB24667F144F5B2400670C41 /* BorderlessWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderlessWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +63,8 @@
 				B6BA230D0FFEB70E009E4207 /* UVCCameraControl.m */,
 				B6C495CF100D6FDE00475D9D /* CameraControlAppDelegate.h */,
 				B6C495D0100D6FDE00475D9D /* CameraControlAppDelegate.m */,
+				CB24667E144F5B2400670C41 /* BorderlessWindow.h */,
+				CB24667F144F5B2400670C41 /* BorderlessWindow.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -198,6 +203,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				B6BA230E0FFEB70E009E4207 /* UVCCameraControl.m in Sources */,
 				B6C495D1100D6FDE00475D9D /* CameraControlAppDelegate.m in Sources */,
+				CB246680144F5B2400670C41 /* BorderlessWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,17 +23,18 @@
 	IBOutlet NSScrollView *inspector;
 	IBOutlet NSWindow *window;
 	
-	NSWindow *fullScreenWindow;
+	NSWindow *borderlessWindow;
 	
 	float rotation;
 	int originalWindowStyleMask;
+	BOOL didEnterFullscreenFromBorderless;
 }
 
 - (IBAction)sliderMoved:(id)sender;
 - (IBAction)checkBoxChanged:(id)sender;
 - (IBAction)deviceChanged:(id)sender;
 - (IBAction)rotatePreview:(id)sender;
-- (IBAction)toggleInspector:(id)sender;
 - (IBAction)toggleFullScreen:(id)sender;
+- (IBAction)toggleBorderless:(id)sender;
 
 @end

@@ -11,6 +11,7 @@
 
 @interface CroppingQTCaptureView : QTCaptureView {
 	NSPoint ptMouseDown;
+	NSRect currentSelection;
 	BOOL canSelectRect;
 }
 

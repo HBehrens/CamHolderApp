@@ -20,8 +20,30 @@
 
 @synthesize canSelectRect;
 
--(void) drawRect:(NSRect)rect {
-	[super drawRect:rect];
+-(void)storeCurrentSelectionWithLocationInWindow:(NSPoint)location {
+	NSPoint local = [self convertPoint:location fromView:nil];
+	
+	// width and height always positive
+	NSRect r = NSMakeRect(ptMouseDown.x, ptMouseDown.y, local.x-ptMouseDown.x, local.y-ptMouseDown.y);
+	r.origin.x += r.size.width < 0 ? r.size.width : 0;
+	r.origin.y += r.size.height< 0 ? r.size.height: 0;
+	r.size.width = ABS(r.size.width);
+	r.size.height = ABS(r.size.height);
+	
+	// look into free space due to aspect ratio
+	r = NSIntersectionRect(r, self.previewBounds);
+	r = NSOffsetRect(r, -self.previewBounds.origin.x, -self.previewBounds.origin.y);
+	
+	// convert to normalized coordinates [0..1]
+	float fx = 1 / self.previewBounds.size.width;
+	float fy = 1 / self.previewBounds.size.height;
+	
+	r.origin.x *= fx;
+	r.origin.y *= fy;
+	r.size.width *= fx;
+	r.size.height *= fy;
+	
+	currentSelection = r;
 }
 
 -(void) mouseDown:(NSEvent *)theEvent {
@@ -35,21 +57,17 @@
 
 - (void)mouseUp:(NSEvent *)theEvent {
 	if(self.canSelectRect) {
-		NSPoint ptMouseUp = [self convertPoint:theEvent.locationInWindow fromView:nil];
-		NSRect r = NSMakeRect(ptMouseDown.x, ptMouseDown.y, ptMouseUp.x-ptMouseDown.x, ptMouseUp.y-ptMouseDown.y);
-		r.origin.x += r.size.width < 0 ? r.size.width : 0;
-		r.origin.y += r.size.height< 0 ? r.size.height: 0;
-		r.size.width = ABS(r.size.width);
-		r.size.height = ABS(r.size.height);
+		[self storeCurrentSelectionWithLocationInWindow: theEvent.locationInWindow];
 		if([self.delegate respondsToSelector:@selector(view:didSelectRect:)]) 
-			[(id<CroppingQTCaptureViewDelegate>)self.delegate view:self didSelectRect:r];
+			[(id<CroppingQTCaptureViewDelegate>)self.delegate view:self didSelectRect:currentSelection];
 	}
 	[super mouseUp:theEvent];
 }
 
 - (void)mouseDragged:(NSEvent *)theEvent {
-	if(self.canSelectRect)
-		[self setNeedsDisplay:YES];
+	if(self.canSelectRect) {
+		[self storeCurrentSelectionWithLocationInWindow:theEvent.locationInWindow];
+	}
 	[super mouseDragged:theEvent];
 }
 @end

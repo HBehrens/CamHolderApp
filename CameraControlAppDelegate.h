@@ -42,5 +42,6 @@
 - (IBAction)toggleBorderless:(id)sender;
 - (IBAction)flipHorizontal:(id)sender;
 - (IBAction)flipVertical:(id)sender;
+- (IBAction)resetZoom:(id)sender;
 	
 @end

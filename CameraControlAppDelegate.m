@@ -195,22 +195,33 @@
 	mirrorX = NO;
 	mirrorY = NO;
 	rotation = 0;
-	normalizedCroppingRect = NSZeroRect;
+//	normalizedCroppingRect = NSZeroRect;
 }
 
 
 -(void)view:(QTCaptureView *)view didSelectRect:(NSRect)rect {
-	float fx = 1 / view.frame.size.width;
-	float fy = 1 / view.frame.size.height;
 	
-	// scale to interval 0..1
-	rect.origin.x *= fx;
-	rect.origin.y *= fy;
-	rect.size.width *= fx;
-	rect.size.height *= fy;
-	normalizedCroppingRect = rect;
-
+	if(NSEqualRects(NSZeroRect, normalizedCroppingRect)) {
+		normalizedCroppingRect = rect;
+	} else {
+		float w = normalizedCroppingRect.size.width;
+		float h = normalizedCroppingRect.size.height;
+		
+		normalizedCroppingRect = NSMakeRect(
+											normalizedCroppingRect.origin.x + w*rect.origin.x,
+											normalizedCroppingRect.origin.y + h*rect.origin.y,
+											w*rect.size.width,
+											h*rect.size.height
+											);
+		
+	}
+	
+	
 	// TODO: apply transformation
+}
+
+- (IBAction)resetZoom:(id)sender {
+	normalizedCroppingRect = NSZeroRect;
 }
 
 - (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {

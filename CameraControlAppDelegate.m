@@ -225,15 +225,17 @@
 }
 
 - (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {
-	float w = image.extent.size.width;
-	float h = image.extent.size.height;
-	CGRect transformedCrop = NSRectToCGRect(normalizedCroppingRect);
-	transformedCrop.origin.x *= w;
-	transformedCrop.origin.y *= h;
-	transformedCrop.size.width *= w;
-	transformedCrop.size.height *= h;
-	
-	image = [image imageByCroppingToRect:transformedCrop];
+	if(!NSEqualRects(NSZeroRect, normalizedCroppingRect)) {
+		float w = image.extent.size.width;
+		float h = image.extent.size.height;
+		CGRect transformedCrop = NSRectToCGRect(normalizedCroppingRect);
+		transformedCrop.origin.x *= w;
+		transformedCrop.origin.y *= h;
+		transformedCrop.size.width *= w;
+		transformedCrop.size.height *= h;
+		
+		image = [image imageByCroppingToRect:transformedCrop];
+	}
 	
 	float scaleX = mirrorX ? -1 : 1;
 	float scaleY = mirrorY ? -1 : 1;

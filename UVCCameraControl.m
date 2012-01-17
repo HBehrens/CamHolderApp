@@ -7,11 +7,21 @@ const uvc_controls_t uvc_controls = {
 		.selector = 0x02,
 		.size = 1,
 	},
+//  Logitech Pro 9000
+//	.exposure = {
+//		.unit = UVC_INPUT_TERMINAL_ID,
+//		.selector = 0x04,
+//		.size = 4,
+//	},
+	
+	// Microsoft LifeCam
 	.exposure = {
 		.unit = UVC_INPUT_TERMINAL_ID,
 		.selector = 0x04,
 		.size = 4,
 	},
+	
+	
 	.brightness = {
 		.unit = UVC_PROCESSING_UNIT_ID,
 		.selector = 0x02,
@@ -47,11 +57,20 @@ const uvc_controls_t uvc_controls = {
 		.selector = 0x0B,
 		.size = 1,
 	},
+//  // Logitech Pro 9000	
+//	.absoluteFocus = {
+//		.unit = 0x09,
+//		.selector = 0x03,
+//		.size = 8,
+//	},	
+	
+	// Microsoft LifeCam
 	.absoluteFocus = {
-		.unit = 0x09,
-		.selector = 0x03,
-		.size = 8,
-	},	
+		.unit = UVC_INPUT_TERMINAL_ID,
+		.selector = 0x06, // CT_FOCUS_ABSOLUTE_CONTROL
+		.size = 2,
+	}, 
+	
 	.autoFocus = {
 		.unit = UVC_INPUT_TERMINAL_ID,
 		.selector = 0x08, //CT_FOCUS_AUTO_CONTROL
@@ -283,19 +302,45 @@ const uvc_controls_t uvc_controls = {
 	uvc_range_t range = [self getRangeForControl:control];
 	
 	int intval = [self getDataFor:UVC_GET_CUR withLength:control->size fromSelector:control->selector at:control->unit];
+	NSLog(@"getValue: %6d", intval);
 	return [self mapValue:intval fromMin:range.min max:range.max toMin:0 max:1];
 }
 
+-(int)nearestDiscreteValueFor:(int)value from:(NSArray*)discreteValues {
+	if(!discreteValues)
+		return value;
+	
+	int distanceToBestValue = INT_MAX;
+	int bestValue = value;
+	for(NSNumber *number in discreteValues) {
+		int currentValue = number.intValue;
+		int currentDistance = abs(currentValue - value);
+		if(currentDistance < distanceToBestValue) {
+			distanceToBestValue = currentDistance;
+			bestValue = currentValue;
+		}
+	}
+	return bestValue;
+}
 
 // Set a normalized value
-- (BOOL)setValue:(float)value forControl:(uvc_control_info_t *)control {
+- (BOOL)setDiscreteValue:(float)value fromSet:(NSArray*)discreteValues forControl:(uvc_control_info_t *)control {
 	// TODO: Cache the range somewhere?
-	uvc_range_t range = [self getRangeForControl:control];
-	
-	int intval = [self mapValue:value fromMin:0 max:1 toMin:range.min max:range.max];
+	int intval = 0;
+	if(discreteValues){
+		int index = (int)(value*(discreteValues.count-1));
+		intval = [[discreteValues objectAtIndex:index] intValue];
+	} else {
+		uvc_range_t range = [self getRangeForControl:control];
+		intval = [self mapValue:value fromMin:0 max:1 toMin:range.min max:range.max];
+	}
+	NSLog(@"inval: %5d", intval);
 	return [self setData:intval withLength:control->size forSelector:control->selector at:control->unit];
 }
 
+- (BOOL)setValue:(float)value forControl:(uvc_control_info_t *)control {
+	return [self setDiscreteValue:value fromSet:nil forControl:control];
+}
 
 
 
@@ -324,7 +369,24 @@ const uvc_controls_t uvc_controls = {
 
 - (BOOL)setExposure:(float)value {
 	value = 1 - value;
-	return [self setValue:value forControl:&uvc_controls.exposure];
+	NSArray* discreteValuesForLifeCam = [NSArray arrayWithObjects:
+										 [NSNumber numberWithInt: 1],
+										 [NSNumber numberWithInt: 2],
+										 [NSNumber numberWithInt: 5],
+										 [NSNumber numberWithInt: 10],
+										 [NSNumber numberWithInt: 20],
+										 [NSNumber numberWithInt: 39],
+										 [NSNumber numberWithInt: 78],
+										 [NSNumber numberWithInt: 156],
+										 [NSNumber numberWithInt: 312],
+										 [NSNumber numberWithInt: 625],
+										 [NSNumber numberWithInt: 1250],
+										 [NSNumber numberWithInt: 2500],
+										 [NSNumber numberWithInt: 5000],
+										 [NSNumber numberWithInt: 10000],
+										 nil];
+										 
+	return [self setDiscreteValue:value fromSet:discreteValuesForLifeCam forControl:(uvc_control_info_t *)&uvc_controls.exposure];
 }
 
 - (float)getExposure {

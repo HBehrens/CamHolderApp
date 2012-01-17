@@ -23,6 +23,7 @@
 	IBOutlet NSSlider * focusSlider;
 	IBOutlet NSScrollView *inspector;
 	IBOutlet NSWindow *window;
+	IBOutlet NSButton * resetZoomButton;
 	
 	NSWindow *borderlessWindow;
 	

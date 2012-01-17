@@ -33,7 +33,7 @@
 	
 	// NOTE: for Logitech QuickCam Pro 9000 Webcam everythin >=1280 or > 720  puts camera into widescreen
 	NSDictionary * pixelBufferAttr = [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithInt:1200], kCVPixelBufferWidthKey,
+									  [NSNumber numberWithInt:1280], kCVPixelBufferWidthKey,
 									  [NSNumber numberWithInt:720], kCVPixelBufferHeightKey, nil];
 	[[[captureSession outputs] objectAtIndex:0] setPixelBufferAttributes:pixelBufferAttr];
 	
@@ -75,8 +75,21 @@
 		int idx = [allDevices indexOfObject:device];
 		[deviceCombobox selectItemAtIndex: idx];
 	} else {
-		[deviceCombobox selectItemAtIndex: 0];
+		if([deviceCombobox numberOfItems] > 0) {
+			[deviceCombobox selectItemAtIndex: 0];
+		}
 	}
+}
+
+-(NSArray*)allSuitableDevices {
+	static NSString* suitableModelUniqueID = @"UVC Camera VendorID_1118 ProductID_1906";
+	NSArray *unfiltered = [QTCaptureDevice inputDevicesWithMediaType:QTMediaTypeVideo];
+	NSMutableArray *result = [NSMutableArray array];
+	for(QTCaptureDevice *d in unfiltered) {
+		if([suitableModelUniqueID isEqualToString:[d modelUniqueID]])
+			[result addObject: d];
+	}
+	return result;
 }
 
 -(void)populateDevices {
@@ -85,7 +98,8 @@
 		selected = [[NSUserDefaults standardUserDefaults] stringForKey:@"deviceId"];
 	
 	[allDevices release];
-	allDevices = [[QTCaptureDevice inputDevicesWithMediaType:QTMediaTypeVideo] copy];
+	allDevices = [[self allSuitableDevices] copy];
+	
 	[deviceCombobox removeAllItems];
 	for (QTCaptureDevice* d in allDevices) {
 		[deviceCombobox addItemWithObjectValue: [d localizedDisplayName]];
@@ -93,6 +107,14 @@
 	
 	[self setSelectedDeviceId: selected];
 	[self deviceChanged:deviceCombobox];
+	
+	if([self selectedDeviceId] == nil) {
+		NSAlert *alert = [NSAlert alertWithMessageText:@"Camera not found" 
+										 defaultButton:nil alternateButton:nil otherButton:nil 
+							 informativeTextWithFormat:@"Make sure to attach at least one camera of the model 'Microsoft LifeCam Studio' before running this application."];
+		[alert runModal];
+		[[NSApplication sharedApplication] terminate:self];
+	}
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {		
@@ -215,13 +237,14 @@
 											);
 		
 	}
-	
+	[resetZoomButton setEnabled: YES];
 	
 	// TODO: apply transformation
 }
 
 - (IBAction)resetZoom:(id)sender {
 	normalizedCroppingRect = NSZeroRect;
+	[resetZoomButton setEnabled: NO];
 }
 
 - (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {

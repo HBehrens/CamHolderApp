@@ -11,6 +11,7 @@
 @protocol CroppingQTCaptureViewDelegate
 
 -(void)view:(QTCaptureView *)view didSelectRect:(NSRect)rect;
+-(void)view:(QTCaptureView *)view mightSelectRectInViewCoordinates:(NSRect)rect;
 -(void)viewWillSelectRect:(QTCaptureView *)view;
 
 @end
@@ -29,6 +30,8 @@
 	r.origin.y += r.size.height< 0 ? r.size.height: 0;
 	r.size.width = ABS(r.size.width);
 	r.size.height = ABS(r.size.height);
+	
+	currentSelectionInViewCoordinates = NSIntersectionRect(r, self.previewBounds);
 	
 	// look into free space due to aspect ratio
 	r = NSIntersectionRect(r, self.previewBounds);
@@ -67,6 +70,9 @@
 - (void)mouseDragged:(NSEvent *)theEvent {
 	if(self.canSelectRect) {
 		[self storeCurrentSelectionWithLocationInWindow:theEvent.locationInWindow];
+		if([self.delegate respondsToSelector:@selector(view:mightSelectRectInViewCoordinates:)]) {
+			[(id<CroppingQTCaptureViewDelegate>)self.delegate view:self mightSelectRectInViewCoordinates:currentSelectionInViewCoordinates];
+		}
 	}
 	[super mouseDragged:theEvent];
 }

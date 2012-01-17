@@ -21,7 +21,7 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="575"/>
+			<integer value="616"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -370,11 +370,20 @@
 							<int key="NSvFlags">274</int>
 							<string key="NSFrameSize">{640, 480}</string>
 							<reference key="NSSuperview" ref="931381460"/>
+							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<object class="NSColor" key="kQTCaptureViewCoderFillColor" id="725649001">
 								<int key="NSColorSpace">3</int>
 								<bytes key="NSWhite">MAA</bytes>
 							</object>
 							<bool key="kQTCaptureViewCoderPreservesAspectRatio">YES</bool>
+						</object>
+						<object class="NSCustomView" id="612297373">
+							<reference key="NSNextResponder" ref="931381460"/>
+							<int key="NSvFlags">-2147483380</int>
+							<string key="NSFrame">{{402, 112}, {153, 113}}</string>
+							<reference key="NSSuperview" ref="931381460"/>
+							<int key="NSViewLayerContentsRedrawPolicy">2</int>
+							<string key="NSClassName">ZoomRectView</string>
 						</object>
 						<object class="NSScrollView" id="150105863">
 							<reference key="NSNextResponder" ref="931381460"/>
@@ -396,6 +405,7 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{20, 203}, {164, 25}}</string>
 													<reference key="NSSuperview" ref="111074475"/>
+													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="842440497">
 														<int key="NSCellFlags">-1543373312</int>
@@ -420,6 +430,7 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{20, 446}, {167, 26}}</string>
 													<reference key="NSSuperview" ref="111074475"/>
+													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSComboBoxCell" key="NSCell" id="645007897">
 														<int key="NSCellFlags">74579521</int>
@@ -528,6 +539,7 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{17, 283}, {170, 17}}</string>
 													<reference key="NSSuperview" ref="111074475"/>
+													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSTextFieldCell" key="NSCell" id="37361216">
 														<int key="NSCellFlags">68288064</int>
@@ -549,6 +561,7 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{18, 261}, {168, 21}}</string>
 													<reference key="NSSuperview" ref="111074475"/>
+													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSSliderCell" key="NSCell" id="392519594">
 														<int key="NSCellFlags">-1543110912</int>
@@ -575,6 +588,7 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{18, 306}, {168, 18}}</string>
 													<reference key="NSSuperview" ref="111074475"/>
+													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="1050096009">
 														<int key="NSCellFlags">-2080244224</int>
@@ -602,6 +616,7 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{17, 376}, {138, 17}}</string>
 													<reference key="NSSuperview" ref="111074475"/>
+													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSTextFieldCell" key="NSCell" id="954081093">
 														<int key="NSCellFlags">68288064</int>
@@ -618,6 +633,7 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{18, 349}, {168, 21}}</string>
 													<reference key="NSSuperview" ref="111074475"/>
+													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSSliderCell" key="NSCell" id="752320853">
 														<int key="NSCellFlags">-1543110912</int>
@@ -640,6 +656,7 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{18, 399}, {136, 18}}</string>
 													<reference key="NSSuperview" ref="111074475"/>
+													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSButtonCell" key="NSCell" id="439029240">
 														<int key="NSCellFlags">-2080244224</int>
@@ -660,12 +677,14 @@
 											</object>
 											<string key="NSFrameSize">{200, 480}</string>
 											<reference key="NSSuperview" ref="154090854"/>
+											<int key="NSViewLayerContentsRedrawPolicy">2</int>
 											<string key="NSClassName">NSView</string>
 										</object>
 									</object>
 									<string key="NSFrameSize">{200, 480}</string>
 									<reference key="NSSuperview" ref="150105863"/>
 									<reference key="NSNextKeyView" ref="111074475"/>
+									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSDocView" ref="111074475"/>
 									<reference key="NSBGColor" ref="307534358"/>
 									<int key="NScvFlags">6</int>
@@ -675,9 +694,10 @@
 									<int key="NSvFlags">-2147483392</int>
 									<string key="NSFrame">{{167, 1}, {15, 79}}</string>
 									<reference key="NSSuperview" ref="150105863"/>
+									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSTarget" ref="150105863"/>
 									<string key="NSAction">_doScroller:</string>
-									<double key="NSCurValue">0.99799335378323106</double>
+									<double key="NSCurValue">1</double>
 									<double key="NSPercent">0.96363627910614014</double>
 								</object>
 								<object class="NSScroller" id="159787659">
@@ -685,15 +705,18 @@
 									<int key="NSvFlags">-2147483392</int>
 									<string key="NSFrame">{{-100, -100}, {166, 15}}</string>
 									<reference key="NSSuperview" ref="150105863"/>
+									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="150105863"/>
 									<string key="NSAction">_doScroller:</string>
+									<double key="NSCurValue">0.02</double>
 									<double key="NSPercent">0.50602412223815918</double>
 								</object>
 							</object>
 							<string key="NSFrame">{{640, -2}, {200, 480}}</string>
 							<reference key="NSSuperview" ref="931381460"/>
 							<reference key="NSNextKeyView" ref="154090854"/>
+							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<int key="NSsFlags">528</int>
 							<reference key="NSVScroller" ref="902934980"/>
 							<reference key="NSHScroller" ref="159787659"/>
@@ -702,6 +725,8 @@
 					</object>
 					<string key="NSFrameSize">{840, 478}</string>
 					<reference key="NSSuperview"/>
+					<bool key="NSViewIsLayerTreeHost">YES</bool>
+					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1280, 778}}</string>
 				<string key="NSMaxSize">{1.79769e+308, 1.79769e+308}</string>
@@ -961,6 +986,14 @@
 					</object>
 					<int key="connectionID">608</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">zoomRectView</string>
+						<reference key="source" ref="714345941"/>
+						<reference key="destination" ref="612297373"/>
+					</object>
+					<int key="connectionID">617</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1186,6 +1219,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="104553543"/>
 							<reference ref="150105863"/>
+							<reference ref="612297373"/>
 						</object>
 						<reference key="parent" ref="494866852"/>
 					</object>
@@ -1406,6 +1440,11 @@
 						<reference key="object" ref="842440497"/>
 						<reference key="parent" ref="275336265"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">616</int>
+						<reference key="object" ref="612297373"/>
+						<reference key="parent" ref="931381460"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1516,6 +1555,8 @@
 					<string>597.IBPluginDependency</string>
 					<string>597.IBViewBoundsToFrameTransform</string>
 					<string>598.IBPluginDependency</string>
+					<string>616.IBPluginDependency</string>
+					<string>616.IBViewBoundsToFrameTransform</string>
 					<string>92.IBPluginDependency</string>
 					<string>92.ImportedFromIB2</string>
 				</object>
@@ -1646,6 +1687,10 @@
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<object class="NSAffineTransform">
+						<bytes key="NSTransformStruct">AUPJAABC4AAAA</bytes>
+					</object>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 				</object>
 			</object>
@@ -1665,7 +1710,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">608</int>
+			<int key="maxID">617</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1770,6 +1815,7 @@
 							<string>resetZoomButton</string>
 							<string>whiteBalanceSlider</string>
 							<string>window</string>
+							<string>zoomRectView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1785,6 +1831,7 @@
 							<string>NSButton</string>
 							<string>NSSlider</string>
 							<string>NSWindow</string>
+							<string>NSView</string>
 						</object>
 					</object>
 					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -1803,6 +1850,7 @@
 							<string>resetZoomButton</string>
 							<string>whiteBalanceSlider</string>
 							<string>window</string>
+							<string>zoomRectView</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1854,6 +1902,10 @@
 								<string key="name">window</string>
 								<string key="candidateClassName">NSWindow</string>
 							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">zoomRectView</string>
+								<string key="candidateClassName">NSView</string>
+							</object>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
@@ -1867,6 +1919,14 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">CroppingQTCaptureView.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">ZoomRectView</string>
+					<string key="superclassName">NSView</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">ZoomRectView.h</string>
 					</object>
 				</object>
 			</object>
@@ -2416,7 +2476,7 @@
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDependencyDefaults">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.macosx</string>
-			<integer value="1050" key="NS.object.0"/>
+			<integer value="1060" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.PluginDeclaredDevelopmentDependencies">
 			<string key="NS.key.0">com.apple.InterfaceBuilder.CocoaPlugin.InterfaceBuilder3</string>

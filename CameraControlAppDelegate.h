@@ -24,6 +24,7 @@
 	IBOutlet NSScrollView *inspector;
 	IBOutlet NSWindow *window;
 	IBOutlet NSButton * resetZoomButton;
+	IBOutlet NSView *zoomRectView;
 	
 	NSWindow *borderlessWindow;
 	NSApplicationPresentationOptions originalPresentionOptions;

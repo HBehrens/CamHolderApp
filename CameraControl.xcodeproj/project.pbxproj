@@ -18,6 +18,7 @@
 		B6C495D1100D6FDE00475D9D /* CameraControlAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C495D0100D6FDE00475D9D /* CameraControlAppDelegate.m */; };
 		CB246680144F5B2400670C41 /* BorderlessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24667F144F5B2400670C41 /* BorderlessWindow.m */; };
 		CB246871144F75D400670C41 /* CroppingQTCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB246870144F75D400670C41 /* CroppingQTCaptureView.m */; };
+		CBC6B96814C61DF1000F181B /* ZoomRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC6B96714C61DF1000F181B /* ZoomRectView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		CB24667F144F5B2400670C41 /* BorderlessWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderlessWindow.m; sourceTree = "<group>"; };
 		CB24686F144F75D400670C41 /* CroppingQTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CroppingQTCaptureView.h; sourceTree = "<group>"; };
 		CB246870144F75D400670C41 /* CroppingQTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CroppingQTCaptureView.m; sourceTree = "<group>"; };
+		CBC6B96614C61DF1000F181B /* ZoomRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomRectView.h; sourceTree = "<group>"; };
+		CBC6B96714C61DF1000F181B /* ZoomRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomRectView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				CB24667F144F5B2400670C41 /* BorderlessWindow.m */,
 				CB24686F144F75D400670C41 /* CroppingQTCaptureView.h */,
 				CB246870144F75D400670C41 /* CroppingQTCaptureView.m */,
+				CBC6B96614C61DF1000F181B /* ZoomRectView.h */,
+				CBC6B96714C61DF1000F181B /* ZoomRectView.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -210,6 +215,7 @@
 				B6C495D1100D6FDE00475D9D /* CameraControlAppDelegate.m in Sources */,
 				CB246680144F5B2400670C41 /* BorderlessWindow.m in Sources */,
 				CB246871144F75D400670C41 /* CroppingQTCaptureView.m in Sources */,
+				CBC6B96814C61DF1000F181B /* ZoomRectView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

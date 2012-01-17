@@ -214,15 +214,20 @@
 #pragma mark Image Transformation
 
 -(void)viewWillSelectRect:(QTCaptureView *)view {
+	[zoomRectView setHidden:NO];
+	[zoomRectView setFrame:NSZeroRect];
 	mirrorX = NO;
 	mirrorY = NO;
 	rotation = 0;
 //	normalizedCroppingRect = NSZeroRect;
 }
 
+-(void)view:(QTCaptureView *)view mightSelectRectInViewCoordinates:(NSRect)rect {
+	[zoomRectView setFrame: rect];
+}
 
 -(void)view:(QTCaptureView *)view didSelectRect:(NSRect)rect {
-	
+	[zoomRectView setHidden:YES];
 	if(NSEqualRects(NSZeroRect, normalizedCroppingRect)) {
 		normalizedCroppingRect = rect;
 	} else {

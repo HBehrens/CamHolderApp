@@ -311,9 +311,13 @@
 }
 
 - (IBAction)toggleFullScreen:(id)sender {
+	// gosh, this code needs refactoring!
+	NSApplication *app = [NSApplication sharedApplication];
+	
 	if(didEnterFullscreenFromBorderless) {
 		[borderlessWindow setFrame: [self borderlessFrameFromWindowFrame] display:NO];
 		didEnterFullscreenFromBorderless = NO;
+		[app setPresentationOptions:originalPresentionOptions];
 		return;
 	}
 	
@@ -326,6 +330,9 @@
 		NSScreen *targetScreen = borderlessWindow.screen ? borderlessWindow.screen : window.screen;
 		[window setFrame:[self frameWindowAfterHidingBorderless] display:NO];
 		[borderlessWindow setFrame:targetScreen.frame display: NO];
+		[app setPresentationOptions:NSApplicationPresentationHideDock | NSApplicationPresentationHideMenuBar];
+	} else {
+		[app setPresentationOptions:originalPresentionOptions];
 	}
 }
 

@@ -26,6 +26,7 @@
 	IBOutlet NSButton * resetZoomButton;
 	
 	NSWindow *borderlessWindow;
+	NSApplicationPresentationOptions originalPresentionOptions;
 	
 	float rotation;
 	BOOL mirrorX, mirrorY;

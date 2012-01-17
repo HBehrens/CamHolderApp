@@ -354,6 +354,7 @@
 	} else {
 		[window setFrame:[self frameWindowAfterHidingBorderless] display:NO];
 		[window.contentView addSubview:captureView];
+		[window.contentView addSubview:zoomRectView];
 		[self realignCaptureView];
 		[window orderFront:nil];
 		[window makeKeyAndOrderFront:nil];

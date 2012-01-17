@@ -43,5 +43,6 @@
 - (IBAction)flipHorizontal:(id)sender;
 - (IBAction)flipVertical:(id)sender;
 - (IBAction)resetZoom:(id)sender;
+- (IBAction)applyZoom:(id)sender;
 	
 @end

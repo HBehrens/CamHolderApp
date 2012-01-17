@@ -33,7 +33,7 @@
 	
 	// NOTE: for Logitech QuickCam Pro 9000 Webcam everythin >=1280 or > 720  puts camera into widescreen
 	NSDictionary * pixelBufferAttr = [NSDictionary dictionaryWithObjectsAndKeys:
-									  [NSNumber numberWithInt:1200], kCVPixelBufferWidthKey,
+									  [NSNumber numberWithInt:1280], kCVPixelBufferWidthKey,
 									  [NSNumber numberWithInt:720], kCVPixelBufferHeightKey, nil];
 	[[[captureSession outputs] objectAtIndex:0] setPixelBufferAttributes:pixelBufferAttr];
 	
@@ -222,6 +222,13 @@
 
 - (IBAction)resetZoom:(id)sender {
 	normalizedCroppingRect = NSZeroRect;
+}
+
+-(IBAction)applyZoom:(id)sender {
+	float exposure = [cameraControl getExposure];
+//	float focus = [cameraControl getAbsoluteFocus];
+	NSLog(@"exposure: %f", exposure);
+//	NSLog(@"focus: %f", focus);
 }
 
 - (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {

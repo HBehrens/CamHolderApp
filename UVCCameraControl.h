@@ -61,6 +61,7 @@ typedef struct {
 - (uvc_range_t)getRangeForControl:(const uvc_control_info_t *)control;
 - (float)mapValue:(float)value fromMin:(float)fromMin max:(float)fromMax toMin:(float)toMin max:(float)toMax;
 - (float)getValueForControl:(const uvc_control_info_t *)control;
+- (BOOL)setDiscreteValue:(float)value fromSet:(NSArray*)discreteValues forControl:(uvc_control_info_t *)control;
 - (BOOL)setValue:(float)value forControl:(const uvc_control_info_t *)control;
 
 

@@ -1135,6 +1135,14 @@
 					</object>
 					<int key="connectionID">605</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">applyZoom:</string>
+						<reference key="source" ref="714345941"/>
+						<reference key="destination" ref="210679090"/>
+					</object>
+					<int key="connectionID">607</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1873,9 +1881,9 @@
 					<object class="NSAffineTransform">
 						<bytes key="NSTransformStruct">AQAAAABD2AAAA</bytes>
 					</object>
-					<string>{{235, 105}, {840, 478}}</string>
+					<string>{{340, 105}, {840, 478}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{235, 105}, {840, 478}}</string>
+					<string>{{340, 105}, {840, 478}}</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -2000,7 +2008,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">606</int>
+			<int key="maxID">607</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -2012,6 +2020,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>applyZoom:</string>
 							<string>checkBoxChanged:</string>
 							<string>deviceChanged:</string>
 							<string>flipHorizontal:</string>
@@ -2024,6 +2033,7 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2039,6 +2049,7 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>applyZoom:</string>
 							<string>checkBoxChanged:</string>
 							<string>deviceChanged:</string>
 							<string>flipHorizontal:</string>
@@ -2051,6 +2062,10 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">applyZoom:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 							<object class="IBActionInfo">
 								<string key="name">checkBoxChanged:</string>
 								<string key="candidateClassName">id</string>

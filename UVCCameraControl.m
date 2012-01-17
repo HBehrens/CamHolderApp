@@ -7,13 +7,14 @@ const uvc_controls_t uvc_controls = {
 		.selector = 0x02,
 		.size = 1,
 	},
+//  Logitech Pro 9000
 //	.exposure = {
 //		.unit = UVC_INPUT_TERMINAL_ID,
 //		.selector = 0x04,
 //		.size = 4,
 //	},
 	
-	// LifeCam
+	// Microsoft LifeCam
 	.exposure = {
 		.unit = UVC_INPUT_TERMINAL_ID,
 		.selector = 0x04,
@@ -56,13 +57,14 @@ const uvc_controls_t uvc_controls = {
 		.selector = 0x0B,
 		.size = 1,
 	},
+//  // Logitech Pro 9000	
 //	.absoluteFocus = {
 //		.unit = 0x09,
 //		.selector = 0x03,
 //		.size = 8,
 //	},	
 	
-	// LifeCam
+	// Microsoft LifeCam
 	.absoluteFocus = {
 		.unit = UVC_INPUT_TERMINAL_ID,
 		.selector = 0x06, // CT_FOCUS_ABSOLUTE_CONTROL

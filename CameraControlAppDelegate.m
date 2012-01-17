@@ -215,20 +215,14 @@
 											);
 		
 	}
-	
+	[resetZoomButton setEnabled: YES];
 	
 	// TODO: apply transformation
 }
 
 - (IBAction)resetZoom:(id)sender {
 	normalizedCroppingRect = NSZeroRect;
-}
-
--(IBAction)applyZoom:(id)sender {
-	float exposure = [cameraControl getExposure];
-//	float focus = [cameraControl getAbsoluteFocus];
-	NSLog(@"exposure: %f", exposure);
-//	NSLog(@"focus: %f", focus);
+	[resetZoomButton setEnabled: NO];
 }
 
 - (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {

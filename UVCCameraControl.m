@@ -328,7 +328,6 @@ const uvc_controls_t uvc_controls = {
 	uvc_range_t range = [self getRangeForControl:control];
 	
 	int intval = [self getDataFor:UVC_GET_CUR withLength:control->size fromSelector:control->selector at:control->unit];
-	NSLog(@"getValue: %6d", intval);
 	return [self mapValue:intval fromMin:range.min max:range.max toMin:0 max:1];
 }
 

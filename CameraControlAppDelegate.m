@@ -120,6 +120,12 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {		
 	[self populateDevices];
 	originalWindowStyleMask = [window styleMask];
+	[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(reflectCameraStateInUI) userInfo:nil repeats:YES];
+}
+
+-(void)reflectCameraStateInUI {
+	if(autoFocusCheckBox.state == NSOnState)
+		focusSlider.floatValue = [cameraControl getAbsoluteFocus];
 }
 
 -(BOOL) applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {

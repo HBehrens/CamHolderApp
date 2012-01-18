@@ -81,9 +81,35 @@ const uvc_controls_t uvc_controls = {
 
 @implementation UVCCameraControl
 
+@synthesize discreteExposureValues = _discreteExposureValues;
+
+-(id) init {
+	self = [super init];
+	if(self) {
+		// these values are specific to MS LifeCam sensor
+		// find a way to populate this array device-specific
+		_discreteExposureValues = [[NSArray arrayWithObjects:
+								   [NSNumber numberWithInt: 1],
+								   [NSNumber numberWithInt: 2],
+								   [NSNumber numberWithInt: 5],
+								   [NSNumber numberWithInt: 10],
+								   [NSNumber numberWithInt: 20],
+								   [NSNumber numberWithInt: 39],
+								   [NSNumber numberWithInt: 78],
+								   [NSNumber numberWithInt: 156],
+								   [NSNumber numberWithInt: 312],
+								   [NSNumber numberWithInt: 625],
+								   [NSNumber numberWithInt: 1250],
+								   [NSNumber numberWithInt: 2500],
+								   [NSNumber numberWithInt: 5000],
+								   [NSNumber numberWithInt: 10000],
+								   nil] retain];
+	}
+	return self;
+}
 
 - (id)initWithLocationID:(UInt32)locationID {
-	if( self = [super init] ) {
+	if( self = [self init] ) {
 		interface = NULL;
 		
 		// Find All USB Devices, get their locationId and check if it matches the requested one
@@ -126,7 +152,7 @@ const uvc_controls_t uvc_controls = {
 
 
 - (id)initWithVendorID:(long)vendorID productID:(long)productID {
-	if( self = [super init] ) {
+	if( self = [self init] ) {
 		interface = NULL;
 		
 		// Find USB Device
@@ -369,24 +395,7 @@ const uvc_controls_t uvc_controls = {
 
 - (BOOL)setExposure:(float)value {
 	value = 1 - value;
-	NSArray* discreteValuesForLifeCam = [NSArray arrayWithObjects:
-										 [NSNumber numberWithInt: 1],
-										 [NSNumber numberWithInt: 2],
-										 [NSNumber numberWithInt: 5],
-										 [NSNumber numberWithInt: 10],
-										 [NSNumber numberWithInt: 20],
-										 [NSNumber numberWithInt: 39],
-										 [NSNumber numberWithInt: 78],
-										 [NSNumber numberWithInt: 156],
-										 [NSNumber numberWithInt: 312],
-										 [NSNumber numberWithInt: 625],
-										 [NSNumber numberWithInt: 1250],
-										 [NSNumber numberWithInt: 2500],
-										 [NSNumber numberWithInt: 5000],
-										 [NSNumber numberWithInt: 10000],
-										 nil];
-										 
-	return [self setDiscreteValue:value fromSet:discreteValuesForLifeCam forControl:(uvc_control_info_t *)&uvc_controls.exposure];
+	return [self setDiscreteValue:value fromSet:self.discreteExposureValues forControl:(uvc_control_info_t *)&uvc_controls.exposure];
 }
 
 - (float)getExposure {

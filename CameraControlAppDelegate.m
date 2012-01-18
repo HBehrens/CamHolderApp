@@ -252,6 +252,30 @@
 	[resetZoomButton setEnabled: NO];
 }
 
+- (IBAction)adjustFocus:(id)sender {
+	if(autoFocusCheckBox.state == NSOnState) {
+		autoFocusCheckBox.state = NSOffState;
+		[cameraControl setAutoFocus:NO];
+		[focusSlider setEnabled: YES];
+	}
+	
+	NSMenuItem *i = sender;
+	focusSlider.floatValue += i.tag * 0.01;
+	[cameraControl setAbsoluteFocus: focusSlider.floatValue];
+}
+
+-(IBAction)adjustExposureTime:(id)sender {
+	if(autoExposureCheckBox.state == NSOnState) {
+		autoExposureCheckBox.state = NSOffState;
+		[cameraControl setAutoExposure:NO];
+		[exposureSlider setEnabled: YES];
+	}
+	NSMenuItem *i = sender;
+	float delta = cameraControl.discreteExposureValues.count > 0 ? 1.0 / cameraControl.discreteExposureValues.count : 0.01;
+	exposureSlider.floatValue += i.tag * delta;
+	[cameraControl setExposure:exposureSlider.floatValue];
+}
+
 - (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {
 	if(!NSEqualRects(NSZeroRect, normalizedCroppingRect)) {
 		float w = image.extent.size.width;

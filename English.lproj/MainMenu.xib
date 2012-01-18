@@ -21,7 +21,8 @@
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="616"/>
+			<integer value="29"/>
+			<integer value="489"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -323,6 +324,67 @@
 							</object>
 						</object>
 					</object>
+					<object class="NSMenuItem" id="192085598">
+						<reference key="NSMenu" ref="649796088"/>
+						<string key="NSTitle">Camera</string>
+						<string key="NSKeyEquiv"/>
+						<int key="NSMnemonicLoc">2147483647</int>
+						<reference key="NSOnImage" ref="35465992"/>
+						<reference key="NSMixedImage" ref="502551668"/>
+						<string key="NSAction">submenuAction:</string>
+						<object class="NSMenu" key="NSSubmenu" id="991227044">
+							<string key="NSTitle">Camera</string>
+							<object class="NSMutableArray" key="NSMenuItems">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<object class="NSMenuItem" id="861020419">
+									<reference key="NSMenu" ref="991227044"/>
+									<string key="NSTitle">Exposure Longer</string>
+									<string key="NSKeyEquiv">w</string>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+									<int key="NSTag">1</int>
+								</object>
+								<object class="NSMenuItem" id="333352928">
+									<reference key="NSMenu" ref="991227044"/>
+									<string key="NSTitle">Exposure Shorter</string>
+									<string key="NSKeyEquiv">q</string>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+									<int key="NSTag">-1</int>
+								</object>
+								<object class="NSMenuItem" id="985177015">
+									<reference key="NSMenu" ref="991227044"/>
+									<bool key="NSIsDisabled">YES</bool>
+									<bool key="NSIsSeparator">YES</bool>
+									<string key="NSTitle"/>
+									<string key="NSKeyEquiv"/>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+								</object>
+								<object class="NSMenuItem" id="255121829">
+									<reference key="NSMenu" ref="991227044"/>
+									<string key="NSTitle">Focus Closer</string>
+									<string key="NSKeyEquiv">s</string>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+									<int key="NSTag">1</int>
+								</object>
+								<object class="NSMenuItem" id="588254982">
+									<reference key="NSMenu" ref="991227044"/>
+									<string key="NSTitle">Focus Farther</string>
+									<string key="NSKeyEquiv">a</string>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="35465992"/>
+									<reference key="NSMixedImage" ref="502551668"/>
+									<int key="NSTag">-1</int>
+								</object>
+							</object>
+						</object>
+					</object>
 					<object class="NSMenuItem" id="391199113">
 						<reference key="NSMenu" ref="649796088"/>
 						<string key="NSTitle">Help</string>
@@ -575,7 +637,7 @@
 														<reference key="NSControlView" ref="565140245"/>
 														<double key="NSMaxValue">1</double>
 														<double key="NSMinValue">0.0</double>
-														<double key="NSValue">0.5</double>
+														<double key="NSValue">0.45454545454545459</double>
 														<double key="NSAltIncValue">0.0</double>
 														<int key="NSNumberOfTickMarks">0</int>
 														<int key="NSTickMarkPosition">1</int>
@@ -697,7 +759,7 @@
 									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSTarget" ref="150105863"/>
 									<string key="NSAction">_doScroller:</string>
-									<double key="NSCurValue">1</double>
+									<double key="NSCurValue">0.99375000000000002</double>
 									<double key="NSPercent">0.96363627910614014</double>
 								</object>
 								<object class="NSScroller" id="159787659">
@@ -709,7 +771,7 @@
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="150105863"/>
 									<string key="NSAction">_doScroller:</string>
-									<double key="NSCurValue">0.02</double>
+									<double key="NSCurValue">0.070000000000000007</double>
 									<double key="NSPercent">0.50602412223815918</double>
 								</object>
 							</object>
@@ -994,6 +1056,38 @@
 					</object>
 					<int key="connectionID">617</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">adjustFocus:</string>
+						<reference key="source" ref="714345941"/>
+						<reference key="destination" ref="255121829"/>
+					</object>
+					<int key="connectionID">623</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">adjustFocus:</string>
+						<reference key="source" ref="714345941"/>
+						<reference key="destination" ref="588254982"/>
+					</object>
+					<int key="connectionID">624</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">adjustExposureTime:</string>
+						<reference key="source" ref="714345941"/>
+						<reference key="destination" ref="333352928"/>
+					</object>
+					<int key="connectionID">629</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">adjustExposureTime:</string>
+						<reference key="source" ref="714345941"/>
+						<reference key="destination" ref="861020419"/>
+					</object>
+					<int key="connectionID">630</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1033,6 +1127,7 @@
 							<reference ref="694149608"/>
 							<reference ref="391199113"/>
 							<reference ref="239907821"/>
+							<reference ref="192085598"/>
 						</object>
 						<reference key="parent" ref="1049"/>
 						<string key="objectName">MainMenu</string>
@@ -1445,6 +1540,53 @@
 						<reference key="object" ref="612297373"/>
 						<reference key="parent" ref="931381460"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">619</int>
+						<reference key="object" ref="192085598"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="991227044"/>
+						</object>
+						<reference key="parent" ref="649796088"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">620</int>
+						<reference key="object" ref="991227044"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="588254982"/>
+							<reference ref="255121829"/>
+							<reference ref="861020419"/>
+							<reference ref="333352928"/>
+							<reference ref="985177015"/>
+						</object>
+						<reference key="parent" ref="192085598"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">621</int>
+						<reference key="object" ref="588254982"/>
+						<reference key="parent" ref="991227044"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">622</int>
+						<reference key="object" ref="255121829"/>
+						<reference key="parent" ref="991227044"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">625</int>
+						<reference key="object" ref="861020419"/>
+						<reference key="parent" ref="991227044"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">626</int>
+						<reference key="object" ref="333352928"/>
+						<reference key="parent" ref="991227044"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">627</int>
+						<reference key="object" ref="985177015"/>
+						<reference key="parent" ref="991227044"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -1557,6 +1699,14 @@
 					<string>598.IBPluginDependency</string>
 					<string>616.IBPluginDependency</string>
 					<string>616.IBViewBoundsToFrameTransform</string>
+					<string>619.IBPluginDependency</string>
+					<string>620.IBEditorWindowLastContentRect</string>
+					<string>620.IBPluginDependency</string>
+					<string>621.IBPluginDependency</string>
+					<string>622.IBPluginDependency</string>
+					<string>625.IBPluginDependency</string>
+					<string>626.IBPluginDependency</string>
+					<string>627.IBPluginDependency</string>
 					<string>92.IBPluginDependency</string>
 					<string>92.ImportedFromIB2</string>
 				</object>
@@ -1565,7 +1715,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
-					<string>{{428, 728}, {209, 23}}</string>
+					<string>{{409, 728}, {209, 23}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{596, 852}, {216, 23}}</string>
@@ -1604,7 +1754,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{{525, 802}, {197, 73}}</string>
-					<string>{{168, 751}, {321, 20}}</string>
+					<string>{{701, 656}, {391, 20}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>{74, 862}</string>
@@ -1659,7 +1809,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{378, 638}, {174, 113}}</string>
+					<string>{{359, 638}, {174, 113}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1691,6 +1841,14 @@
 						<bytes key="NSTransformStruct">AUPJAABC4AAAA</bytes>
 					</object>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>{{961, 563}, {180, 93}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<integer value="1"/>
 				</object>
 			</object>
@@ -1710,7 +1868,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">617</int>
+			<int key="maxID">633</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1722,6 +1880,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>adjustExposureTime:</string>
+							<string>adjustFocus:</string>
 							<string>checkBoxChanged:</string>
 							<string>deviceChanged:</string>
 							<string>flipHorizontal:</string>
@@ -1734,6 +1894,8 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -1749,6 +1911,8 @@
 						<bool key="EncodedWithXMLCoder">YES</bool>
 						<object class="NSArray" key="dict.sortedKeys">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>adjustExposureTime:</string>
+							<string>adjustFocus:</string>
 							<string>checkBoxChanged:</string>
 							<string>deviceChanged:</string>
 							<string>flipHorizontal:</string>
@@ -1761,6 +1925,14 @@
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="IBActionInfo">
+								<string key="name">adjustExposureTime:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">adjustFocus:</string>
+								<string key="candidateClassName">id</string>
+							</object>
 							<object class="IBActionInfo">
 								<string key="name">checkBoxChanged:</string>
 								<string key="candidateClassName">id</string>

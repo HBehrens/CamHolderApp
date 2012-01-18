@@ -18,6 +18,7 @@
 		B6C495D1100D6FDE00475D9D /* CameraControlAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B6C495D0100D6FDE00475D9D /* CameraControlAppDelegate.m */; };
 		CB246680144F5B2400670C41 /* BorderlessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CB24667F144F5B2400670C41 /* BorderlessWindow.m */; };
 		CB246871144F75D400670C41 /* CroppingQTCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB246870144F75D400670C41 /* CroppingQTCaptureView.m */; };
+		CB288E4A14C7425600AAF097 /* CamHolder.icns in Resources */ = {isa = PBXBuildFile; fileRef = CB288E4914C7425600AAF097 /* CamHolder.icns */; };
 		CBC6B96814C61DF1000F181B /* ZoomRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC6B96714C61DF1000F181B /* ZoomRectView.m */; };
 /* End PBXBuildFile section */
 
@@ -31,7 +32,7 @@
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* CameraControl_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraControl_Prefix.pch; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* CameraControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* CamHolder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamHolder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B67EDD6210058536003B5B87 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		B6BA230C0FFEB70E009E4207 /* UVCCameraControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVCCameraControl.h; sourceTree = "<group>"; };
 		B6BA230D0FFEB70E009E4207 /* UVCCameraControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVCCameraControl.m; sourceTree = "<group>"; };
@@ -43,6 +44,7 @@
 		CB24667F144F5B2400670C41 /* BorderlessWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderlessWindow.m; sourceTree = "<group>"; };
 		CB24686F144F75D400670C41 /* CroppingQTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CroppingQTCaptureView.h; sourceTree = "<group>"; };
 		CB246870144F75D400670C41 /* CroppingQTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CroppingQTCaptureView.m; sourceTree = "<group>"; };
+		CB288E4914C7425600AAF097 /* CamHolder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CamHolder.icns; sourceTree = "<group>"; };
 		CBC6B96614C61DF1000F181B /* ZoomRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomRectView.h; sourceTree = "<group>"; };
 		CBC6B96714C61DF1000F181B /* ZoomRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomRectView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -103,7 +105,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* CameraControl.app */,
+				8D1107320486CEB800E47090 /* CamHolder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -132,6 +134,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CB288E4914C7425600AAF097 /* CamHolder.icns */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				1DDD58140DA1D0A300B32029 /* MainMenu.xib */,
@@ -151,9 +154,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* CameraControl */ = {
+		8D1107260486CEB800E47090 /* CamHolder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CameraControl" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CamHolder" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -163,10 +166,10 @@
 			);
 			dependencies = (
 			);
-			name = CameraControl;
+			name = CamHolder;
 			productInstallPath = "$(HOME)/Applications";
 			productName = CameraControl;
-			productReference = 8D1107320486CEB800E47090 /* CameraControl.app */;
+			productReference = 8D1107320486CEB800E47090 /* CamHolder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -188,7 +191,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* CameraControl */,
+				8D1107260486CEB800E47090 /* CamHolder */,
 			);
 		};
 /* End PBXProject section */
@@ -200,6 +203,7 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */,
+				CB288E4A14C7425600AAF097 /* CamHolder.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -254,7 +258,6 @@
 				GCC_PREFIX_HEADER = CameraControl_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = CameraControl;
 			};
 			name = Debug;
 		};
@@ -268,7 +271,6 @@
 				GCC_PREFIX_HEADER = CameraControl_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = CameraControl;
 			};
 			name = Release;
 		};
@@ -282,6 +284,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PREBINDING = NO;
+				PRODUCT_NAME = CamHolder;
 				SDKROOT = macosx10.6;
 			};
 			name = Debug;
@@ -294,6 +297,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
+				PRODUCT_NAME = CamHolder;
 				SDKROOT = macosx10.6;
 			};
 			name = Release;
@@ -301,7 +305,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CameraControl" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "CamHolder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,

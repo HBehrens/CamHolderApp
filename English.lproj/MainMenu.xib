@@ -418,7 +418,7 @@
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{218, 164}, {840, 478}}</string>
 				<int key="NSWTFlags">603979776</int>
-				<string key="NSWindowTitle">CameraControl</string>
+				<string key="NSWindowTitle">CamHolder</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<nil key="NSViewClass"/>
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>

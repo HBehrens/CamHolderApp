@@ -16,6 +16,7 @@
     QTCaptureDeviceInput *_videoInput;
     
     IBOutlet NSComboBox *captureDevicesCombobox;
+    IBOutlet NSSlider *exposureSlider;
     IBOutlet CroppingQTCaptureView *captureView;
     IBOutlet NSView* zoomRectView;
 }

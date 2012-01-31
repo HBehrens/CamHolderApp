@@ -10,7 +10,7 @@
 #import <QTKit/QTKit.h>
 #import "UVCCameraControl.h"
 
-static NSArray* CHCachedCaptureDevices;
+extern NSArray* CHCachedCaptureDevices;
 
 @interface CHDocument : NSDocument {
     UVCCameraControl *_cameraControl;

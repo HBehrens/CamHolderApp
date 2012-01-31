@@ -498,6 +498,14 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
+						<string key="label">exposureSlider</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="864156495"/>
+					</object>
+					<int key="connectionID">100113</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
 						<string key="label">delegate</string>
 						<reference key="source" ref="275939982"/>
 						<reference key="destination" ref="512844837"/>
@@ -658,7 +666,7 @@
 							<int key="NSNibBindingConnectorVersion">2</int>
 						</object>
 					</object>
-					<int key="connectionID">100057</int>
+					<int key="connectionID">100115</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -900,7 +908,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100112</int>
+			<int key="maxID">100115</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -921,6 +929,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="captureDevicesCombobox">NSComboBox</string>
 						<string key="captureView">CroppingQTCaptureView</string>
+						<string key="exposureSlider">NSSlider</string>
 						<string key="zoomRectView">NSView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -931,6 +940,10 @@
 						<object class="IBToOneOutletInfo" key="captureView">
 							<string key="name">captureView</string>
 							<string key="candidateClassName">CroppingQTCaptureView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="exposureSlider">
+							<string key="name">exposureSlider</string>
+							<string key="candidateClassName">NSSlider</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="zoomRectView">
 							<string key="name">zoomRectView</string>

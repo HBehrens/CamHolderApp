@@ -64,6 +64,8 @@
 
 #pragma mark - QT class helpers {
 
+NSArray* CHCachedCaptureDevices;
+
 +(NSArray*)arrayWithAllSuitableDevices {
 	static NSString* suitableModelUniqueID = @"UVC Camera VendorID_1118 ProductID_1906";
 	NSArray *unfiltered = [QTCaptureDevice inputDevicesWithMediaType:QTMediaTypeVideo];
@@ -82,15 +84,7 @@
     return CHCachedCaptureDevices;
 }
 
-#pragma mark - properties
-
-+(NSSet *)keyPathsForValuesAffectingIsZoomed {
-    return [NSSet setWithObjects:@"normalizedCroppingRect", nil];
-}
-
--(BOOL)isZoomed {
-    return !NSEqualRects(NSZeroRect, self.normalizedCroppingRect);
-}
+#pragma mark - camera input
 
 -(NSArray*)captureDevices {
     return [self.class cachedCaptureDevices];
@@ -102,8 +96,8 @@
 }
 
 -(void)setExposureTimeFactor:(float)exposureTimeFactor_ {
-    exposureTimeFactor = exposureTimeFactor_;
-    [_cameraControl setExposure:exposureTimeFactor];
+    exposureTimeFactor = MAX(0, MIN(1, exposureTimeFactor_));
+    [_cameraControl setExposure:1 - exposureTimeFactor];
 }
 
 -(void)setIsAutoFocusActive:(BOOL)isAutoFocusActive_ {
@@ -112,7 +106,7 @@
 }
 
 -(void)setFocusFactor:(float)focusFactor_ {
-    focusFactor = focusFactor_;
+    focusFactor = MAX(0, MIN(1, focusFactor_));
     [_cameraControl setAbsoluteFocus:focusFactor];
 }
 
@@ -135,8 +129,66 @@
     activeCaptureDevice = activeCaptureDevice_;
 }
 
+-(void)changeExposureTimeInDirection:(int)direction {
+	float delta = _cameraControl.discreteExposureValues.count > 0 ? 1.0 / _cameraControl.discreteExposureValues.count : 0.01;
+	self.exposureTimeFactor += direction * delta;
+    self.isAutoExposureActive = NO;
+}
+
+-(void)exposeLonger:(id)sender {
+    [self changeExposureTimeInDirection:1];
+}
+
+-(void)exposeShorter:(id)sender {
+    [self changeExposureTimeInDirection:-1];
+}
+
+-(void)changeFocusInDirection:(int)direction {
+    self.focusFactor += direction * 0.01;
+	self.isAutoFocusActive = NO;
+}
+
+-(void)focusCloser:(id)sender {
+    [self changeFocusInDirection: 1];
+}
+
+-(void)focusFarther:(id)sender {
+    [self changeFocusInDirection: -1];
+}
+
+#pragma mark - output transformation
+
++(NSSet *)keyPathsForValuesAffectingIsZoomed {
+    return [NSSet setWithObjects:@"normalizedCroppingRect", nil];
+}
+
+-(BOOL)isZoomed {
+    return !NSEqualRects(NSZeroRect, self.normalizedCroppingRect);
+}
+
 -(void)resetZoom {
     self.normalizedCroppingRect = NSZeroRect;
 }
+
+// TODO: normalize rotation
+
+-(void)rotateRight:(id)sender {
+    self.rotation -= 90;
+}
+
+-(void)rotateLeft:(id)sender {
+    self.rotation += 90;
+}
+
+-(void)flipHorizontal:(id)sender {
+    self.isMirroredHorizontally = !self.isMirroredHorizontally;
+}
+
+-(void)flipVertical:(id)sender {
+    self.isMirroredVertically = !self.isMirroredVertically;
+}
+
+
+
 
 @end

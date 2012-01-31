@@ -1,0 +1,519 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CBC25A5014D861A400E15E47 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A4F14D861A400E15E47 /* Cocoa.framework */; };
+		CBC25A5A14D861A400E15E47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A5814D861A400E15E47 /* InfoPlist.strings */; };
+		CBC25A5C14D861A400E15E47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A5B14D861A400E15E47 /* main.m */; };
+		CBC25A6014D861A400E15E47 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A5E14D861A400E15E47 /* Credits.rtf */; };
+		CBC25A6314D861A400E15E47 /* CHDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A6214D861A400E15E47 /* CHDocument.m */; };
+		CBC25A6614D861A400E15E47 /* CHDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A6414D861A400E15E47 /* CHDocument.xib */; };
+		CBC25A6914D861A400E15E47 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A6714D861A400E15E47 /* MainMenu.xib */; };
+		CBC25A7114D861A400E15E47 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A7014D861A400E15E47 /* SenTestingKit.framework */; };
+		CBC25A7214D861A400E15E47 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A4F14D861A400E15E47 /* Cocoa.framework */; };
+		CBC25A7A14D861A400E15E47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A7814D861A400E15E47 /* InfoPlist.strings */; };
+		CBC25A7D14D861A400E15E47 /* CamHolderAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A7C14D861A400E15E47 /* CamHolderAppTests.m */; };
+		CBC25A9114D8624600E15E47 /* BorderlessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A8814D8624600E15E47 /* BorderlessWindow.m */; };
+		CBC25A9214D8624600E15E47 /* CameraControlAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A8A14D8624600E15E47 /* CameraControlAppDelegate.m */; };
+		CBC25A9314D8624600E15E47 /* CroppingQTCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */; };
+		CBC25A9414D8624600E15E47 /* UVCCameraControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */; };
+		CBC25A9514D8624600E15E47 /* ZoomRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A9014D8624600E15E47 /* ZoomRectView.m */; };
+		CBC25A9714D8625500E15E47 /* CamHolder.icns in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A9614D8625500E15E47 /* CamHolder.icns */; };
+		CBC25A9914D862D900E15E47 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A9814D862D900E15E47 /* CoreVideo.framework */; };
+		CBC25A9D14D8631C00E15E47 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A9C14D8631C00E15E47 /* QTKit.framework */; };
+		CBC25A9F14D8632500E15E47 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A9E14D8632500E15E47 /* IOKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CBC25A7314D861A400E15E47 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CBC25A4214D861A400E15E47 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CBC25A4A14D861A400E15E47;
+			remoteInfo = CamHolderApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		CBC25A4B14D861A400E15E47 /* CamHolderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamHolderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBC25A4F14D861A400E15E47 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		CBC25A5214D861A400E15E47 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		CBC25A5314D861A400E15E47 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		CBC25A5414D861A400E15E47 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		CBC25A5714D861A400E15E47 /* CamHolderApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CamHolderApp-Info.plist"; sourceTree = "<group>"; };
+		CBC25A5914D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CBC25A5B14D861A400E15E47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CBC25A5D14D861A400E15E47 /* CamHolderApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CamHolderApp-Prefix.pch"; sourceTree = "<group>"; };
+		CBC25A5F14D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		CBC25A6114D861A400E15E47 /* CHDocument.h */ = {isa = PBXFileReference; path = CHDocument.h; sourceTree = "<group>"; };
+		CBC25A6214D861A400E15E47 /* CHDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHDocument.m; sourceTree = "<group>"; };
+		CBC25A6514D861A400E15E47 /* en */ = {isa = PBXFileReference; name = en; path = en.lproj/CHDocument.xib; sourceTree = "<group>"; };
+		CBC25A6814D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CBC25A6F14D861A400E15E47 /* CamHolderAppTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamHolderAppTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBC25A7014D861A400E15E47 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		CBC25A7714D861A400E15E47 /* CamHolderAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "CamHolderAppTests-Info.plist"; sourceTree = "<group>"; };
+		CBC25A7914D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CBC25A7B14D861A400E15E47 /* CamHolderAppTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CamHolderAppTests.h; sourceTree = "<group>"; };
+		CBC25A7C14D861A400E15E47 /* CamHolderAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamHolderAppTests.m; sourceTree = "<group>"; };
+		CBC25A8714D8624600E15E47 /* BorderlessWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderlessWindow.h; sourceTree = "<group>"; };
+		CBC25A8814D8624600E15E47 /* BorderlessWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderlessWindow.m; sourceTree = "<group>"; };
+		CBC25A8914D8624600E15E47 /* CameraControlAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraControlAppDelegate.h; sourceTree = "<group>"; };
+		CBC25A8A14D8624600E15E47 /* CameraControlAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraControlAppDelegate.m; sourceTree = "<group>"; };
+		CBC25A8B14D8624600E15E47 /* CroppingQTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CroppingQTCaptureView.h; sourceTree = "<group>"; };
+		CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CroppingQTCaptureView.m; sourceTree = "<group>"; };
+		CBC25A8D14D8624600E15E47 /* UVCCameraControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVCCameraControl.h; sourceTree = "<group>"; };
+		CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVCCameraControl.m; sourceTree = "<group>"; };
+		CBC25A8F14D8624600E15E47 /* ZoomRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomRectView.h; sourceTree = "<group>"; };
+		CBC25A9014D8624600E15E47 /* ZoomRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomRectView.m; sourceTree = "<group>"; };
+		CBC25A9614D8625500E15E47 /* CamHolder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CamHolder.icns; sourceTree = "<group>"; };
+		CBC25A9814D862D900E15E47 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		CBC25A9A14D862E100E15E47 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
+		CBC25A9C14D8631C00E15E47 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
+		CBC25A9E14D8632500E15E47 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CBC25A4814D861A400E15E47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBC25A9F14D8632500E15E47 /* IOKit.framework in Frameworks */,
+				CBC25A9D14D8631C00E15E47 /* QTKit.framework in Frameworks */,
+				CBC25A9914D862D900E15E47 /* CoreVideo.framework in Frameworks */,
+				CBC25A5014D861A400E15E47 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBC25A6B14D861A400E15E47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBC25A7114D861A400E15E47 /* SenTestingKit.framework in Frameworks */,
+				CBC25A7214D861A400E15E47 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CBC25A4014D861A400E15E47 = {
+			isa = PBXGroup;
+			children = (
+				CBC25A8614D8623000E15E47 /* Previous Version */,
+				CBC25A5514D861A400E15E47 /* CamHolderApp */,
+				CBC25A7514D861A400E15E47 /* CamHolderAppTests */,
+				CBC25A4E14D861A400E15E47 /* Frameworks */,
+				CBC25A4C14D861A400E15E47 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CBC25A4C14D861A400E15E47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CBC25A4B14D861A400E15E47 /* CamHolderApp.app */,
+				CBC25A6F14D861A400E15E47 /* CamHolderAppTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CBC25A4E14D861A400E15E47 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBC25A9E14D8632500E15E47 /* IOKit.framework */,
+				CBC25A9C14D8631C00E15E47 /* QTKit.framework */,
+				CBC25A9A14D862E100E15E47 /* QuickTime.framework */,
+				CBC25A9814D862D900E15E47 /* CoreVideo.framework */,
+				CBC25A4F14D861A400E15E47 /* Cocoa.framework */,
+				CBC25A7014D861A400E15E47 /* SenTestingKit.framework */,
+				CBC25A5114D861A400E15E47 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CBC25A5114D861A400E15E47 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBC25A5214D861A400E15E47 /* AppKit.framework */,
+				CBC25A5314D861A400E15E47 /* CoreData.framework */,
+				CBC25A5414D861A400E15E47 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		CBC25A5514D861A400E15E47 /* CamHolderApp */ = {
+			isa = PBXGroup;
+			children = (
+				CBC25A6114D861A400E15E47 /* CHDocument.h */,
+				CBC25A6214D861A400E15E47 /* CHDocument.m */,
+				CBC25A6414D861A400E15E47 /* CHDocument.xib */,
+				CBC25A6714D861A400E15E47 /* MainMenu.xib */,
+				CBC25A5614D861A400E15E47 /* Supporting Files */,
+			);
+			path = CamHolderApp;
+			sourceTree = "<group>";
+		};
+		CBC25A5614D861A400E15E47 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CBC25A9614D8625500E15E47 /* CamHolder.icns */,
+				CBC25A5714D861A400E15E47 /* CamHolderApp-Info.plist */,
+				CBC25A5814D861A400E15E47 /* InfoPlist.strings */,
+				CBC25A5B14D861A400E15E47 /* main.m */,
+				CBC25A5D14D861A400E15E47 /* CamHolderApp-Prefix.pch */,
+				CBC25A5E14D861A400E15E47 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CBC25A7514D861A400E15E47 /* CamHolderAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				CBC25A7B14D861A400E15E47 /* CamHolderAppTests.h */,
+				CBC25A7C14D861A400E15E47 /* CamHolderAppTests.m */,
+				CBC25A7614D861A400E15E47 /* Supporting Files */,
+			);
+			path = CamHolderAppTests;
+			sourceTree = "<group>";
+		};
+		CBC25A7614D861A400E15E47 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				CBC25A7714D861A400E15E47 /* CamHolderAppTests-Info.plist */,
+				CBC25A7814D861A400E15E47 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		CBC25A8614D8623000E15E47 /* Previous Version */ = {
+			isa = PBXGroup;
+			children = (
+				CBC25A8714D8624600E15E47 /* BorderlessWindow.h */,
+				CBC25A8814D8624600E15E47 /* BorderlessWindow.m */,
+				CBC25A8914D8624600E15E47 /* CameraControlAppDelegate.h */,
+				CBC25A8A14D8624600E15E47 /* CameraControlAppDelegate.m */,
+				CBC25A8B14D8624600E15E47 /* CroppingQTCaptureView.h */,
+				CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */,
+				CBC25A8D14D8624600E15E47 /* UVCCameraControl.h */,
+				CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */,
+				CBC25A8F14D8624600E15E47 /* ZoomRectView.h */,
+				CBC25A9014D8624600E15E47 /* ZoomRectView.m */,
+			);
+			name = "Previous Version";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CBC25A4A14D861A400E15E47 /* CamHolderApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBC25A8014D861A400E15E47 /* Build configuration list for PBXNativeTarget "CamHolderApp" */;
+			buildPhases = (
+				CBC25A4714D861A400E15E47 /* Sources */,
+				CBC25A4814D861A400E15E47 /* Frameworks */,
+				CBC25A4914D861A400E15E47 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CamHolderApp;
+			productName = CamHolderApp;
+			productReference = CBC25A4B14D861A400E15E47 /* CamHolderApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CBC25A6E14D861A400E15E47 /* CamHolderAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CBC25A8314D861A400E15E47 /* Build configuration list for PBXNativeTarget "CamHolderAppTests" */;
+			buildPhases = (
+				CBC25A6A14D861A400E15E47 /* Sources */,
+				CBC25A6B14D861A400E15E47 /* Frameworks */,
+				CBC25A6C14D861A400E15E47 /* Resources */,
+				CBC25A6D14D861A400E15E47 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CBC25A7414D861A400E15E47 /* PBXTargetDependency */,
+			);
+			name = CamHolderAppTests;
+			productName = CamHolderAppTests;
+			productReference = CBC25A6F14D861A400E15E47 /* CamHolderAppTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CBC25A4214D861A400E15E47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = BeamApp;
+			};
+			buildConfigurationList = CBC25A4514D861A400E15E47 /* Build configuration list for PBXProject "CamHolderApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = CBC25A4014D861A400E15E47;
+			productRefGroup = CBC25A4C14D861A400E15E47 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CBC25A4A14D861A400E15E47 /* CamHolderApp */,
+				CBC25A6E14D861A400E15E47 /* CamHolderAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CBC25A4914D861A400E15E47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBC25A5A14D861A400E15E47 /* InfoPlist.strings in Resources */,
+				CBC25A6014D861A400E15E47 /* Credits.rtf in Resources */,
+				CBC25A6614D861A400E15E47 /* CHDocument.xib in Resources */,
+				CBC25A6914D861A400E15E47 /* MainMenu.xib in Resources */,
+				CBC25A9714D8625500E15E47 /* CamHolder.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBC25A6C14D861A400E15E47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBC25A7A14D861A400E15E47 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		CBC25A6D14D861A400E15E47 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CBC25A4714D861A400E15E47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBC25A5C14D861A400E15E47 /* main.m in Sources */,
+				CBC25A6314D861A400E15E47 /* CHDocument.m in Sources */,
+				CBC25A9114D8624600E15E47 /* BorderlessWindow.m in Sources */,
+				CBC25A9214D8624600E15E47 /* CameraControlAppDelegate.m in Sources */,
+				CBC25A9314D8624600E15E47 /* CroppingQTCaptureView.m in Sources */,
+				CBC25A9414D8624600E15E47 /* UVCCameraControl.m in Sources */,
+				CBC25A9514D8624600E15E47 /* ZoomRectView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CBC25A6A14D861A400E15E47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBC25A7D14D861A400E15E47 /* CamHolderAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CBC25A7414D861A400E15E47 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CBC25A4A14D861A400E15E47 /* CamHolderApp */;
+			targetProxy = CBC25A7314D861A400E15E47 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		CBC25A5814D861A400E15E47 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBC25A5914D861A400E15E47 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		CBC25A5E14D861A400E15E47 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBC25A5F14D861A400E15E47 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		CBC25A6414D861A400E15E47 /* CHDocument.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBC25A6514D861A400E15E47 /* en */,
+			);
+			name = CHDocument.xib;
+			sourceTree = "<group>";
+		};
+		CBC25A6714D861A400E15E47 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBC25A6814D861A400E15E47 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		CBC25A7814D861A400E15E47 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CBC25A7914D861A400E15E47 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CBC25A7E14D861A400E15E47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		CBC25A7F14D861A400E15E47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		CBC25A8114D861A400E15E47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CamHolderApp/CamHolderApp-Prefix.pch";
+				INFOPLIST_FILE = "CamHolderApp/CamHolderApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		CBC25A8214D861A400E15E47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CamHolderApp/CamHolderApp-Prefix.pch";
+				INFOPLIST_FILE = "CamHolderApp/CamHolderApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		CBC25A8414D861A400E15E47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CamHolderApp.app/Contents/MacOS/CamHolderApp";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CamHolderApp/CamHolderApp-Prefix.pch";
+				INFOPLIST_FILE = "CamHolderAppTests/CamHolderAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		CBC25A8514D861A400E15E47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/CamHolderApp.app/Contents/MacOS/CamHolderApp";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "CamHolderApp/CamHolderApp-Prefix.pch";
+				INFOPLIST_FILE = "CamHolderAppTests/CamHolderAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CBC25A4514D861A400E15E47 /* Build configuration list for PBXProject "CamHolderApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBC25A7E14D861A400E15E47 /* Debug */,
+				CBC25A7F14D861A400E15E47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBC25A8014D861A400E15E47 /* Build configuration list for PBXNativeTarget "CamHolderApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBC25A8114D861A400E15E47 /* Debug */,
+				CBC25A8214D861A400E15E47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CBC25A8314D861A400E15E47 /* Build configuration list for PBXNativeTarget "CamHolderAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CBC25A8414D861A400E15E47 /* Debug */,
+				CBC25A8514D861A400E15E47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CBC25A4214D861A400E15E47 /* Project object */;
+}

@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'CamHolderApp' target in the 'CamHolderApp' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

@@ -2,3 +2,5 @@
 *.pbxuser
 *.mode1v3
 .DS_Store
+CamHolderApp.xcodeproj/xcuserdata/
+CamHolderApp.xcodeproj/project.xcworkspace/xcuserdata/

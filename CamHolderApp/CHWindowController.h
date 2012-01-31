@@ -9,21 +9,27 @@
 #import <Cocoa/Cocoa.h>
 #import "CHDocument.h"
 #import "CroppingQTCaptureView.h"
+#import "CHDraggableWindow.h"
 
 @interface CHWindowController : NSWindowController<NSWindowDelegate> {
     QTCaptureSession *_captureSession;
     QTCaptureDevice *_videoDevice;
     QTCaptureDeviceInput *_videoInput;
     
+    NSUInteger _originalWindowMask;
+    
     IBOutlet NSComboBox *captureDevicesCombobox;
     IBOutlet NSSlider *exposureSlider;
     IBOutlet CroppingQTCaptureView *captureView;
     IBOutlet NSView* zoomRectView;
+    IBOutlet NSView* inspectorView;
 }
 
 - (IBAction)captureDeviceChanged:(id)sender;
 
 @property (nonatomic, assign) CHDocument* document;
+@property (nonatomic, assign) CHDraggableWindow *window;
 
+-(void)setShowsInspector:(BOOL)value;
 
 @end

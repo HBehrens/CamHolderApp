@@ -33,4 +33,8 @@ extern NSArray* CHCachedCaptureDevices;
 
 -(void)resetZoom;
 
+@property (nonatomic, assign) BOOL showsInspector;
+
+-(void)toggleInspector:(id)sender;
+
 @end

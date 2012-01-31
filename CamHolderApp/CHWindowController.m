@@ -24,6 +24,9 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    
+    _originalWindowMask = self.window.styleMask;
+    
     // workaround: an initially hidden rect somehow does not appear at runtime
     zoomRectView.frame = NSZeroRect;
     
@@ -150,12 +153,16 @@
 }
 
 
-#pragma mark - properties
+#pragma mark - Property Overloads
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     if(object == self.document && [@"activeCaptureDevice" isEqualToString:keyPath]) {
         [self connectToVideoDevice:self.document.activeCaptureDevice];
     } else
+    if(object == self.document && [@"showsInspector" isEqualToString:keyPath]) {
+        [self setShowsInspector:self.document.showsInspector];
+    } else
+        
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
@@ -166,12 +173,39 @@
 
 -(void)setDocument:(CHDocument *)document {
     [self.document removeObserver:self forKeyPath:@"activeCaptureDevice"];
+    [self.document removeObserver:self forKeyPath:@"showsInspector"];
+
     [super setDocument:document];
     [self.document addObserver:self forKeyPath:@"activeCaptureDevice" options:NSKeyValueObservingOptionNew context:nil];
+    [self.document addObserver:self forKeyPath:@"showsInspector" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(void)captureDeviceChanged:(id)sender {
     self.document.activeCaptureDevice = [self.document.captureDevices objectAtIndex:[captureDevicesCombobox indexOfSelectedItem]];
+}
+
+-(CHDraggableWindow*)window {
+    return super.window;
+}
+
+-(void)setWindow:(CHDraggableWindow *)window {
+    [super setWindow:window];
+}
+
+#pragma mark - view options
+
+-(void)setShowsInspector:(BOOL)value {
+    self.window.styleMask = value ? _originalWindowMask : NSBorderlessWindowMask;
+    NSRect r = self.window.frame;
+    float widthDelta = inspectorView.frame.size.width * (value ? 1 : -1);
+    r.size.width += widthDelta;
+    [self.window setFrame: r display:YES];
+    
+    r = [(NSView*)self.window.contentView frame];
+    if(value)r.size.width -= widthDelta;
+    captureView.frame = r;
+    self.window.isDraggable = !value;
+    captureView.canSelectRect = value;
 }
 
 @end

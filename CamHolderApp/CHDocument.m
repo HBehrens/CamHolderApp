@@ -12,7 +12,8 @@
 @implementation CHDocument
 
 @synthesize isAutoExposureActive, exposureTimeFactor, isAutoFocusActive, focusFactor, activeCaptureDevice, 
-    normalizedCroppingRect, isMirroredHorizontally, isMirroredVertically, rotation;
+    normalizedCroppingRect, isMirroredHorizontally, isMirroredVertically, rotation,
+    showsInspector;
 
 - (id)init
 {
@@ -20,6 +21,7 @@
     if (self) {
         isAutoExposureActive = YES;
         isAutoFocusActive = YES;
+        showsInspector = YES;
     }
     return self;
 }
@@ -187,6 +189,13 @@ NSArray* CHCachedCaptureDevices;
 -(void)flipVertical:(id)sender {
     self.isMirroredVertically = !self.isMirroredVertically;
 }
+
+#pragma mark - UI Options
+
+-(IBAction)toggleInspector:(id)sender {
+    self.showsInspector = !self.showsInspector;
+}
+
 
 
 

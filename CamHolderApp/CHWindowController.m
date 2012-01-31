@@ -24,16 +24,72 @@
 - (void)windowDidLoad
 {
     [super windowDidLoad];
+    // workaround: an initially hidden rect somehow does not appear at runtime
+    zoomRectView.frame = NSZeroRect;
     
     [captureDevicesCombobox removeAllItems];
 	for (QTCaptureDevice* d in self.document.captureDevices) {
 		[captureDevicesCombobox addItemWithObjectValue: [d localizedDisplayName]];
 	}
-    
-    // Implement this method to handle any initialization after your window controller's window has been loaded from its nib file.
 }
 
-#pragma mark - Camera Handling
+#pragma mark - Preview Delegate and Handling
+
+-(void)viewWillSelectRect:(QTCaptureView *)view {
+	[zoomRectView setHidden:NO];
+	[zoomRectView setFrame:NSZeroRect];
+    self.document.isMirroredHorizontally = NO;
+    self.document.isMirroredVertically = NO;
+    self.document.rotation = 0;
+    //	normalizedCroppingRect = NSZeroRect;
+}
+
+-(void)view:(QTCaptureView *)view mightSelectRectInViewCoordinates:(NSRect)rect {
+	[zoomRectView setFrame: rect];
+}
+
+-(void)view:(QTCaptureView *)view didSelectRect:(NSRect)rect {
+	[zoomRectView setHidden:YES];
+    
+    // TODO: extract into model to make it testable
+	if(NSEqualRects(NSZeroRect, self.document.normalizedCroppingRect)) {
+		self.document.normalizedCroppingRect = rect;
+	} else {
+		float w = self.document.normalizedCroppingRect.size.width;
+		float h = self.document.normalizedCroppingRect.size.height;
+		
+		self.document.normalizedCroppingRect = NSMakeRect(
+											self.document.normalizedCroppingRect.origin.x + w*rect.origin.x,
+											self.document.normalizedCroppingRect.origin.y + h*rect.origin.y,
+											w*rect.size.width,
+											h*rect.size.height
+											);
+	}
+	// TODO: apply transformation
+}
+
+- (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {
+	if(!NSEqualRects(NSZeroRect, self.document.normalizedCroppingRect)) {
+		float w = image.extent.size.width;
+		float h = image.extent.size.height;
+		CGRect transformedCrop = NSRectToCGRect(self.document.normalizedCroppingRect);
+		transformedCrop.origin.x *= w;
+		transformedCrop.origin.y *= h;
+		transformedCrop.size.width *= w;
+		transformedCrop.size.height *= h;
+		
+		image = [image imageByCroppingToRect:transformedCrop];
+	}
+	
+	float scaleX = self.document.isMirroredHorizontally ? -1 : 1;
+	float scaleY = self.document.isMirroredVertically ? -1 : 1;
+	
+	return [image
+			imageByApplyingTransform:CGAffineTransformScale(
+															CGAffineTransformMakeRotation(self.document.rotation * M_PI /180.0),
+															scaleX, scaleY)
+			];
+}
 
 -(void)connectToVideoDevice:(QTCaptureDevice*)device {
 	[_captureSession release];

@@ -17,6 +17,7 @@
     
     IBOutlet NSComboBox *captureDevicesCombobox;
     IBOutlet CroppingQTCaptureView *captureView;
+    IBOutlet NSView* zoomRectView;
 }
 
 - (IBAction)captureDeviceChanged:(id)sender;

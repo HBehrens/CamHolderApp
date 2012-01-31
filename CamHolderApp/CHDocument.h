@@ -26,4 +26,11 @@ static NSArray* CHCachedCaptureDevices;
 @property (nonatomic, readonly) NSArray* captureDevices;
 @property (nonatomic, retain) QTCaptureDevice* activeCaptureDevice;
 
+@property (nonatomic, assign) NSRect normalizedCroppingRect;
+@property (nonatomic, assign) BOOL isMirroredHorizontally;
+@property (nonatomic, assign) BOOL isMirroredVertically;
+@property (nonatomic, assign) float rotation;
+
+-(void)resetZoom;
+
 @end

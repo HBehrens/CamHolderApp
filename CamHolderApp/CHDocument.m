@@ -11,7 +11,8 @@
 
 @implementation CHDocument
 
-@synthesize isAutoExposureActive, exposureTimeFactor, isAutoFocusActive, focusFactor, activeCaptureDevice;
+@synthesize isAutoExposureActive, exposureTimeFactor, isAutoFocusActive, focusFactor, activeCaptureDevice, 
+    normalizedCroppingRect, isMirroredHorizontally, isMirroredVertically, rotation;
 
 - (id)init
 {
@@ -83,8 +84,12 @@
 
 #pragma mark - properties
 
++(NSSet *)keyPathsForValuesAffectingIsZoomed {
+    return [NSSet setWithObjects:@"normalizedCroppingRect", nil];
+}
+
 -(BOOL)isZoomed {
-    return NO;
+    return !NSEqualRects(NSZeroRect, self.normalizedCroppingRect);
 }
 
 -(NSArray*)captureDevices {
@@ -128,6 +133,10 @@
         [_cameraControl setAbsoluteFocus:self.focusFactor];
     }
     activeCaptureDevice = activeCaptureDevice_;
+}
+
+-(void)resetZoom {
+    self.normalizedCroppingRect = NSZeroRect;
 }
 
 @end

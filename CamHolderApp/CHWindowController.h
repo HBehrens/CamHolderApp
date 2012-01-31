@@ -17,12 +17,16 @@
     QTCaptureDeviceInput *_videoInput;
     
     NSUInteger _originalWindowMask;
+    NSRect _nonFullScreenFrame;
+    NSRect _fullscreenFrame;
+    BOOL _ignoreWindowDidResize;
     
     IBOutlet NSComboBox *captureDevicesCombobox;
     IBOutlet NSSlider *exposureSlider;
     IBOutlet CroppingQTCaptureView *captureView;
     IBOutlet NSView* zoomRectView;
     IBOutlet NSView* inspectorView;
+    
 }
 
 - (IBAction)captureDeviceChanged:(id)sender;
@@ -31,5 +35,10 @@
 @property (nonatomic, assign) CHDraggableWindow *window;
 
 -(void)setShowsInspector:(BOOL)value;
+
+@property (nonatomic, assign) BOOL isFullscreen;
+
+-(IBAction)toggleFullscreen:(id)sender;
+-(void)setContentSize:(NSSize)size;
 
 @end

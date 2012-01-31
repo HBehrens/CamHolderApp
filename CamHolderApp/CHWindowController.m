@@ -11,6 +11,8 @@
 
 @implementation CHWindowController
 
+@synthesize isFullscreen;
+
 - (id)initWithWindow:(NSWindow *)window
 {
     self = [super initWithWindow:window];
@@ -162,6 +164,9 @@
     if(object == self.document && [@"showsInspector" isEqualToString:keyPath]) {
         [self setShowsInspector:self.document.showsInspector];
     } else
+    if(object == self.document && [@"contentSize" isEqualToString:keyPath]) {
+        [self setContentSize:self.document.contentSize];
+    } else
         
     [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
@@ -174,10 +179,12 @@
 -(void)setDocument:(CHDocument *)document {
     [self.document removeObserver:self forKeyPath:@"activeCaptureDevice"];
     [self.document removeObserver:self forKeyPath:@"showsInspector"];
+    [self.document removeObserver:self forKeyPath:@"contentSize"];
 
     [super setDocument:document];
     [self.document addObserver:self forKeyPath:@"activeCaptureDevice" options:NSKeyValueObservingOptionNew context:nil];
     [self.document addObserver:self forKeyPath:@"showsInspector" options:NSKeyValueObservingOptionNew context:nil];
+    [self.document addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
 }
 
 -(void)captureDeviceChanged:(id)sender {
@@ -194,7 +201,30 @@
 
 #pragma mark - view options
 
+-(void)windowDidResize:(NSNotification *)notification {
+//- (void)windowDidEndLiveResize:(NSNotification *)notification {    
+    // TODO: listen to property
+    if(self.isFullscreen || _ignoreWindowDidResize)
+        return;
+
+    _ignoreWindowDidResize = YES;
+    self.document.contentSize = captureView.frame.size;
+    _ignoreWindowDidResize = NO;
+}
+
+-(void)setContentSize:(NSSize)size {
+    if(NSEqualSizes(size, captureView.frame.size))
+        return;
+
+    NSRect r = self.window.frame;
+    r.size.width += size.width - captureView.frame.size.width;
+    r.size.height += size.height - captureView.frame.size.height;
+    [self.window setFrame:r display:YES animate:YES];
+}
+
 -(void)setShowsInspector:(BOOL)value {
+    BOOL oldIgnoreWindowDidResize = _ignoreWindowDidResize;
+    _ignoreWindowDidResize = YES;
     self.window.styleMask = value ? _originalWindowMask : NSBorderlessWindowMask;
     NSRect r = self.window.frame;
     float widthDelta = inspectorView.frame.size.width * (value ? 1 : -1);
@@ -204,8 +234,53 @@
     r = [(NSView*)self.window.contentView frame];
     if(value)r.size.width -= widthDelta;
     captureView.frame = r;
-    self.window.isDraggable = !value;
-    captureView.canSelectRect = value;
+    self.window.isDraggable = !value && !self.isFullscreen;
+    captureView.canSelectRect = value && !self.isFullscreen;
+    _ignoreWindowDidResize = oldIgnoreWindowDidResize;;
 }
+
+-(void)displayAsFullScreenInRect:(NSRect)frame {
+    if(self.document.showsInspector)
+        [self setShowsInspector:NO];
+    
+    _nonFullScreenFrame = self.window.frame;
+    
+    [[NSApplication sharedApplication] setPresentationOptions:(NSApplicationPresentationHideDock | NSApplicationPresentationHideMenuBar)];
+ 
+    // workaround to animate zoom (needs another even in main loop since setting styleMask prevents animation otherwise)
+    _fullscreenFrame = frame;
+
+    self.window.isDraggable = NO;
+    [self performSelector:@selector(delayedZoom) withObject:nil afterDelay:0];   
+}
+
+-(void)delayedZoom {
+    [self.window setFrame:_fullscreenFrame display:YES animate:YES];  
+}
+
+-(void)clearIgnoreWindowDidResize {
+    _ignoreWindowDidResize = NO;
+}
+
+-(void)setIsFullscreen:(BOOL)isFullscreen_ {
+    isFullscreen = isFullscreen_;
+    if(isFullscreen) {
+        [self displayAsFullScreenInRect: self.window.screen.frame];
+    } else {
+        _ignoreWindowDidResize = YES;
+        [self performSelector:@selector(clearIgnoreWindowDidResize) withObject:nil afterDelay:1];
+        [self.window setFrame:_nonFullScreenFrame display:YES animate:YES];
+        [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationDefault];
+        if(self.document.showsInspector)
+            [self setShowsInspector:self.document.showsInspector];
+        self.window.isDraggable = YES;
+    }
+    
+}
+
+-(IBAction)toggleFullscreen:(id)sender {
+    self.isFullscreen = !self.isFullscreen;
+}
+
 
 @end

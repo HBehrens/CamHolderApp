@@ -13,7 +13,7 @@
 
 @synthesize isAutoExposureActive, exposureTimeFactor, isAutoFocusActive, focusFactor, activeCaptureDevice, 
     normalizedCroppingRect, isMirroredHorizontally, isMirroredVertically, rotation,
-    showsInspector;
+    showsInspector, contentSize;
 
 - (id)init
 {
@@ -196,7 +196,10 @@ NSArray* CHCachedCaptureDevices;
     self.showsInspector = !self.showsInspector;
 }
 
-
+-(void)setContentSize:(NSSize)contentSize_ {
+    contentSize = contentSize_;
+    NSLog(@"setContentSize: %@", NSStringFromSize(contentSize));
+}
 
 
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CBABA34414D8673700F74576 /* CHWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34314D8673700F74576 /* CHWindowController.m */; };
+		CBABA34814D8689000F74576 /* CHApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34714D8689000F74576 /* CHApplicationDelegate.m */; };
 		CBC25A5014D861A400E15E47 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A4F14D861A400E15E47 /* Cocoa.framework */; };
 		CBC25A5A14D861A400E15E47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A5814D861A400E15E47 /* InfoPlist.strings */; };
 		CBC25A5C14D861A400E15E47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A5B14D861A400E15E47 /* main.m */; };
@@ -40,6 +42,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CBABA34214D8673700F74576 /* CHWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHWindowController.h; sourceTree = "<group>"; };
+		CBABA34314D8673700F74576 /* CHWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHWindowController.m; sourceTree = "<group>"; };
+		CBABA34614D8689000F74576 /* CHApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHApplicationDelegate.h; sourceTree = "<group>"; };
+		CBABA34714D8689000F74576 /* CHApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHApplicationDelegate.m; sourceTree = "<group>"; };
 		CBC25A4B14D861A400E15E47 /* CamHolderApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CamHolderApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC25A4F14D861A400E15E47 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		CBC25A5214D861A400E15E47 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -50,9 +56,9 @@
 		CBC25A5B14D861A400E15E47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CBC25A5D14D861A400E15E47 /* CamHolderApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CamHolderApp-Prefix.pch"; sourceTree = "<group>"; };
 		CBC25A5F14D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		CBC25A6114D861A400E15E47 /* CHDocument.h */ = {isa = PBXFileReference; path = CHDocument.h; sourceTree = "<group>"; };
+		CBC25A6114D861A400E15E47 /* CHDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHDocument.h; sourceTree = "<group>"; };
 		CBC25A6214D861A400E15E47 /* CHDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHDocument.m; sourceTree = "<group>"; };
-		CBC25A6514D861A400E15E47 /* en */ = {isa = PBXFileReference; name = en; path = en.lproj/CHDocument.xib; sourceTree = "<group>"; };
+		CBC25A6514D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CHDocument.xib; sourceTree = "<group>"; };
 		CBC25A6814D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CBC25A6F14D861A400E15E47 /* CamHolderAppTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CamHolderAppTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CBC25A7014D861A400E15E47 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
@@ -148,9 +154,13 @@
 		CBC25A5514D861A400E15E47 /* CamHolderApp */ = {
 			isa = PBXGroup;
 			children = (
+				CBABA34614D8689000F74576 /* CHApplicationDelegate.h */,
+				CBABA34714D8689000F74576 /* CHApplicationDelegate.m */,
 				CBC25A6114D861A400E15E47 /* CHDocument.h */,
 				CBC25A6214D861A400E15E47 /* CHDocument.m */,
 				CBC25A6414D861A400E15E47 /* CHDocument.xib */,
+				CBABA34214D8673700F74576 /* CHWindowController.h */,
+				CBABA34314D8673700F74576 /* CHWindowController.m */,
 				CBC25A6714D861A400E15E47 /* MainMenu.xib */,
 				CBC25A5614D861A400E15E47 /* Supporting Files */,
 			);
@@ -323,6 +333,8 @@
 				CBC25A9314D8624600E15E47 /* CroppingQTCaptureView.m in Sources */,
 				CBC25A9414D8624600E15E47 /* UVCCameraControl.m in Sources */,
 				CBC25A9514D8624600E15E47 /* ZoomRectView.m in Sources */,
+				CBABA34414D8673700F74576 /* CHWindowController.m in Sources */,
+				CBABA34814D8689000F74576 /* CHApplicationDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

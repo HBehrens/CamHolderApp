@@ -7,7 +7,23 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <QTKit/QTKit.h>
+#import "UVCCameraControl.h"
 
-@interface CHDocument : NSDocument
+static NSArray* CHCachedCaptureDevices;
+
+@interface CHDocument : NSDocument {
+    UVCCameraControl *_cameraControl;
+}
+
+@property (nonatomic, assign) BOOL isAutoExposureActive;
+@property (nonatomic, assign) float exposureTimeFactor;
+@property (nonatomic, assign) BOOL isAutoFocusActive;
+@property (nonatomic, assign) float focusFactor;
+
+@property (nonatomic, readonly) BOOL isZoomed;
+
+@property (nonatomic, readonly) NSArray* captureDevices;
+@property (nonatomic, retain) QTCaptureDevice* activeCaptureDevice;
 
 @end

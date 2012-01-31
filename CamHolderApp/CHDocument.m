@@ -7,24 +7,30 @@
 //
 
 #import "CHDocument.h"
+#import "CHWindowController.h"
 
 @implementation CHDocument
+
+@synthesize isAutoExposureActive, exposureTimeFactor, isAutoFocusActive, focusFactor, activeCaptureDevice;
 
 - (id)init
 {
     self = [super init];
     if (self) {
-        // Add your subclass-specific initialization here.
-        // If an error occurs here, return nil.
+        isAutoExposureActive = YES;
+        isAutoFocusActive = YES;
     }
     return self;
 }
 
-- (NSString *)windowNibName
-{
-    // Override returning the nib file name of the document
-    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
-    return @"chaDocument";
+-(void)dealloc {
+    [_cameraControl release];
+    [super dealloc];
+}
+
+-(void)makeWindowControllers {
+    CHWindowController *controller = [[[CHWindowController alloc] initWithWindowNibName:@"CHDocument"] autorelease];
+    [self addWindowController:controller];
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController
@@ -53,6 +59,75 @@
     NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
     @throw exception;
     return YES;
+}
+
+#pragma mark - QT class helpers {
+
++(NSArray*)arrayWithAllSuitableDevices {
+	static NSString* suitableModelUniqueID = @"UVC Camera VendorID_1118 ProductID_1906";
+	NSArray *unfiltered = [QTCaptureDevice inputDevicesWithMediaType:QTMediaTypeVideo];
+	NSMutableArray *result = [NSMutableArray array];
+	for(QTCaptureDevice *d in unfiltered) {
+		if([suitableModelUniqueID isEqualToString:[d modelUniqueID]])
+			[result addObject: d];
+	}
+	return result;
+}
+
++(NSArray*)cachedCaptureDevices {
+    if(!CHCachedCaptureDevices) {
+        CHCachedCaptureDevices = [[self arrayWithAllSuitableDevices] copy];
+    }
+    return CHCachedCaptureDevices;
+}
+
+#pragma mark - properties
+
+-(BOOL)isZoomed {
+    return NO;
+}
+
+-(NSArray*)captureDevices {
+    return [self.class cachedCaptureDevices];
+}
+
+-(void)setIsAutoExposureActive:(BOOL)isAutoExposureActive_ {
+    isAutoExposureActive = isAutoExposureActive_;
+    [_cameraControl setAutoExposure:isAutoExposureActive];
+}
+
+-(void)setExposureTimeFactor:(float)exposureTimeFactor_ {
+    exposureTimeFactor = exposureTimeFactor_;
+    [_cameraControl setExposure:exposureTimeFactor];
+}
+
+-(void)setIsAutoFocusActive:(BOOL)isAutoFocusActive_ {
+    isAutoFocusActive = isAutoFocusActive_;
+    [_cameraControl setAutoFocus:isAutoFocusActive];
+}
+
+-(void)setFocusFactor:(float)focusFactor_ {
+    focusFactor = focusFactor_;
+    [_cameraControl setAbsoluteFocus:focusFactor];
+}
+
+-(void)setActiveCaptureDevice:(QTCaptureDevice *)activeCaptureDevice_{
+    [_cameraControl release];
+    _cameraControl = nil;
+    
+    if(activeCaptureDevice_) {
+        UInt32 locationID = 0;
+        sscanf( [[activeCaptureDevice_ uniqueID] UTF8String], "0x%8x", (unsigned int*)&locationID );
+        
+
+        _cameraControl = [[UVCCameraControl alloc] initWithLocationID:locationID];
+        
+        [_cameraControl setAutoExposure:self.isAutoExposureActive];
+        [_cameraControl setExposure:self.exposureTimeFactor];
+        [_cameraControl setAutoFocus:self.isAutoFocusActive];
+        [_cameraControl setAbsoluteFocus:self.focusFactor];
+    }
+    activeCaptureDevice = activeCaptureDevice_;
 }
 
 @end

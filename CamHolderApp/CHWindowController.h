@@ -34,6 +34,7 @@
 @property (nonatomic, assign) CHDocument* document;
 @property (nonatomic, assign) CHDraggableWindow *window;
 
+-(BOOL)showsInspector;
 -(void)setShowsInspector:(BOOL)value;
 
 @property (nonatomic, assign) BOOL isFullscreen;

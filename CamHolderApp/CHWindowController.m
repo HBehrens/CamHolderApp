@@ -97,6 +97,9 @@
 }
 
 -(void)connectToVideoDevice:(QTCaptureDevice*)device {
+    if(device == nil || device == _videoDevice)
+        return;
+    
 	[_captureSession release];
 	
 //	[[NSUserDefaults standardUserDefaults] setObject: [device uniqueID] forKey:@"deviceId"];
@@ -120,7 +123,6 @@
 	captureView.delegate = self;
 	captureView.canSelectRect = YES;
 	
-	
 	// Setting a lower resolution for the CaptureOutput here, since otherwise QTCaptureView
 	// pulls full-res frames from the camera, which is slow. This is just for cosmetics.
 	
@@ -130,30 +132,9 @@
 									  [NSNumber numberWithInt:720], kCVPixelBufferHeightKey, nil];
     // NOTE this doesn't have to be object at index 0, but for LifeCam it is: 
 	[[[_captureSession outputs] objectAtIndex:0] setPixelBufferAttributes:pixelBufferAttr];
-	
-	
-	
-	
-	// Ok, this might be all kinds of wrong, but it was the only way I found to map a 
-	// QTCaptureDevice to a IOKit USB Device. The uniqueID method seems to always(?) return 
-	// the locationID as a HEX string in the first few chars, but the format of this string 
-	// is not documented anywhere and (knowing Apple) might change sooner or later.
-	//
-	// In most cases you'd be probably better of using the UVCCameraControls
-	// - (id)initWithVendorID:(long) productID:(long) 
-	// method instead. I.e. for the Logitech QuickCam9000 
-	// cameraControl = [[UVCCameraControl alloc] initWithVendorID:0x046d productID:0x0990];
-	//
-	// You can use USB Prober (should be in /Developer/Applications/Utilities/USB Prober.app) 
-	// to find the values of your camera.
-	
-//	_cameraControl = [[UVCCameraControl alloc] initWithLocationID:locationID];
-//	
-//	[_cameraControl setAutoExposure:YES];
-//	[_cameraControl setAutoWhiteBalance:YES];
-//	[_cameraControl setAutoFocus:YES];
+    
+    [captureDevicesCombobox selectItemAtIndex: [self.document.captureDevices indexOfObject:device]];
 }
-
 
 #pragma mark - Property Overloads
 
@@ -177,14 +158,24 @@
 }
 
 -(void)setDocument:(CHDocument *)document {
+    NSLog(@"setDocument: %@", document);
     [self.document removeObserver:self forKeyPath:@"activeCaptureDevice"];
     [self.document removeObserver:self forKeyPath:@"showsInspector"];
     [self.document removeObserver:self forKeyPath:@"contentSize"];
 
     [super setDocument:document];
-    [self.document addObserver:self forKeyPath:@"activeCaptureDevice" options:NSKeyValueObservingOptionNew context:nil];
-    [self.document addObserver:self forKeyPath:@"showsInspector" options:NSKeyValueObservingOptionNew context:nil];
-    [self.document addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+    if(document) {
+        [self.document addObserver:self forKeyPath:@"activeCaptureDevice" options:NSKeyValueObservingOptionNew context:nil];
+        [self.document addObserver:self forKeyPath:@"showsInspector" options:NSKeyValueObservingOptionNew context:nil];
+        [self.document addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+        
+        [self setContentSize:self.document.contentSize];
+        self.showsInspector = self.document.showsInspector;
+        [self connectToVideoDevice:self.document.activeCaptureDevice];
+        
+        if(document.activeCaptureDevice == nil)
+            [document performSelector:@selector(tryToHaveActiveCaptureDevice) withObject:nil afterDelay:0.1];
+    }
 }
 
 -(void)captureDeviceChanged:(id)sender {
@@ -222,7 +213,15 @@
     [self.window setFrame:r display:YES animate:YES];
 }
 
+-(BOOL)showsInspector {
+    return ![inspectorView isHidden];
+}
+
 -(void)setShowsInspector:(BOOL)value {
+    if(self.showsInspector == value)
+        return;
+    [inspectorView setHidden:!value];
+    
     BOOL oldIgnoreWindowDidResize = _ignoreWindowDidResize;
     _ignoreWindowDidResize = YES;
     self.window.styleMask = value ? _originalWindowMask : NSBorderlessWindowMask;

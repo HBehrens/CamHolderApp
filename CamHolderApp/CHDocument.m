@@ -20,7 +20,9 @@
     self = [super init];
     if (self) {
         isAutoExposureActive = YES;
+        exposureTimeFactor = 0.5;
         isAutoFocusActive = YES;
+        focusFactor = 0.5;
         showsInspector = YES;
     }
     return self;
@@ -36,22 +38,45 @@
     [self addWindowController:controller];
 }
 
-- (void)windowControllerDidLoadNib:(NSWindowController *)aController
-{
-    [super windowControllerDidLoadNib:aController];
-    // Add any code here that needs to be executed once the windowController has loaded the document's window.
+-(void)addToDictionary:(NSMutableDictionary*)dictionary valuesOfKeys:(NSString*)keys, ...  {
+    va_list args;
+    va_start(args, keys);
+    for (NSString *arg = keys; arg != nil; arg = va_arg(args, NSString*)){
+        [dictionary setObject:[self valueForKey:arg] forKey:arg];
+    }
+    va_end(args);    
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
-    /*
-     Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-    You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    */
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
-    return nil;
+    
+    NSMutableDictionary *values = [NSMutableDictionary dictionary];
+    [self addToDictionary:values valuesOfKeys:
+     @"isAutoExposureActive", @"exposureTimeFactor", @"isAutoFocusActive", @"focusFactor", 
+     @"isMirroredHorizontally", @"isMirroredVertically", @"rotation",
+     @"showsInspector",
+     nil];
+    [values setObject:NSStringFromRect(self.normalizedCroppingRect) forKey:@"normalizedCroppingRect"];
+    [values setObject:NSStringFromSize(self.contentSize) forKey:@"contentSize"];
+    [values setObject:self.activeCaptureDevice.uniqueID forKey:@"captureDevice"];
+    
+    return [NSPropertyListSerialization dataWithPropertyList:values format:NSPropertyListXMLFormat_v1_0 options:0 error:outError];
+    
+//    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
+//    @throw exception;
+//    return nil;
 }
+
+-(void)loadFromDictionary:(NSDictionary*)dictionary valuesOfKeys:(NSString*)keys, ...  {
+    va_list args;
+    va_start(args, keys);
+    for (NSString *arg = keys; arg != nil; arg = va_arg(args, NSString*)){
+        id object = [dictionary objectForKey:arg];
+        [self setValue:object forKey:arg];
+    }
+    va_end(args);    
+}
+
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
 {
@@ -59,8 +84,23 @@
     Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
     You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
     */
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
+    NSDictionary *values = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:nil error:outError];
+    if(!values)
+        return NO;
+    
+    NSString *captureDeviceID = [values objectForKey:@"captureDevice"];
+    self.activeCaptureDevice = [QTCaptureDevice deviceWithUniqueID:captureDeviceID];
+    [self loadFromDictionary:values valuesOfKeys:
+        @"isAutoExposureActive", @"exposureTimeFactor", @"isAutoFocusActive", @"focusFactor", 
+        @"isMirroredHorizontally", @"isMirroredVertically", @"rotation",
+        @"showsInspector",
+        nil];
+    self.normalizedCroppingRect = NSRectFromString([values objectForKey:@"normalizedCroppingRect"]);
+    self.contentSize = NSSizeFromString([values objectForKey:@"contentSize"]);
+    
+    
+//    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
+//    @throw exception;
     return YES;
 }
 
@@ -112,17 +152,37 @@ NSArray* CHCachedCaptureDevices;
     [_cameraControl setAbsoluteFocus:focusFactor];
 }
 
+-(void)tryToHaveActiveCaptureDevice {
+    if(self.activeCaptureDevice == nil && self.captureDevices.count > 0) {
+        self.activeCaptureDevice = [self.captureDevices objectAtIndex:0];
+    }
+}
+
 -(void)setActiveCaptureDevice:(QTCaptureDevice *)activeCaptureDevice_{
     [_cameraControl release];
     _cameraControl = nil;
     
     if(activeCaptureDevice_) {
+        // Ok, this might be all kinds of wrong, but it was the only way I found to map a 
+        // QTCaptureDevice to a IOKit USB Device. The uniqueID method seems to always(?) return 
+        // the locationID as a HEX string in the first few chars, but the format of this string 
+        // is not documented anywhere and (knowing Apple) might change sooner or later.
+        //
+        // In most cases you'd be probably better of using the UVCCameraControls
+        // - (id)initWithVendorID:(long) productID:(long) 
+        // method instead. I.e. for the Logitech QuickCam9000 
+        // cameraControl = [[UVCCameraControl alloc] initWithVendorID:0x046d productID:0x0990];
+        //
+        // You can use USB Prober (should be in /Developer/Applications/Utilities/USB Prober.app) 
+        // to find the values of your camera.
+        
         UInt32 locationID = 0;
         sscanf( [[activeCaptureDevice_ uniqueID] UTF8String], "0x%8x", (unsigned int*)&locationID );
         
 
         _cameraControl = [[UVCCameraControl alloc] initWithLocationID:locationID];
         
+        // TODO: somehow wait until device has been initiated (maybe hack with a timer?)
         [_cameraControl setAutoExposure:self.isAutoExposureActive];
         [_cameraControl setExposure:self.exposureTimeFactor];
         [_cameraControl setAutoFocus:self.isAutoFocusActive];

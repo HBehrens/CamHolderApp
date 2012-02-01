@@ -104,8 +104,8 @@
 													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
 													<object class="NSComboBoxCell" key="NSCell" id="75619711">
-														<int key="NSCellFlags">74579521</int>
-														<int key="NSCellFlags2">272630784</int>
+														<int key="NSCellFlags">71433792</int>
+														<int key="NSCellFlags2">272631808</int>
 														<string key="NSContents"/>
 														<reference key="NSSupport" ref="128280105"/>
 														<reference key="NSControlView" ref="72450141"/>
@@ -363,7 +363,7 @@
 											<string key="NSFrameSize">{200, 478}</string>
 											<reference key="NSSuperview" ref="513638903"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="72450141"/>
+											<reference key="NSNextKeyView" ref="158833817"/>
 											<int key="NSViewLayerContentsRedrawPolicy">2</int>
 											<string key="NSClassName">NSView</string>
 										</object>
@@ -383,7 +383,6 @@
 									<string key="NSFrame">{{167, 1}, {15, 79}}</string>
 									<reference key="NSSuperview" ref="267356803"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView"/>
 									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSTarget" ref="267356803"/>
 									<string key="NSAction">_doScroller:</string>
@@ -408,7 +407,7 @@
 							<string key="NSFrame">{{640, 0}, {200, 478}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="158833817"/>
+							<reference key="NSNextKeyView" ref="513638903"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<int key="NSsFlags">528</int>
 							<reference key="NSVScroller" ref="118931026"/>
@@ -931,17 +930,20 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">CHWindowController</string>
 					<string key="superclassName">NSWindowController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">captureDeviceChanged:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">captureDeviceChanged:</string>
-						<object class="IBActionInfo" key="NS.object.0">
+					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="captureDeviceChanged:">id</string>
+						<string key="toggleFullscreen:">id</string>
+					</dictionary>
+					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="captureDeviceChanged:">
 							<string key="name">captureDeviceChanged:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-					</object>
+						<object class="IBActionInfo" key="toggleFullscreen:">
+							<string key="name">toggleFullscreen:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="captureDevicesCombobox">NSComboBox</string>
 						<string key="captureView">CroppingQTCaptureView</string>

@@ -36,22 +36,45 @@
     [self addWindowController:controller];
 }
 
-- (void)windowControllerDidLoadNib:(NSWindowController *)aController
-{
-    [super windowControllerDidLoadNib:aController];
-    // Add any code here that needs to be executed once the windowController has loaded the document's window.
+-(void)addToDictionary:(NSMutableDictionary*)dictionary valuesOfKeys:(NSString*)keys, ...  {
+    va_list args;
+    va_start(args, keys);
+    for (NSString *arg = keys; arg != nil; arg = va_arg(args, NSString*)){
+        [dictionary setObject:[self valueForKey:arg] forKey:arg];
+    }
+    va_end(args);    
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError
 {
-    /*
-     Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-    You can also choose to override -fileWrapperOfType:error:, -writeToURL:ofType:error:, or -writeToURL:ofType:forSaveOperation:originalContentsURL:error: instead.
-    */
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
-    return nil;
+    
+    NSMutableDictionary *values = [NSMutableDictionary dictionary];
+    [self addToDictionary:values valuesOfKeys:
+     @"isAutoExposureActive", @"exposureTimeFactor", @"isAutoFocusActive", @"focusFactor", 
+     @"isMirroredHorizontally", @"isMirroredVertically", @"rotation",
+     @"showsInspector",
+     nil];
+    [values setObject:NSStringFromRect(self.normalizedCroppingRect) forKey:@"normalizedCroppingRect"];
+    [values setObject:NSStringFromSize(self.contentSize) forKey:@"contentSize"];
+    [values setObject:self.activeCaptureDevice.uniqueID forKey:@"captureDevice"];
+    
+    return [NSPropertyListSerialization dataWithPropertyList:values format:NSPropertyListXMLFormat_v1_0 options:0 error:outError];
+    
+//    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
+//    @throw exception;
+//    return nil;
 }
+
+-(void)loadFromDictionary:(NSDictionary*)dictionary valuesOfKeys:(NSString*)keys, ...  {
+    va_list args;
+    va_start(args, keys);
+    for (NSString *arg = keys; arg != nil; arg = va_arg(args, NSString*)){
+        id object = [dictionary objectForKey:arg];
+        [self setValue:object forKey:arg];
+    }
+    va_end(args);    
+}
+
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError
 {
@@ -59,8 +82,23 @@
     Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
     You can also choose to override -readFromFileWrapper:ofType:error: or -readFromURL:ofType:error: instead.
     */
-    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
-    @throw exception;
+    NSDictionary *values = [NSPropertyListSerialization propertyListWithData:data options:NSPropertyListImmutable format:nil error:outError];
+    if(!values)
+        return NO;
+    
+    NSString *captureDeviceID = [values objectForKey:@"captureDevice"];
+    self.activeCaptureDevice = [QTCaptureDevice deviceWithUniqueID:captureDeviceID];
+    [self loadFromDictionary:values valuesOfKeys:
+        @"isAutoExposureActive", @"exposureTimeFactor", @"isAutoFocusActive", @"focusFactor", 
+        @"isMirroredHorizontally", @"isMirroredVertically", @"rotation",
+        @"showsInspector",
+        nil];
+    self.normalizedCroppingRect = NSRectFromString([values objectForKey:@"normalizedCroppingRect"]);
+    self.contentSize = NSSizeFromString([values objectForKey:@"contentSize"]);
+    
+    
+//    NSException *exception = [NSException exceptionWithName:@"UnimplementedMethod" reason:[NSString stringWithFormat:@"%@ is unimplemented", NSStringFromSelector(_cmd)] userInfo:nil];
+//    @throw exception;
     return YES;
 }
 

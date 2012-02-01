@@ -177,6 +177,7 @@
 }
 
 -(void)setDocument:(CHDocument *)document {
+    NSLog(@"setDocument: %@", document);
     [self.document removeObserver:self forKeyPath:@"activeCaptureDevice"];
     [self.document removeObserver:self forKeyPath:@"showsInspector"];
     [self.document removeObserver:self forKeyPath:@"contentSize"];

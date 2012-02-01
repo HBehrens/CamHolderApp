@@ -21,11 +21,8 @@
 		CBC25A7214D861A400E15E47 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A4F14D861A400E15E47 /* Cocoa.framework */; };
 		CBC25A7A14D861A400E15E47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A7814D861A400E15E47 /* InfoPlist.strings */; };
 		CBC25A7D14D861A400E15E47 /* CamHolderAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A7C14D861A400E15E47 /* CamHolderAppTests.m */; };
-		CBC25A9114D8624600E15E47 /* BorderlessWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A8814D8624600E15E47 /* BorderlessWindow.m */; };
-		CBC25A9214D8624600E15E47 /* CameraControlAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A8A14D8624600E15E47 /* CameraControlAppDelegate.m */; };
 		CBC25A9314D8624600E15E47 /* CroppingQTCaptureView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */; };
 		CBC25A9414D8624600E15E47 /* UVCCameraControl.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */; };
-		CBC25A9514D8624600E15E47 /* ZoomRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A9014D8624600E15E47 /* ZoomRectView.m */; };
 		CBC25A9714D8625500E15E47 /* CamHolder.icns in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A9614D8625500E15E47 /* CamHolder.icns */; };
 		CBC25A9914D862D900E15E47 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A9814D862D900E15E47 /* CoreVideo.framework */; };
 		CBC25A9D14D8631C00E15E47 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A9C14D8631C00E15E47 /* QTKit.framework */; };
@@ -69,16 +66,10 @@
 		CBC25A7914D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBC25A7B14D861A400E15E47 /* CamHolderAppTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CamHolderAppTests.h; sourceTree = "<group>"; };
 		CBC25A7C14D861A400E15E47 /* CamHolderAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamHolderAppTests.m; sourceTree = "<group>"; };
-		CBC25A8714D8624600E15E47 /* BorderlessWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BorderlessWindow.h; sourceTree = "<group>"; };
-		CBC25A8814D8624600E15E47 /* BorderlessWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BorderlessWindow.m; sourceTree = "<group>"; };
-		CBC25A8914D8624600E15E47 /* CameraControlAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraControlAppDelegate.h; sourceTree = "<group>"; };
-		CBC25A8A14D8624600E15E47 /* CameraControlAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraControlAppDelegate.m; sourceTree = "<group>"; };
-		CBC25A8B14D8624600E15E47 /* CroppingQTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CroppingQTCaptureView.h; sourceTree = "<group>"; };
-		CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CroppingQTCaptureView.m; sourceTree = "<group>"; };
-		CBC25A8D14D8624600E15E47 /* UVCCameraControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVCCameraControl.h; sourceTree = "<group>"; };
-		CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVCCameraControl.m; sourceTree = "<group>"; };
-		CBC25A8F14D8624600E15E47 /* ZoomRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomRectView.h; sourceTree = "<group>"; };
-		CBC25A9014D8624600E15E47 /* ZoomRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomRectView.m; sourceTree = "<group>"; };
+		CBC25A8B14D8624600E15E47 /* CroppingQTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CroppingQTCaptureView.h; path = ../CroppingQTCaptureView.h; sourceTree = "<group>"; };
+		CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CroppingQTCaptureView.m; path = ../CroppingQTCaptureView.m; sourceTree = "<group>"; };
+		CBC25A8D14D8624600E15E47 /* UVCCameraControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UVCCameraControl.h; path = ../UVCCameraControl.h; sourceTree = "<group>"; };
+		CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UVCCameraControl.m; path = ../UVCCameraControl.m; sourceTree = "<group>"; };
 		CBC25A9614D8625500E15E47 /* CamHolder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CamHolder.icns; sourceTree = "<group>"; };
 		CBC25A9814D862D900E15E47 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CBC25A9A14D862E100E15E47 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
@@ -113,7 +104,6 @@
 		CBC25A4014D861A400E15E47 = {
 			isa = PBXGroup;
 			children = (
-				CBC25A8614D8623000E15E47 /* Previous Version */,
 				CBC25A5514D861A400E15E47 /* CamHolderApp */,
 				CBC25A7514D861A400E15E47 /* CamHolderAppTests */,
 				CBC25A4E14D861A400E15E47 /* Frameworks */,
@@ -157,6 +147,10 @@
 		CBC25A5514D861A400E15E47 /* CamHolderApp */ = {
 			isa = PBXGroup;
 			children = (
+				CBC25A8B14D8624600E15E47 /* CroppingQTCaptureView.h */,
+				CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */,
+				CBC25A8D14D8624600E15E47 /* UVCCameraControl.h */,
+				CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */,
 				CBABA34614D8689000F74576 /* CHApplicationDelegate.h */,
 				CBABA34714D8689000F74576 /* CHApplicationDelegate.m */,
 				CBABA34C14D89B7D00F74576 /* CHDraggableWindow.h */,
@@ -202,23 +196,6 @@
 				CBC25A7814D861A400E15E47 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		CBC25A8614D8623000E15E47 /* Previous Version */ = {
-			isa = PBXGroup;
-			children = (
-				CBC25A8714D8624600E15E47 /* BorderlessWindow.h */,
-				CBC25A8814D8624600E15E47 /* BorderlessWindow.m */,
-				CBC25A8914D8624600E15E47 /* CameraControlAppDelegate.h */,
-				CBC25A8A14D8624600E15E47 /* CameraControlAppDelegate.m */,
-				CBC25A8B14D8624600E15E47 /* CroppingQTCaptureView.h */,
-				CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */,
-				CBC25A8D14D8624600E15E47 /* UVCCameraControl.h */,
-				CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */,
-				CBC25A8F14D8624600E15E47 /* ZoomRectView.h */,
-				CBC25A9014D8624600E15E47 /* ZoomRectView.m */,
-			);
-			name = "Previous Version";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -333,11 +310,8 @@
 			files = (
 				CBC25A5C14D861A400E15E47 /* main.m in Sources */,
 				CBC25A6314D861A400E15E47 /* CHDocument.m in Sources */,
-				CBC25A9114D8624600E15E47 /* BorderlessWindow.m in Sources */,
-				CBC25A9214D8624600E15E47 /* CameraControlAppDelegate.m in Sources */,
 				CBC25A9314D8624600E15E47 /* CroppingQTCaptureView.m in Sources */,
 				CBC25A9414D8624600E15E47 /* UVCCameraControl.m in Sources */,
-				CBC25A9514D8624600E15E47 /* ZoomRectView.m in Sources */,
 				CBABA34414D8673700F74576 /* CHWindowController.m in Sources */,
 				CBABA34814D8689000F74576 /* CHApplicationDelegate.m in Sources */,
 				CBABA34E14D89B7D00F74576 /* CHDraggableWindow.m in Sources */,

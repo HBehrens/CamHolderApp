@@ -25,6 +25,7 @@ extern NSArray* CHCachedCaptureDevices;
 
 @property (nonatomic, readonly) NSArray* captureDevices;
 @property (nonatomic, retain) QTCaptureDevice* activeCaptureDevice;
+-(void)tryToHaveActiveCaptureDevice;
 
 @property (nonatomic, assign) NSRect normalizedCroppingRect;
 @property (nonatomic, assign) BOOL isMirroredHorizontally;
@@ -38,5 +39,6 @@ extern NSArray* CHCachedCaptureDevices;
 
 -(void)toggleInspector:(id)sender;
 
++(NSArray*)cachedCaptureDevices;
 
 @end

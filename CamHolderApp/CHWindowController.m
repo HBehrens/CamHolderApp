@@ -123,7 +123,6 @@
 	captureView.delegate = self;
 	captureView.canSelectRect = YES;
 	
-	
 	// Setting a lower resolution for the CaptureOutput here, since otherwise QTCaptureView
 	// pulls full-res frames from the camera, which is slow. This is just for cosmetics.
 	
@@ -136,7 +135,6 @@
     
     [captureDevicesCombobox selectItemAtIndex: [self.document.captureDevices indexOfObject:device]];
 }
-
 
 #pragma mark - Property Overloads
 
@@ -166,13 +164,18 @@
     [self.document removeObserver:self forKeyPath:@"contentSize"];
 
     [super setDocument:document];
-    [self.document addObserver:self forKeyPath:@"activeCaptureDevice" options:NSKeyValueObservingOptionNew context:nil];
-    [self.document addObserver:self forKeyPath:@"showsInspector" options:NSKeyValueObservingOptionNew context:nil];
-    [self.document addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self setContentSize:self.document.contentSize];
-    self.showsInspector = self.document.showsInspector;
-    [self connectToVideoDevice:self.document.activeCaptureDevice];
+    if(document) {
+        [self.document addObserver:self forKeyPath:@"activeCaptureDevice" options:NSKeyValueObservingOptionNew context:nil];
+        [self.document addObserver:self forKeyPath:@"showsInspector" options:NSKeyValueObservingOptionNew context:nil];
+        [self.document addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
+        
+        [self setContentSize:self.document.contentSize];
+        self.showsInspector = self.document.showsInspector;
+        [self connectToVideoDevice:self.document.activeCaptureDevice];
+        
+        if(document.activeCaptureDevice == nil)
+            [document performSelector:@selector(tryToHaveActiveCaptureDevice) withObject:nil afterDelay:0.1];
+    }
 }
 
 -(void)captureDeviceChanged:(id)sender {

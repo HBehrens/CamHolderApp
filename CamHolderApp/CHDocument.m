@@ -20,7 +20,9 @@
     self = [super init];
     if (self) {
         isAutoExposureActive = YES;
+        exposureTimeFactor = 0.5;
         isAutoFocusActive = YES;
+        focusFactor = 0.5;
         showsInspector = YES;
     }
     return self;
@@ -148,6 +150,12 @@ NSArray* CHCachedCaptureDevices;
 -(void)setFocusFactor:(float)focusFactor_ {
     focusFactor = MAX(0, MIN(1, focusFactor_));
     [_cameraControl setAbsoluteFocus:focusFactor];
+}
+
+-(void)tryToHaveActiveCaptureDevice {
+    if(self.activeCaptureDevice == nil && self.captureDevices.count > 0) {
+        self.activeCaptureDevice = [self.captureDevices objectAtIndex:0];
+    }
 }
 
 -(void)setActiveCaptureDevice:(QTCaptureDevice *)activeCaptureDevice_{

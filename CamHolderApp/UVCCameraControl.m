@@ -118,7 +118,7 @@ const uvc_controls_t uvc_controls = {
 		IOServiceGetMatchingServices( kIOMasterPortDefault, matchingDict, &serviceIterator );
 		
 		io_service_t camera;
-		while( camera = IOIteratorNext(serviceIterator) ) {
+		while( (camera = IOIteratorNext(serviceIterator)) ) {
 			// Get DeviceInterface
 			IOUSBDeviceInterface **deviceInterface = NULL;
 			IOCFPlugInInterface	**plugInInterface = NULL;
@@ -211,7 +211,7 @@ const uvc_controls_t uvc_controls = {
 	HRESULT result;
 	
 	
-	if( usbInterface = IOIteratorNext(interfaceIterator) ) {
+	if( (usbInterface = IOIteratorNext(interfaceIterator)) ) {
 		IOCFPlugInInterface **plugInInterface = NULL;
 		
 		//Create an intermediate plug-in
@@ -308,10 +308,10 @@ const uvc_controls_t uvc_controls = {
 
 
 // Get Range (min, max)
-- (uvc_range_t)getRangeForControl:(uvc_control_info_t *)control {
+- (uvc_range_t)getRangeForControl:(const uvc_control_info_t *)control {
 	uvc_range_t range = { 0, 0 };
-	range.min = [self getDataFor:UVC_GET_MIN withLength:control->size fromSelector:control->selector at:control->unit];
-	range.max = [self getDataFor:UVC_GET_MAX withLength:control->size fromSelector:control->selector at:control->unit];
+	range.min = (int)[self getDataFor:UVC_GET_MIN withLength:control->size fromSelector:control->selector at:control->unit];
+	range.max = (int)[self getDataFor:UVC_GET_MAX withLength:control->size fromSelector:control->selector at:control->unit];
 	return range;
 }
 
@@ -323,11 +323,11 @@ const uvc_controls_t uvc_controls = {
 
 
 // Get a normalized value
-- (float)getValueForControl:(uvc_control_info_t *)control {
+- (float)getValueForControl:(const uvc_control_info_t *)control {
 	// TODO: Cache the range somewhere?
 	uvc_range_t range = [self getRangeForControl:control];
 	
-	int intval = [self getDataFor:UVC_GET_CUR withLength:control->size fromSelector:control->selector at:control->unit];
+	long intval = [self getDataFor:UVC_GET_CUR withLength:control->size fromSelector:control->selector at:control->unit];
 	return [self mapValue:intval fromMin:range.min max:range.max toMin:0 max:1];
 }
 
@@ -349,7 +349,7 @@ const uvc_controls_t uvc_controls = {
 }
 
 // Set a normalized value
-- (BOOL)setDiscreteValue:(float)value fromSet:(NSArray*)discreteValues forControl:(uvc_control_info_t *)control {
+- (BOOL)setDiscreteValue:(float)value fromSet:(NSArray*)discreteValues forControl:(const uvc_control_info_t *)control {
 	// TODO: Cache the range somewhere?
 	int intval = 0;
 	if(discreteValues){
@@ -363,7 +363,7 @@ const uvc_controls_t uvc_controls = {
 	return [self setData:intval withLength:control->size forSelector:control->selector at:control->unit];
 }
 
-- (BOOL)setValue:(float)value forControl:(uvc_control_info_t *)control {
+- (BOOL)setValue:(float)value forControl:(const uvc_control_info_t *)control {
 	return [self setDiscreteValue:value fromSet:nil forControl:control];
 }
 
@@ -384,7 +384,7 @@ const uvc_controls_t uvc_controls = {
 }
 
 - (BOOL)getAutoExposure {
-	int intval = [self getDataFor:UVC_GET_CUR 
+	long intval = [self getDataFor:UVC_GET_CUR 
 					   withLength:uvc_controls.autoExposure.size 
 					 fromSelector:uvc_controls.autoExposure.selector 
 							   at:uvc_controls.autoExposure.unit];
@@ -451,7 +451,7 @@ const uvc_controls_t uvc_controls = {
 }
 
 - (BOOL)getAutoWhiteBalance {
-	int intval = [self getDataFor:UVC_GET_CUR 
+	long intval = [self getDataFor:UVC_GET_CUR 
 					   withLength:uvc_controls.autoWhiteBalance.size 
 					 fromSelector:uvc_controls.autoWhiteBalance.selector 
 							   at:uvc_controls.autoWhiteBalance.unit];
@@ -479,7 +479,7 @@ const uvc_controls_t uvc_controls = {
 	
 }
 - (BOOL)getAutoFocus {
-	int intval = [self getDataFor:UVC_GET_CUR 
+	long intval = [self getDataFor:UVC_GET_CUR 
 					   withLength:uvc_controls.autoFocus.size 
 					 fromSelector:uvc_controls.autoFocus.selector 
 							   at:uvc_controls.autoFocus.unit];

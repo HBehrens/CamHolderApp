@@ -150,7 +150,8 @@ NSArray* CHCachedCaptureDevices;
 
 -(void)setFocusFactor:(float)focusFactor_ {
     focusFactor = MAX(0, MIN(1, focusFactor_));
-    [_cameraControl setAbsoluteFocus:focusFactor];
+    if(!self.isAutoFocusActive)
+        [_cameraControl setAbsoluteFocus:focusFactor];
 }
 
 -(void)readCameraValuesIntoProperties {
@@ -270,7 +271,7 @@ NSArray* CHCachedCaptureDevices;
 
 -(void)setContentSize:(NSSize)contentSize_ {
     contentSize = contentSize_;
-    NSLog(@"setContentSize: %@", NSStringFromSize(contentSize));
+    //NSLog(@"setContentSize: %@", NSStringFromSize(contentSize));
 }
 
 

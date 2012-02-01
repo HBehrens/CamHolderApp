@@ -165,7 +165,7 @@
 }
 
 -(void)setDocument:(CHDocument *)document {
-    NSLog(@"setDocument: %@", document);
+    //NSLog(@"setDocument: %@", document);
     [self.document removeObserver:self forKeyPath:@"activeCaptureDevice"];
     [self.document removeObserver:self forKeyPath:@"showsInspector"];
     [self.document removeObserver:self forKeyPath:@"contentSize"];
@@ -297,12 +297,10 @@
 
 
 -(void)finishSetIsFullscreenNo {
-    NSLog(@"probe");
     if(!NSEqualRects(self.window.frame, _nonFullScreenFrame)) {
         [self performSelector:@selector(finishSetIsFullscreenNo) withObject:nil afterDelay:0.1];
         return;
     }
-    NSLog(@"passed");
     _ignoreWindowDidResize = NO;
     self.window.hasShadow = YES;
     [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationDefault];

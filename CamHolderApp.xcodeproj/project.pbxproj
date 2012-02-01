@@ -66,10 +66,10 @@
 		CBC25A7914D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBC25A7B14D861A400E15E47 /* CamHolderAppTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CamHolderAppTests.h; sourceTree = "<group>"; };
 		CBC25A7C14D861A400E15E47 /* CamHolderAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CamHolderAppTests.m; sourceTree = "<group>"; };
-		CBC25A8B14D8624600E15E47 /* CroppingQTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CroppingQTCaptureView.h; path = ../CroppingQTCaptureView.h; sourceTree = "<group>"; };
-		CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CroppingQTCaptureView.m; path = ../CroppingQTCaptureView.m; sourceTree = "<group>"; };
-		CBC25A8D14D8624600E15E47 /* UVCCameraControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UVCCameraControl.h; path = ../UVCCameraControl.h; sourceTree = "<group>"; };
-		CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UVCCameraControl.m; path = ../UVCCameraControl.m; sourceTree = "<group>"; };
+		CBC25A8B14D8624600E15E47 /* CroppingQTCaptureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CroppingQTCaptureView.h; sourceTree = "<group>"; };
+		CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CroppingQTCaptureView.m; sourceTree = "<group>"; };
+		CBC25A8D14D8624600E15E47 /* UVCCameraControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UVCCameraControl.h; sourceTree = "<group>"; };
+		CBC25A8E14D8624600E15E47 /* UVCCameraControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UVCCameraControl.m; sourceTree = "<group>"; };
 		CBC25A9614D8625500E15E47 /* CamHolder.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = CamHolder.icns; sourceTree = "<group>"; };
 		CBC25A9814D862D900E15E47 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		CBC25A9A14D862E100E15E47 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };

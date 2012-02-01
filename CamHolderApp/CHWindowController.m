@@ -219,11 +219,17 @@
 -(void)setContentSize:(NSSize)size {
     if(NSEqualSizes(size, captureView.frame.size))
         return;
-
-    NSRect r = self.window.frame;
-    r.size.width += size.width - captureView.frame.size.width;
-    r.size.height += size.height - captureView.frame.size.height;
-    [self.window.animator setFrame:r display:YES];
+    
+    NSRect r = self.isFullscreen ? _nonFullScreenFrame : self.window.frame;
+    NSRect rr = self.isFullscreen ? _nonFullScreenFrame : captureView.frame;
+    NSSize delta = NSMakeSize((size.width - rr.size.width)/2, (size.height - rr.size.height)/2);
+    r = NSInsetRect(r, -delta.width, -delta.height);
+    
+    if(self.isFullscreen) {
+        _nonFullScreenFrame = r;
+    } else {
+        [self.window.animator setFrame:r display:YES];
+    }
 }
 
 -(BOOL)showsInspector {

@@ -46,7 +46,7 @@
 			<object class="NSWindowTemplate" id="275939982">
 				<int key="NSWindowStyleMask">15</int>
 				<int key="NSWindowBacking">2</int>
-				<string key="NSWindowRect">{{133, 235}, {840, 478}}</string>
+				<string key="NSWindowRect">{{133, 235}, {840, 360}}</string>
 				<int key="NSWTFlags">1886912512</int>
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">CHDraggableWindow</string>
@@ -70,7 +70,7 @@
 												<object class="NSButton" id="437871880">
 													<reference key="NSNextResponder" ref="561316497"/>
 													<int key="NSvFlags">268</int>
-													<string key="NSFrame">{{20, 201}, {164, 25}}</string>
+													<string key="NSFrame">{{20, 83}, {164, 25}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="118931026"/>
@@ -97,7 +97,7 @@
 												<object class="NSComboBox" id="72450141">
 													<reference key="NSNextResponder" ref="561316497"/>
 													<int key="NSvFlags">268</int>
-													<string key="NSFrame">{{20, 444}, {167, 26}}</string>
+													<string key="NSFrame">{{20, 326}, {167, 26}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="426651761"/>
@@ -210,7 +210,7 @@
 												<object class="NSTextField" id="162088525">
 													<reference key="NSNextResponder" ref="561316497"/>
 													<int key="NSvFlags">268</int>
-													<string key="NSFrame">{{17, 281}, {170, 17}}</string>
+													<string key="NSFrame">{{17, 163}, {170, 17}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="728529883"/>
@@ -234,7 +234,7 @@
 												<object class="NSSlider" id="728529883">
 													<reference key="NSNextResponder" ref="561316497"/>
 													<int key="NSvFlags">268</int>
-													<string key="NSFrame">{{18, 259}, {168, 21}}</string>
+													<string key="NSFrame">{{18, 141}, {168, 21}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="437871880"/>
@@ -263,7 +263,7 @@
 												<object class="NSButton" id="189023899">
 													<reference key="NSNextResponder" ref="561316497"/>
 													<int key="NSvFlags">268</int>
-													<string key="NSFrame">{{18, 304}, {168, 18}}</string>
+													<string key="NSFrame">{{18, 186}, {168, 18}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="162088525"/>
@@ -293,7 +293,7 @@
 												<object class="NSTextField" id="844708647">
 													<reference key="NSNextResponder" ref="561316497"/>
 													<int key="NSvFlags">268</int>
-													<string key="NSFrame">{{17, 374}, {138, 17}}</string>
+													<string key="NSFrame">{{17, 256}, {138, 17}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="864156495"/>
@@ -312,7 +312,7 @@
 												<object class="NSSlider" id="864156495">
 													<reference key="NSNextResponder" ref="561316497"/>
 													<int key="NSvFlags">268</int>
-													<string key="NSFrame">{{18, 347}, {168, 21}}</string>
+													<string key="NSFrame">{{18, 229}, {168, 21}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="189023899"/>
@@ -337,7 +337,7 @@
 												<object class="NSButton" id="426651761">
 													<reference key="NSNextResponder" ref="561316497"/>
 													<int key="NSvFlags">268</int>
-													<string key="NSFrame">{{18, 397}, {136, 18}}</string>
+													<string key="NSFrame">{{18, 279}, {136, 18}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
 													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="844708647"/>
@@ -360,15 +360,15 @@
 													</object>
 												</object>
 											</array>
-											<string key="NSFrameSize">{200, 478}</string>
+											<string key="NSFrameSize">{200, 360}</string>
 											<reference key="NSSuperview" ref="513638903"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="158833817"/>
+											<reference key="NSNextKeyView" ref="72450141"/>
 											<int key="NSViewLayerContentsRedrawPolicy">2</int>
 											<string key="NSClassName">NSView</string>
 										</object>
 									</array>
-									<string key="NSFrameSize">{200, 478}</string>
+									<string key="NSFrameSize">{200, 360}</string>
 									<reference key="NSSuperview" ref="267356803"/>
 									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="561316497"/>
@@ -383,6 +383,7 @@
 									<string key="NSFrame">{{167, 1}, {15, 79}}</string>
 									<reference key="NSSuperview" ref="267356803"/>
 									<reference key="NSWindow"/>
+									<reference key="NSNextKeyView"/>
 									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSTarget" ref="267356803"/>
 									<string key="NSAction">_doScroller:</string>
@@ -404,10 +405,10 @@
 									<double key="NSPercent">0.50602412223815918</double>
 								</object>
 							</array>
-							<string key="NSFrame">{{640, 0}, {200, 478}}</string>
+							<string key="NSFrame">{{640, 0}, {200, 360}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="513638903"/>
+							<reference key="NSNextKeyView" ref="158833817"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<int key="NSsFlags">528</int>
 							<reference key="NSVScroller" ref="118931026"/>
@@ -417,7 +418,7 @@
 						<object class="QTCaptureView" id="809447555">
 							<reference key="NSNextResponder" ref="568628114"/>
 							<int key="NSvFlags">274</int>
-							<string key="NSFrame">{{0, -2}, {640, 480}}</string>
+							<string key="NSFrameSize">{640, 360}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="1016824161"/>
@@ -428,7 +429,7 @@
 						<object class="NSCustomView" id="1016824161">
 							<reference key="NSNextResponder" ref="568628114"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{500, 110}, {153, 113}}</string>
+							<string key="NSFrame">{{500, -8}, {153, 113}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
 							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="267356803"/>
@@ -436,7 +437,7 @@
 							<string key="NSClassName">ZoomRectView</string>
 						</object>
 					</array>
-					<string key="NSFrameSize">{840, 478}</string>
+					<string key="NSFrameSize">{840, 360}</string>
 					<reference key="NSSuperview"/>
 					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="809447555"/>
@@ -930,20 +931,17 @@
 				<object class="IBPartialClassDescription">
 					<string key="className">CHWindowController</string>
 					<string key="superclassName">NSWindowController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="captureDeviceChanged:">id</string>
-						<string key="toggleFullscreen:">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="captureDeviceChanged:">
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">captureDeviceChanged:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="NSMutableDictionary" key="actionInfosByName">
+						<string key="NS.key.0">captureDeviceChanged:</string>
+						<object class="IBActionInfo" key="NS.object.0">
 							<string key="name">captureDeviceChanged:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="toggleFullscreen:">
-							<string key="name">toggleFullscreen:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
+					</object>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="captureDevicesCombobox">NSComboBox</string>
 						<string key="captureView">CroppingQTCaptureView</string>
@@ -984,14 +982,6 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/CroppingQTCaptureView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ZoomRectView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ZoomRectView.h</string>
 					</object>
 				</object>
 			</array>

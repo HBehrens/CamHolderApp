@@ -24,6 +24,7 @@
         isAutoFocusActive = YES;
         focusFactor = 0.5;
         showsInspector = YES;
+        contentSize = NSMakeSize(1280*0.5, 720*0.5); 
     }
     return self;
 }
@@ -241,10 +242,12 @@ NSArray* CHCachedCaptureDevices;
 
 -(void)rotateRight:(id)sender {
     self.rotation -= 90;
+    self.contentSize = NSMakeSize(self.contentSize.height, self.contentSize.width);
 }
 
 -(void)rotateLeft:(id)sender {
     self.rotation += 90;
+    self.contentSize = NSMakeSize(self.contentSize.height, self.contentSize.width);
 }
 
 -(void)flipHorizontal:(id)sender {

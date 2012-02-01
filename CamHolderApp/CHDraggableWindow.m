@@ -12,10 +12,22 @@
 
 @synthesize isDraggable;
 
+// override default: borderless windows can neither be key nore main window
+-(BOOL)canBecomeKeyWindow {
+    return YES;
+}
+
+-(BOOL)canBecomeMainWindow {
+    return YES;
+}
+
+
 // NOTE: taken from http://www.cocoadev.com/index.pl?BorderlessWindow
 
 - (void)mouseDragged:(NSEvent *)theEvent
 {
+    [super mouseDragged:theEvent];
+    
 	if(!self.isDraggable)
 		return;
 	
@@ -95,6 +107,7 @@
 - (void)mouseUp:(NSEvent *)theEvent
 {
 	isDragging = NO;
+    [super mouseUp:theEvent];
 }
 
 @end

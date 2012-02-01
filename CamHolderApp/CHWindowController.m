@@ -36,6 +36,13 @@
 	for (QTCaptureDevice* d in self.document.captureDevices) {
 		[captureDevicesCombobox addItemWithObjectValue: [d localizedDisplayName]];
 	}
+    
+    _updateTimer = [[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(reflectCameraStateInUI) userInfo:nil repeats:YES] retain];
+}
+
+-(void)dealloc {
+    [_updateTimer release];
+    [super dealloc];
 }
 
 #pragma mark - Preview Delegate and Handling
@@ -188,6 +195,12 @@
 
 -(void)setWindow:(CHDraggableWindow *)window {
     [super setWindow:window];
+}
+
+-(void)reflectCameraStateInUI {
+    if(self.document) {
+        [self.document readCameraValuesIntoProperties];
+    }
 }
 
 #pragma mark - view options

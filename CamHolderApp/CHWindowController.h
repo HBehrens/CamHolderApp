@@ -21,6 +21,8 @@
     NSRect _fullscreenFrame;
     BOOL _ignoreWindowDidResize;
     
+    NSTimer *_updateTimer;
+    
     IBOutlet NSComboBox *captureDevicesCombobox;
     IBOutlet NSSlider *exposureSlider;
     IBOutlet CroppingQTCaptureView *captureView;

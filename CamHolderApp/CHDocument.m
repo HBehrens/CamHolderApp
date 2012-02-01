@@ -152,6 +152,11 @@ NSArray* CHCachedCaptureDevices;
     [_cameraControl setAbsoluteFocus:focusFactor];
 }
 
+-(void)readCameraValuesIntoProperties {
+    if(self.isAutoFocusActive)
+        self.focusFactor = [_cameraControl getAbsoluteFocus];
+}
+
 -(void)tryToHaveActiveCaptureDevice {
     if(self.activeCaptureDevice == nil && self.captureDevices.count > 0) {
         self.activeCaptureDevice = [self.captureDevices objectAtIndex:0];

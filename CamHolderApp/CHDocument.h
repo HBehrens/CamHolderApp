@@ -21,6 +21,8 @@ extern NSArray* CHCachedCaptureDevices;
 @property (nonatomic, assign) BOOL isAutoFocusActive;
 @property (nonatomic, assign) float focusFactor;
 
+-(void)readCameraValuesIntoProperties;
+
 @property (nonatomic, readonly) BOOL isZoomed;
 
 @property (nonatomic, readonly) NSArray* captureDevices;

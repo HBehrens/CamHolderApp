@@ -155,12 +155,26 @@ NSArray* CHCachedCaptureDevices;
     _cameraControl = nil;
     
     if(activeCaptureDevice_) {
+        // Ok, this might be all kinds of wrong, but it was the only way I found to map a 
+        // QTCaptureDevice to a IOKit USB Device. The uniqueID method seems to always(?) return 
+        // the locationID as a HEX string in the first few chars, but the format of this string 
+        // is not documented anywhere and (knowing Apple) might change sooner or later.
+        //
+        // In most cases you'd be probably better of using the UVCCameraControls
+        // - (id)initWithVendorID:(long) productID:(long) 
+        // method instead. I.e. for the Logitech QuickCam9000 
+        // cameraControl = [[UVCCameraControl alloc] initWithVendorID:0x046d productID:0x0990];
+        //
+        // You can use USB Prober (should be in /Developer/Applications/Utilities/USB Prober.app) 
+        // to find the values of your camera.
+        
         UInt32 locationID = 0;
         sscanf( [[activeCaptureDevice_ uniqueID] UTF8String], "0x%8x", (unsigned int*)&locationID );
         
 
         _cameraControl = [[UVCCameraControl alloc] initWithLocationID:locationID];
         
+        // TODO: somehow wait until device has been initiated (maybe hack with a timer?)
         [_cameraControl setAutoExposure:self.isAutoExposureActive];
         [_cameraControl setExposure:self.exposureTimeFactor];
         [_cameraControl setAutoFocus:self.isAutoFocusActive];

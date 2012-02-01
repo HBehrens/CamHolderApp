@@ -30,6 +30,7 @@
     _originalWindowMask = self.window.styleMask;
     
     // workaround: an initially hidden rect somehow does not appear at runtime
+    [zoomRectView.superview addSubview:zoomRectView positioned:NSWindowAbove relativeTo:captureView];
     zoomRectView.frame = NSZeroRect;
     
     [captureDevicesCombobox removeAllItems];

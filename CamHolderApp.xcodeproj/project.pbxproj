@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB8D240414D9ABA7006D3FED /* ZoomRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8D240314D9ABA7006D3FED /* ZoomRectView.m */; };
 		CBABA34414D8673700F74576 /* CHWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34314D8673700F74576 /* CHWindowController.m */; };
 		CBABA34814D8689000F74576 /* CHApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34714D8689000F74576 /* CHApplicationDelegate.m */; };
 		CBABA34E14D89B7D00F74576 /* CHDraggableWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34D14D89B7D00F74576 /* CHDraggableWindow.m */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB8D240214D9ABA7006D3FED /* ZoomRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomRectView.h; sourceTree = "<group>"; };
+		CB8D240314D9ABA7006D3FED /* ZoomRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomRectView.m; sourceTree = "<group>"; };
 		CBABA34214D8673700F74576 /* CHWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHWindowController.h; sourceTree = "<group>"; };
 		CBABA34314D8673700F74576 /* CHWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHWindowController.m; sourceTree = "<group>"; };
 		CBABA34614D8689000F74576 /* CHApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHApplicationDelegate.h; sourceTree = "<group>"; };
@@ -147,6 +150,8 @@
 		CBC25A5514D861A400E15E47 /* CamHolderApp */ = {
 			isa = PBXGroup;
 			children = (
+				CB8D240214D9ABA7006D3FED /* ZoomRectView.h */,
+				CB8D240314D9ABA7006D3FED /* ZoomRectView.m */,
 				CBC25A8B14D8624600E15E47 /* CroppingQTCaptureView.h */,
 				CBC25A8C14D8624600E15E47 /* CroppingQTCaptureView.m */,
 				CBC25A8D14D8624600E15E47 /* UVCCameraControl.h */,
@@ -315,6 +320,7 @@
 				CBABA34414D8673700F74576 /* CHWindowController.m in Sources */,
 				CBABA34814D8689000F74576 /* CHApplicationDelegate.m in Sources */,
 				CBABA34E14D89B7D00F74576 /* CHDraggableWindow.m in Sources */,
+				CB8D240414D9ABA7006D3FED /* ZoomRectView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -37,6 +37,7 @@
     SEL compareSelector = alignHorizontally ? @selector(horizontalCompare:) : @selector(verticalCompare:);
     controllers = [controllers sortedArrayUsingSelector:compareSelector];
     
+    [NSAnimationContext beginGrouping];
     for(CHWindowController *controller in controllers) {
         if(fullscreen) {
             [controller displayAsFullScreenInRect:r];
@@ -45,6 +46,7 @@
             controller.isFullscreen = NO;
         }
     }
+    [NSAnimationContext endGrouping];
 }
 
 -(IBAction)toggleFullscreen:(id)sender {

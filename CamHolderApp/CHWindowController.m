@@ -210,7 +210,7 @@
     NSRect r = self.window.frame;
     r.size.width += size.width - captureView.frame.size.width;
     r.size.height += size.height - captureView.frame.size.height;
-    [self.window setFrame:r display:YES animate:YES];
+    [self.window.animator setFrame:r display:YES];
 }
 
 -(BOOL)showsInspector {
@@ -252,15 +252,10 @@
     _fullscreenFrame = frame;
 
     self.window.isDraggable = NO;
-    [self performSelector:@selector(delayedZoom) withObject:nil afterDelay:0];   
-}
-
--(void)delayedZoom {
-    [self.window setFrame:_fullscreenFrame display:YES animate:YES];  
+    [self.window.animator setFrame:_fullscreenFrame display:YES];
 }
 
 -(void)clearIgnoreWindowDidResize {
-    _ignoreWindowDidResize = NO;
 }
 
 -(BOOL)canBeFullscreen {
@@ -273,14 +268,27 @@
         [self displayAsFullScreenInRect: self.window.screen.frame];
     } else {
         _ignoreWindowDidResize = YES;
-        [self performSelector:@selector(clearIgnoreWindowDidResize) withObject:nil afterDelay:1];
-        [self.window setFrame:_nonFullScreenFrame display:YES animate:YES];
-        self.window.hasShadow = YES;
-        [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationDefault];
-        [self setShowsInspector:self.document.showsInspector];
-        self.window.isDraggable = !self.document.showsInspector;
+        
+        [self.window.animator setFrame:_nonFullScreenFrame display:YES];
+        // poor man's completionHandler for <10.7
+        // uses window's frame as semaphore
+        [self performSelector:@selector(finishSetIsFullscreenNo) withObject:nil afterDelay:[[NSAnimationContext currentContext] duration]];
     }
-    
+}
+
+
+-(void)finishSetIsFullscreenNo {
+    NSLog(@"probe");
+    if(!NSEqualRects(self.window.frame, _nonFullScreenFrame)) {
+        [self performSelector:@selector(finishSetIsFullscreenNo) withObject:nil afterDelay:0.1];
+        return;
+    }
+    NSLog(@"passed");
+    _ignoreWindowDidResize = NO;
+    self.window.hasShadow = YES;
+    [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationDefault];
+    [self setShowsInspector:self.document.showsInspector];
+    self.window.isDraggable = !self.document.showsInspector;
 }
 
 -(NSComparisonResult)horizontalCompare:(CHWindowController*)other {

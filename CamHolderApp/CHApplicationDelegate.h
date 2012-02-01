@@ -10,4 +10,6 @@
 
 @interface CHApplicationDelegate : NSObject<NSApplicationDelegate>
 
+-(IBAction)toggleFullscreen:(id)sender;
+
 @end

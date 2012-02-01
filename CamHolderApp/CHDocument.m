@@ -250,6 +250,10 @@ NSArray* CHCachedCaptureDevices;
     self.isMirroredVertically = !self.isMirroredVertically;
 }
 
+-(BOOL)rotatedVertically {
+    return (int)self.rotation % 180 != 0;
+}
+
 #pragma mark - UI Options
 
 -(IBAction)toggleInspector:(id)sender {

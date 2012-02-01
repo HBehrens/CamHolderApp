@@ -38,8 +38,13 @@
 -(void)setShowsInspector:(BOOL)value;
 
 @property (nonatomic, assign) BOOL isFullscreen;
+@property (nonatomic, readonly) BOOL canBeFullscreen;
+-(void)displayAsFullScreenInRect:(NSRect)frame;
 
--(IBAction)toggleFullscreen:(id)sender;
 -(void)setContentSize:(NSSize)size;
 
+-(NSComparisonResult)horizontalCompare:(CHWindowController*)other;
+-(NSComparisonResult)verticalCompare:(CHWindowController*)other;
+
 @end
+

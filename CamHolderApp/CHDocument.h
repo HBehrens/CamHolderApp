@@ -31,6 +31,7 @@ extern NSArray* CHCachedCaptureDevices;
 @property (nonatomic, assign) BOOL isMirroredHorizontally;
 @property (nonatomic, assign) BOOL isMirroredVertically;
 @property (nonatomic, assign) float rotation;
+@property (nonatomic, readonly) BOOL rotatedVertically;
 
 -(void)resetZoom;
 

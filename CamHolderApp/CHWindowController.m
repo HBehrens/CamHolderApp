@@ -239,12 +239,14 @@
 }
 
 -(void)displayAsFullScreenInRect:(NSRect)frame {
+    isFullscreen = YES;
     if(self.document.showsInspector)
         [self setShowsInspector:NO];
     
     _nonFullScreenFrame = self.window.frame;
     
     [[NSApplication sharedApplication] setPresentationOptions:(NSApplicationPresentationHideDock | NSApplicationPresentationHideMenuBar)];
+    self.window.hasShadow = NO;
  
     // workaround to animate zoom (needs another even in main loop since setting styleMask prevents animation otherwise)
     _fullscreenFrame = frame;
@@ -261,6 +263,10 @@
     _ignoreWindowDidResize = NO;
 }
 
+-(BOOL)canBeFullscreen {
+    return !self.window.isMiniaturized;
+}
+
 -(void)setIsFullscreen:(BOOL)isFullscreen_ {
     isFullscreen = isFullscreen_;
     if(isFullscreen) {
@@ -269,16 +275,20 @@
         _ignoreWindowDidResize = YES;
         [self performSelector:@selector(clearIgnoreWindowDidResize) withObject:nil afterDelay:1];
         [self.window setFrame:_nonFullScreenFrame display:YES animate:YES];
+        self.window.hasShadow = YES;
         [[NSApplication sharedApplication] setPresentationOptions:NSApplicationPresentationDefault];
-        if(self.document.showsInspector)
-            [self setShowsInspector:self.document.showsInspector];
-        self.window.isDraggable = YES;
+        [self setShowsInspector:self.document.showsInspector];
+        self.window.isDraggable = !self.document.showsInspector;
     }
     
 }
 
--(IBAction)toggleFullscreen:(id)sender {
-    self.isFullscreen = !self.isFullscreen;
+-(NSComparisonResult)horizontalCompare:(CHWindowController*)other {
+    return self.window.frame.origin.x < other.window.frame.origin.x ? NSOrderedAscending : NSOrderedDescending;
+}
+
+-(NSComparisonResult)verticalCompare:(CHWindowController*)other {
+    return self.window.frame.origin.y < other.window.frame.origin.y ? NSOrderedAscending : NSOrderedDescending;
 }
 
 

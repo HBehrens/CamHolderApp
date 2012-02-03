@@ -8,8 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CHApplicationDelegate : NSObject<NSApplicationDelegate>
+@interface CHApplicationDelegate : NSObject<NSApplicationDelegate> {
+    IBOutlet NSMenuItem* semiFullscreenMenu;
+    NSArray *_semiFullscreenResolutions;
+    NSMutableArray *_semiFullscreenResolutionsMenuItems;
+}
+
+@property (nonatomic, assign) NSSize activeSizeForSemiFullscreen;
 
 -(IBAction)toggleFullscreen:(id)sender;
+-(IBAction)toggleSemiFullscreen:(id)sender;
+-(IBAction)selectActiveSizeForSemiFullscreen:(id)sender;
 
 @end

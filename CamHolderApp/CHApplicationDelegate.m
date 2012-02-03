@@ -12,11 +12,46 @@
 
 @implementation CHApplicationDelegate
 
+@synthesize activeSizeForSemiFullscreen;
+
+static NSString* PREF_ActiveSemiFullscreenResolution = @"activeSemiFullscreenResolution";
+
 -(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     return YES;
 }
 
+-(void)activateSizeForSemiFullscreenWithIndex:(NSUInteger)index {
+    NSString *s = [_semiFullscreenResolutions objectAtIndex:index];
+    self.activeSizeForSemiFullscreen = NSSizeFromString(s);
+}
+
+-(void)prepareSemiFullscreen {
+    // load from a file?
+    _semiFullscreenResolutions = [[NSArray arrayWithObjects:@"{1024, 768}", @"{1280, 720}", @"{1920, 1080}", nil] retain];
+    _semiFullscreenResolutionsMenuItems = [[NSMutableArray array] retain];
+    NSString *selected = [[NSUserDefaults standardUserDefaults] stringForKey:PREF_ActiveSemiFullscreenResolution] ;
+    
+    NSMenu *menu = semiFullscreenMenu.menu;
+    for(NSString *s in [_semiFullscreenResolutions reverseObjectEnumerator]) {
+        NSSize size = NSSizeFromString(s);
+        NSString *title = [NSString stringWithFormat:@"%dx%d", (int)size.width, (int)size.height];
+        NSMenuItem *item = [[[NSMenuItem alloc] initWithTitle:title action:@selector(selectActiveSizeForSemiFullscreen:) keyEquivalent:@""] autorelease];
+        item.indentationLevel = 2;
+        item.state = [s isEqualToString:selected] ? 1 : 0;
+        item.tag = [_semiFullscreenResolutions indexOfObject:s];
+        [_semiFullscreenResolutionsMenuItems addObject:item];
+        
+        [menu insertItem:item atIndex:[menu indexOfItem:semiFullscreenMenu]+1];
+    }
+    
+    [self activateSizeForSemiFullscreenWithIndex:[_semiFullscreenResolutions indexOfObject:selected]];
+}
+
 -(void)applicationDidFinishLaunching:(NSNotification *)notification {
+    NSDictionary *appDefaults = [NSDictionary dictionaryWithObject:@"{1280, 720}" forKey:PREF_ActiveSemiFullscreenResolution];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:appDefaults];
+    
+    
     NSArray *allDevices = [CHDocument cachedCaptureDevices];
     if(allDevices.count <= 0) {
 		NSAlert *alert = [NSAlert alertWithMessageText:@"Camera not found" 
@@ -25,10 +60,27 @@
 		[alert runModal];
 		[[NSApplication sharedApplication] terminate:self];
     }
+    
+    [self prepareSemiFullscreen];
 }
 
--(void)onScreen:(NSScreen*)screen andControllers:(NSArray*)controllers setFullscreen:(BOOL)fullscreen {
+-(void)dealloc {
+    [_semiFullscreenResolutions release];
+    [_semiFullscreenResolutionsMenuItems release];
+    [super dealloc];
+}
+
+-(void)onScreen:(NSScreen*)screen withMaxSize:(NSSize)maxSize andControllers:(NSArray*)controllers setFullscreen:(BOOL)fullscreen {
+    
     NSRect r = screen.frame;
+    if(!NSEqualSizes(NSZeroSize, maxSize)) {
+        r = NSOffsetRect(r, (r.size.width-maxSize.width) / 2, (r.size.height-maxSize.height) / 2);
+        r.origin.x = MAX(r.origin.x, screen.frame.origin.x);
+        r.origin.y = MAX(r.origin.y, screen.frame.origin.y);
+        r.size.width = MIN(maxSize.width, screen.frame.size.width);
+        r.size.height = MIN(maxSize.height, screen.frame.size.height);
+    }
+    
     BOOL alignHorizontally = [[controllers valueForKeyPath:@"@max.document.rotatedVertically"] boolValue];
     r.size.width  /= alignHorizontally ? controllers.count : 1;
     r.size.height /= alignHorizontally ? 1 : controllers.count;
@@ -49,7 +101,7 @@
     [NSAnimationContext endGrouping];
 }
 
--(IBAction)toggleFullscreen:(id)sender {
+-(void)toggleFullscreenWithMaxSize:(NSSize)maxSize {
     // collect controllers per screen. This has to be more consize...
     NSMutableArray *controllersPerScreen = [NSMutableArray array];
     for(NSScreen *screen in NSScreen.screens) {
@@ -71,8 +123,25 @@
     for(NSScreen *screen in NSScreen.screens) {
         NSArray *controllers = [controllersPerScreen objectAtIndex:[NSScreen.screens indexOfObject:screen]];
         if(controllers.count > 0)
-            [self onScreen: screen andControllers:controllers setFullscreen:allToFullscreen];
+            [self onScreen: screen withMaxSize:maxSize andControllers:controllers setFullscreen:allToFullscreen];
     }
+}
+-(IBAction)toggleFullscreen:(id)sender {
+    [self toggleFullscreenWithMaxSize:NSZeroSize];
+}
+
+-(IBAction)toggleSemiFullscreen:(id)sender {
+    [self toggleFullscreenWithMaxSize:self.activeSizeForSemiFullscreen];
+}
+
+-(IBAction)selectActiveSizeForSemiFullscreen:(NSMenuItem*)sender {
+    for(NSMenuItem *item in _semiFullscreenResolutionsMenuItems) {
+        item.state = 0;
+    }
+    sender.state = 1;
+
+    [self activateSizeForSemiFullscreenWithIndex:sender.tag];
+    [[NSUserDefaults standardUserDefaults] setObject:NSStringFromSize(self.activeSizeForSemiFullscreen) forKey:PREF_ActiveSemiFullscreenResolution];
 }
 
 @end

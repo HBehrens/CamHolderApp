@@ -239,7 +239,12 @@ NSArray* CHCachedCaptureDevices;
     self.normalizedCroppingRect = NSZeroRect;
 }
 
-// TODO: normalize rotation
+-(void)setRotation:(float)value {
+    // TODO: optimize with mod operator but keep fraction!
+    while(value < 0) value += 360;
+    while(value > 360) value -= 306;
+    rotation = value;
+}
 
 -(void)rotateRight:(id)sender {
     self.rotation -= 90;

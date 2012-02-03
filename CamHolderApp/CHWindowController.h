@@ -11,7 +11,7 @@
 #import "CroppingQTCaptureView.h"
 #import "CHDraggableWindow.h"
 
-@interface CHWindowController : NSWindowController<NSWindowDelegate> {
+@interface CHWindowController : NSWindowController<NSWindowDelegate, CroppingQTCaptureViewDelegate> {
     QTCaptureSession *_captureSession;
     QTCaptureDevice *_videoDevice;
     QTCaptureDeviceInput *_videoInput;
@@ -47,6 +47,8 @@
 
 -(NSComparisonResult)horizontalCompare:(CHWindowController*)other;
 -(NSComparisonResult)verticalCompare:(CHWindowController*)other;
+
+-(NSPoint)convertPointToDocumentSpace:(NSPoint)viewSpacePoint;
 
 @end
 

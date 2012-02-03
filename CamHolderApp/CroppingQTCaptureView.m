@@ -7,15 +7,7 @@
 //
 
 #import "CroppingQTCaptureView.h"
-
-@protocol CroppingQTCaptureViewDelegate
-
--(void)view:(QTCaptureView *)view didSelectRect:(NSRect)rect;
--(void)view:(QTCaptureView *)view mightSelectRectInViewCoordinates:(NSRect)rect;
--(void)viewWillSelectRect:(QTCaptureView *)view;
-
-@end
-
+#import "CHGeometryUtils.h"
 
 @implementation CroppingQTCaptureView
 
@@ -25,11 +17,7 @@
 	NSPoint local = [self convertPoint:location fromView:nil];
 	
 	// width and height always positive
-	NSRect r = NSMakeRect(ptMouseDown.x, ptMouseDown.y, local.x-ptMouseDown.x, local.y-ptMouseDown.y);
-	r.origin.x += r.size.width < 0 ? r.size.width : 0;
-	r.origin.y += r.size.height< 0 ? r.size.height: 0;
-	r.size.width = ABS(r.size.width);
-	r.size.height = ABS(r.size.height);
+	NSRect r = NSRectFromPoints(ptMouseDown, local);
 	
 	currentSelectionInViewCoordinates = NSIntersectionRect(r, self.previewBounds);
 	

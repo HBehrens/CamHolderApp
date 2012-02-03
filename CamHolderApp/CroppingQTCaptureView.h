@@ -9,6 +9,14 @@
 #import <Foundation/Foundation.h>
 #import <QTKit/QTKit.h>
 
+@protocol CroppingQTCaptureViewDelegate
+
+-(void)view:(QTCaptureView *)view didSelectRect:(NSRect)rect;
+-(void)view:(QTCaptureView *)view mightSelectRectInViewCoordinates:(NSRect)rect;
+-(void)viewWillSelectRect:(QTCaptureView *)view;
+
+@end
+
 @interface CroppingQTCaptureView : QTCaptureView {
 	NSPoint ptMouseDown;
 	NSRect currentSelection;

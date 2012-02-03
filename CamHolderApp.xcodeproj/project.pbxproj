@@ -28,6 +28,8 @@
 		CBC25A9914D862D900E15E47 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A9814D862D900E15E47 /* CoreVideo.framework */; };
 		CBC25A9D14D8631C00E15E47 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A9C14D8631C00E15E47 /* QTKit.framework */; };
 		CBC25A9F14D8632500E15E47 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A9E14D8632500E15E47 /* IOKit.framework */; };
+		CBE5429214DBCC3A003C017D /* CHWindowControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE5429114DBCC3A003C017D /* CHWindowControllerTests.m */; };
+		CBE5429514DBDF3C003C017D /* CHGeometryUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = CBE5429414DBDF3C003C017D /* CHGeometryUtils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +80,10 @@
 		CBC25A9A14D862E100E15E47 /* QuickTime.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickTime.framework; path = System/Library/Frameworks/QuickTime.framework; sourceTree = SDKROOT; };
 		CBC25A9C14D8631C00E15E47 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = System/Library/Frameworks/QTKit.framework; sourceTree = SDKROOT; };
 		CBC25A9E14D8632500E15E47 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		CBE5429014DBCC3A003C017D /* CHWindowControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHWindowControllerTests.h; sourceTree = "<group>"; };
+		CBE5429114DBCC3A003C017D /* CHWindowControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHWindowControllerTests.m; sourceTree = "<group>"; };
+		CBE5429314DBDF3C003C017D /* CHGeometryUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHGeometryUtils.h; sourceTree = "<group>"; };
+		CBE5429414DBDF3C003C017D /* CHGeometryUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHGeometryUtils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +173,8 @@
 				CBABA34314D8673700F74576 /* CHWindowController.m */,
 				CBC25A6714D861A400E15E47 /* MainMenu.xib */,
 				CBC25A5614D861A400E15E47 /* Supporting Files */,
+				CBE5429314DBDF3C003C017D /* CHGeometryUtils.h */,
+				CBE5429414DBDF3C003C017D /* CHGeometryUtils.m */,
 			);
 			path = CamHolderApp;
 			sourceTree = "<group>";
@@ -189,6 +197,8 @@
 			children = (
 				CBC25A7B14D861A400E15E47 /* CamHolderAppTests.h */,
 				CBC25A7C14D861A400E15E47 /* CamHolderAppTests.m */,
+				CBE5429014DBCC3A003C017D /* CHWindowControllerTests.h */,
+				CBE5429114DBCC3A003C017D /* CHWindowControllerTests.m */,
 				CBC25A7614D861A400E15E47 /* Supporting Files */,
 			);
 			path = CamHolderAppTests;
@@ -321,6 +331,7 @@
 				CBABA34814D8689000F74576 /* CHApplicationDelegate.m in Sources */,
 				CBABA34E14D89B7D00F74576 /* CHDraggableWindow.m in Sources */,
 				CB8D240414D9ABA7006D3FED /* ZoomRectView.m in Sources */,
+				CBE5429514DBDF3C003C017D /* CHGeometryUtils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBC25A7D14D861A400E15E47 /* CamHolderAppTests.m in Sources */,
+				CBE5429214DBCC3A003C017D /* CHWindowControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

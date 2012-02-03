@@ -8,6 +8,7 @@
 
 #import "CHWindowController.h"
 #import <QTKit/QTKit.h>
+#import "CHGeometryUtils.h"
 
 @implementation CHWindowController
 
@@ -48,13 +49,33 @@
 
 #pragma mark - Preview Delegate and Handling
 
+-(NSPoint)convertPointToDocumentSpace:(NSPoint)viewSpacePoint {
+    NSPoint result = viewSpacePoint;
+
+    if(self.document.rotation == 90) {
+        result = NSMakePoint(result.y, 1-result.x);
+    } else if(self.document.rotation == 180) {
+        result = NSMakePoint(1-result.x, 1-result.y);
+    } else if(self.document.rotation == 270) {
+        result = NSMakePoint(1-result.y, result.x);
+    }
+    
+    result.x = self.document.isMirroredHorizontally ? 1-result.x : result.x;
+    result.y = self.document.isMirroredVertically   ? 1-result.y : result.y;
+
+    if(!NSEqualRects(NSZeroRect, self.document.normalizedCroppingRect)){
+        NSRect ncr = self.document.normalizedCroppingRect;
+        result = NSMakePoint(ncr.origin.x + ncr.size.width * result.x, 
+                             ncr.origin.y + ncr.size.height * result.y);
+    }
+    
+    
+    return result;
+}
+
 -(void)viewWillSelectRect:(QTCaptureView *)view {
 	[zoomRectView setHidden:NO];
 	[zoomRectView setFrame:NSZeroRect];
-    self.document.isMirroredHorizontally = NO;
-    self.document.isMirroredVertically = NO;
-    self.document.rotation = 0;
-    //	normalizedCroppingRect = NSZeroRect;
 }
 
 -(void)view:(QTCaptureView *)view mightSelectRectInViewCoordinates:(NSRect)rect {
@@ -64,21 +85,10 @@
 -(void)view:(QTCaptureView *)view didSelectRect:(NSRect)rect {
 	[zoomRectView setHidden:YES];
     
-    // TODO: extract into model to make it testable
-	if(NSEqualRects(NSZeroRect, self.document.normalizedCroppingRect)) {
-		self.document.normalizedCroppingRect = rect;
-	} else {
-		float w = self.document.normalizedCroppingRect.size.width;
-		float h = self.document.normalizedCroppingRect.size.height;
-		
-		self.document.normalizedCroppingRect = NSMakeRect(
-											self.document.normalizedCroppingRect.origin.x + w*rect.origin.x,
-											self.document.normalizedCroppingRect.origin.y + h*rect.origin.y,
-											w*rect.size.width,
-											h*rect.size.height
-											);
-	}
-	// TODO: apply transformation
+    NSPoint p1 = [self convertPointToDocumentSpace:rect.origin];
+    NSPoint p2 = [self convertPointToDocumentSpace:NSMakePoint(rect.origin.x + rect.size.width, rect.origin.y + rect.size.height)];
+    
+    self.document.normalizedCroppingRect = NSRectFromPoints(p1, p2);
 }
 
 - (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {

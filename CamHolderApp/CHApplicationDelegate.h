@@ -16,6 +16,7 @@
 
 @property (nonatomic, assign) NSSize activeSizeForSemiFullscreen;
 
+-(IBAction)showHelp:(id)sender;
 -(IBAction)toggleFullscreen:(id)sender;
 -(IBAction)toggleSemiFullscreen:(id)sender;
 -(IBAction)selectActiveSizeForSemiFullscreen:(id)sender;

@@ -16,6 +16,11 @@
 
 static NSString* PREF_ActiveSemiFullscreenResolution = @"activeSemiFullscreenResolution";
 
+-(void)showHelp:(id)sender {
+    NSString *url = @"http://CamHolder.org/help";
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+}
+
 -(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender {
     return YES;
 }

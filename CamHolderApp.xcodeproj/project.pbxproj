@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB785A7F14E7E90F00E9B57C /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = CB785A7E14E7E90F00E9B57C /* LICENSE.txt */; };
+		CB785A8314E7EA8B00E9B57C /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CB785A8114E7EA8B00E9B57C /* Credits.html */; };
 		CB8D240414D9ABA7006D3FED /* ZoomRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8D240314D9ABA7006D3FED /* ZoomRectView.m */; };
 		CBABA34414D8673700F74576 /* CHWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34314D8673700F74576 /* CHWindowController.m */; };
 		CBABA34814D8689000F74576 /* CHApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34714D8689000F74576 /* CHApplicationDelegate.m */; };
@@ -14,7 +16,6 @@
 		CBC25A5014D861A400E15E47 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBC25A4F14D861A400E15E47 /* Cocoa.framework */; };
 		CBC25A5A14D861A400E15E47 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A5814D861A400E15E47 /* InfoPlist.strings */; };
 		CBC25A5C14D861A400E15E47 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A5B14D861A400E15E47 /* main.m */; };
-		CBC25A6014D861A400E15E47 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A5E14D861A400E15E47 /* Credits.rtf */; };
 		CBC25A6314D861A400E15E47 /* CHDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC25A6214D861A400E15E47 /* CHDocument.m */; };
 		CBC25A6614D861A400E15E47 /* CHDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A6414D861A400E15E47 /* CHDocument.xib */; };
 		CBC25A6914D861A400E15E47 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBC25A6714D861A400E15E47 /* MainMenu.xib */; };
@@ -43,6 +44,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CB785A7E14E7E90F00E9B57C /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = SOURCE_ROOT; };
+		CB785A8214E7EA8B00E9B57C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/Credits.html; sourceTree = "<group>"; };
 		CB8D240214D9ABA7006D3FED /* ZoomRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomRectView.h; sourceTree = "<group>"; };
 		CB8D240314D9ABA7006D3FED /* ZoomRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomRectView.m; sourceTree = "<group>"; };
 		CBABA34214D8673700F74576 /* CHWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHWindowController.h; sourceTree = "<group>"; };
@@ -60,7 +63,6 @@
 		CBC25A5914D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CBC25A5B14D861A400E15E47 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		CBC25A5D14D861A400E15E47 /* CamHolderApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CamHolderApp-Prefix.pch"; sourceTree = "<group>"; };
-		CBC25A5F14D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		CBC25A6114D861A400E15E47 /* CHDocument.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CHDocument.h; sourceTree = "<group>"; };
 		CBC25A6214D861A400E15E47 /* CHDocument.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CHDocument.m; sourceTree = "<group>"; };
 		CBC25A6514D861A400E15E47 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/CHDocument.xib; sourceTree = "<group>"; };
@@ -182,12 +184,13 @@
 		CBC25A5614D861A400E15E47 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CB785A8114E7EA8B00E9B57C /* Credits.html */,
+				CB785A7E14E7E90F00E9B57C /* LICENSE.txt */,
 				CBC25A9614D8625500E15E47 /* CamHolder.icns */,
 				CBC25A5714D861A400E15E47 /* CamHolderApp-Info.plist */,
 				CBC25A5814D861A400E15E47 /* InfoPlist.strings */,
 				CBC25A5B14D861A400E15E47 /* main.m */,
 				CBC25A5D14D861A400E15E47 /* CamHolderApp-Prefix.pch */,
-				CBC25A5E14D861A400E15E47 /* Credits.rtf */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -285,10 +288,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBC25A5A14D861A400E15E47 /* InfoPlist.strings in Resources */,
-				CBC25A6014D861A400E15E47 /* Credits.rtf in Resources */,
 				CBC25A6614D861A400E15E47 /* CHDocument.xib in Resources */,
 				CBC25A6914D861A400E15E47 /* MainMenu.xib in Resources */,
 				CBC25A9714D8625500E15E47 /* CamHolder.icns in Resources */,
+				CB785A7F14E7E90F00E9B57C /* LICENSE.txt in Resources */,
+				CB785A8314E7EA8B00E9B57C /* Credits.html in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,20 +359,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CB785A8114E7EA8B00E9B57C /* Credits.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CB785A8214E7EA8B00E9B57C /* en */,
+			);
+			name = Credits.html;
+			sourceTree = "<group>";
+		};
 		CBC25A5814D861A400E15E47 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CBC25A5914D861A400E15E47 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		CBC25A5E14D861A400E15E47 /* Credits.rtf */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CBC25A5F14D861A400E15E47 /* en */,
-			);
-			name = Credits.rtf;
 			sourceTree = "<group>";
 		};
 		CBC25A6414D861A400E15E47 /* CHDocument.xib */ = {

@@ -40,7 +40,7 @@ extern NSArray* CHCachedCaptureDevices;
 @property (nonatomic, assign) BOOL showsInspector;
 @property (nonatomic, assign) NSSize contentSize;
 
--(void)toggleInspector:(id)sender;
+-(IBAction)toggleInspector:(id)sender;
 
 +(NSArray*)cachedCaptureDevices;
 

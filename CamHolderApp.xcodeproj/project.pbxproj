@@ -261,7 +261,7 @@
 		CBC25A4214D861A400E15E47 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0430;
 				ORGANIZATIONNAME = BeamApp;
 			};
 			buildConfigurationList = CBC25A4514D861A400E15E47 /* Build configuration list for PBXProject "CamHolderApp" */;

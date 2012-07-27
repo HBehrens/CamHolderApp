@@ -25,5 +25,6 @@
 }
 
 @property(nonatomic, assign) BOOL canSelectRect;
+@property(nonatomic, assign) BOOL hiddenCursor;
 
 @end

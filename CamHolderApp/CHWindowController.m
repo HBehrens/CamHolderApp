@@ -283,6 +283,8 @@
 
     self.window.isDraggable = NO;
     [self.window.animator setFrame:_fullscreenFrame display:YES];
+    captureView.hiddenCursor = YES;
+
 }
 
 -(void)clearIgnoreWindowDidResize {
@@ -303,6 +305,7 @@
         // poor man's completionHandler for <10.7
         // uses window's frame as semaphore
         [self performSelector:@selector(finishSetIsFullscreenNo) withObject:nil afterDelay:[[NSAnimationContext currentContext] duration]];
+        captureView.hiddenCursor = NO;
     }
 }
 

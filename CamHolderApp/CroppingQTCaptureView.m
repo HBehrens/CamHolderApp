@@ -11,7 +11,7 @@
 
 @implementation CroppingQTCaptureView
 
-@synthesize canSelectRect;
+@synthesize canSelectRect, hiddenCursor;
 
 -(void)storeCurrentSelectionWithLocationInWindow:(NSPoint)location {
 	NSPoint local = [self convertPoint:location fromView:nil];
@@ -38,6 +38,7 @@
 }
 
 -(void) mouseDown:(NSEvent *)theEvent {
+    NSLog(@"mousedown");
 	if(self.canSelectRect) {
 		ptMouseDown =  [self convertPoint:theEvent.locationInWindow fromView:nil];
 		if([self.delegate respondsToSelector:@selector(viewWillSelectRect:)])
@@ -64,4 +65,32 @@
 	}
 	[super mouseDragged:theEvent];
 }
+
+#pragma mark - Cursor Handling
+
+-(BOOL)mouseIsCurrentlyOverView {
+    NSPoint globalLocation = [ NSEvent mouseLocation ];
+    NSPoint windowLocation = [ [ self window ] convertScreenToBase: globalLocation ];
+    NSPoint viewLocation = [self convertPoint: windowLocation fromView: nil ];
+    return [self mouse:viewLocation inRect:NSMakeRect(0, 0, self.frame.size.width, self.frame.size.height)];
+}
+
+-(void)updateMouseCursor {
+    // tracking areas are no option due to animated (semi-)fullscreen modes
+
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateMouseCursor) object:nil];
+    
+    if(self.hiddenCursor) {
+        if([self mouseIsCurrentlyOverView])
+            [NSCursor setHiddenUntilMouseMoves:YES];
+        [self performSelector:@selector(updateMouseCursor) withObject:nil afterDelay:2];
+    }
+}
+
+-(void)setHiddenCursor:(BOOL)value {
+    hiddenCursor = value;
+    [self updateMouseCursor];
+}
+
+
 @end

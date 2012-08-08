@@ -240,10 +240,7 @@ NSArray* CHCachedCaptureDevices;
 }
 
 -(void)setRotation:(float)value {
-    // TODO: optimize with mod operator but keep fraction!
-    while(value < 0) value += 360;
-    while(value > 360) value -= 306;
-    rotation = value;
+    rotation = (int)value % 360;
 }
 
 -(void)rotateRight:(id)sender {

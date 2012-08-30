@@ -35,6 +35,8 @@
 
 @property (nonatomic, assign) CHDocument* document;
 @property (nonatomic, assign) CHDraggableWindow *window;
+@property (nonatomic, readonly) QTCaptureSession *captureSession;
+@property (nonatomic, readonly) QTCaptureDevice *videoDevice;
 
 -(BOOL)showsInspector;
 -(void)setShowsInspector:(BOOL)value;

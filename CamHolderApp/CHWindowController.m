@@ -13,6 +13,8 @@
 @implementation CHWindowController
 
 @synthesize isFullscreen;
+@synthesize captureSession = _captureSession;
+@synthesize videoDevice = _videoDevice;
 
 - (id)initWithWindow:(NSWindow *)window
 {
@@ -42,9 +44,13 @@
     _updateTimer = [[NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(reflectCameraStateInUI) userInfo:nil repeats:YES] retain];
 }
 
--(void)dealloc {
+-(void)windowWillClose:(NSNotification *)notification {
+    captureView.captureSession = nil;
+    captureView.delegate = nil;
+    [_captureSession release];
+    _captureSession = nil;
+    
     [_updateTimer release];
-    [super dealloc];
 }
 
 #pragma mark - Preview Delegate and Handling
@@ -215,6 +221,18 @@
 }
 
 #pragma mark - view options
+
+- (void)tryToReduceRunningCaptureSessions {
+    [NSApplication.sharedApplication.delegate performSelector:@selector(tryToReduceRunningCaptureSessions)];
+}
+
+- (void)windowDidMiniaturize:(NSNotification *)notification {
+    [self tryToReduceRunningCaptureSessions];
+}
+
+- (void)windowDidDeminiaturize:(NSNotification *)notification {
+    [self tryToReduceRunningCaptureSessions];
+}
 
 -(void)windowDidResize:(NSNotification *)notification {
 //- (void)windowDidEndLiveResize:(NSNotification *)notification {    

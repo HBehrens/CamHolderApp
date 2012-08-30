@@ -21,4 +21,6 @@
 -(IBAction)toggleSemiFullscreen:(id)sender;
 -(IBAction)selectActiveSizeForSemiFullscreen:(id)sender;
 
+-(void)tryToReduceRunningCaptureSessions;
+
 @end

@@ -149,4 +149,38 @@ static NSString* PREF_ActiveSemiFullscreenResolution = @"activeSemiFullscreenRes
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromSize(self.activeSizeForSemiFullscreen) forKey:PREF_ActiveSemiFullscreenResolution];
 }
 
+-(void)tryToReduceRunningCaptureSessionsForApplicationThatWillBeHidden:(BOOL)applicationIsHidden {
+    NSLog(@"trying to reduce running capture sessions");
+
+    int stopped = 0;
+    int running = 0;
+    for(CHDocument *document in [[NSDocumentController sharedDocumentController] documents]) {
+        for(CHWindowController *controller in document.windowControllers) {
+            if([controller isKindOfClass:CHWindowController.class]) {
+                if(!applicationIsHidden && !controller.window.isMiniaturized) {
+                    [controller.captureSession startRunning];
+                    running++;
+                } else {
+                    [controller.captureSession stopRunning];
+                    stopped++;
+                }
+                    
+            }
+        }
+    }
+    NSLog(@"  %d running, %d stopped", running, stopped);
+}
+
+-(void)tryToReduceRunningCaptureSessions {
+    [self tryToReduceRunningCaptureSessionsForApplicationThatWillBeHidden:NSApplication.sharedApplication.isHidden];
+}
+
+-(void)applicationDidHide:(NSNotification *)notification {
+    [self tryToReduceRunningCaptureSessionsForApplicationThatWillBeHidden:YES];
+}
+
+-(void)applicationWillUnhide:(NSNotification *)notification {
+    [self tryToReduceRunningCaptureSessionsForApplicationThatWillBeHidden:NO];
+}
+
 @end

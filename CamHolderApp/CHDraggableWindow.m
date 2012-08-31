@@ -21,6 +21,15 @@
     return YES;
 }
 
+- (void)keyDown: (NSEvent *) event {
+    BOOL didLeaveFullscreen = NO;
+    if ([event keyCode] == 53) {
+        didLeaveFullscreen = (BOOL)[NSApplication.sharedApplication.delegate performSelector:@selector(leaveFullscreen)];
+    }
+        
+    if(!didLeaveFullscreen)
+        [super keyDown:event];
+}
 
 // NOTE: taken from http://www.cocoadev.com/index.pl?BorderlessWindow
 

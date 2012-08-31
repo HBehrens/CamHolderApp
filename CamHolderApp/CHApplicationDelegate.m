@@ -169,6 +169,21 @@ static NSString* PREF_ActiveSemiFullscreenResolution = @"activeSemiFullscreenRes
     return result;
 }
 
+-(BOOL)leaveFullscreen {
+    BOOL anyFullScreen = NO;
+    for(CHWindowController* controller in self.allControllers) {
+        if(controller.isFullscreen) {
+            anyFullScreen = YES;
+            break;
+        }
+    }
+    
+    if(anyFullScreen)
+        [self toggleFullscreen:nil];
+    return anyFullScreen;
+}
+        
+
 -(void)tryToReduceRunningCaptureSessionsForApplicationThatWillBeHidden:(BOOL)applicationIsHidden {
     NSLog(@"start+stop running capture sessions to keep amount as low as possible");
 

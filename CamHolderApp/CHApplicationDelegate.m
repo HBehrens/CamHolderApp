@@ -9,6 +9,14 @@
 #import "CHApplicationDelegate.h"
 #import "CHDocument.h"
 #import "CHWindowController.h"
+#import "NSWindow+obscured.h"
+
+@interface CHApplicationDelegate(private)
+
+-(void)periodicallyTryToReduceRunningCaptureSessionsWhileApplicationIsNotActive;
+
+@end
+
 
 @implementation CHApplicationDelegate
 
@@ -149,23 +157,30 @@ static NSString* PREF_ActiveSemiFullscreenResolution = @"activeSemiFullscreenRes
     [[NSUserDefaults standardUserDefaults] setObject:NSStringFromSize(self.activeSizeForSemiFullscreen) forKey:PREF_ActiveSemiFullscreenResolution];
 }
 
--(void)tryToReduceRunningCaptureSessionsForApplicationThatWillBeHidden:(BOOL)applicationIsHidden {
-    NSLog(@"trying to reduce running capture sessions");
-
-    int stopped = 0;
-    int running = 0;
+-(NSArray*)allControllers {
+    NSMutableArray* result = [NSMutableArray arrayWithCapacity:[[[NSDocumentController sharedDocumentController] documents] count]];
     for(CHDocument *document in [[NSDocumentController sharedDocumentController] documents]) {
         for(CHWindowController *controller in document.windowControllers) {
             if([controller isKindOfClass:CHWindowController.class]) {
-                if(!applicationIsHidden && !controller.window.isMiniaturized) {
-                    [controller.captureSession startRunning];
-                    running++;
-                } else {
-                    [controller.captureSession stopRunning];
-                    stopped++;
-                }
-                    
+                [result addObject:controller];
             }
+        }
+    }
+    return result;
+}
+
+-(void)tryToReduceRunningCaptureSessionsForApplicationThatWillBeHidden:(BOOL)applicationIsHidden {
+    NSLog(@"start+stop running capture sessions to keep amount as low as possible");
+
+    int stopped = 0;
+    int running = 0;
+    for(CHWindowController *controller in [self allControllers]) {
+        if(!applicationIsHidden && !controller.window.isMiniaturized && !controller.window.isObscured) {
+            [controller.captureSession startRunning];
+            running++;
+        } else {
+            [controller.captureSession stopRunning];
+            stopped++;
         }
     }
     NSLog(@"  %d running, %d stopped", running, stopped);
@@ -181,6 +196,34 @@ static NSString* PREF_ActiveSemiFullscreenResolution = @"activeSemiFullscreenRes
 
 -(void)applicationWillUnhide:(NSNotification *)notification {
     [self tryToReduceRunningCaptureSessionsForApplicationThatWillBeHidden:NO];
+}
+
+-(void)applicationDidResignActive:(NSNotification *)notification {
+    [self periodicallyTryToReduceRunningCaptureSessionsWhileApplicationIsNotActive];
+}
+
+-(void)applicationDidBecomeActive:(NSNotification *)notification {
+    [self tryToReduceRunningCaptureSessions];
+}
+
+-(BOOL)shouldPeriodicallyTryToReduceRunningCaptureSessions {
+    if(NSApplication.sharedApplication.isActive || NSApplication.sharedApplication.isHidden)
+        return NO;
+    
+    for(CHWindowController *controller in [self allControllers])
+        if(!controller.window.isMiniaturized)
+            return YES;
+    
+    return NO;
+}
+
+-(void)periodicallyTryToReduceRunningCaptureSessionsWhileApplicationIsNotActive {
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:_cmd object:nil];
+
+    if([self shouldPeriodicallyTryToReduceRunningCaptureSessions]) {
+        [self tryToReduceRunningCaptureSessions];
+        [self performSelector:_cmd withObject:nil afterDelay:3];
+    }
 }
 
 @end

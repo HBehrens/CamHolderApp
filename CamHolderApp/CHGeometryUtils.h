@@ -10,3 +10,5 @@
 
 NSRect NSCanonicalRect(NSRect rect);
 NSRect NSRectFromPoints(NSPoint p1, NSPoint p2);
+NSSet *SubtractTwoRects( const NSRect a, const NSRect b );
+

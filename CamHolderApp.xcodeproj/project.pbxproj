@@ -10,6 +10,7 @@
 		CB785A7F14E7E90F00E9B57C /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = CB785A7E14E7E90F00E9B57C /* LICENSE.txt */; };
 		CB785A8314E7EA8B00E9B57C /* Credits.html in Resources */ = {isa = PBXBuildFile; fileRef = CB785A8114E7EA8B00E9B57C /* Credits.html */; };
 		CB8D240414D9ABA7006D3FED /* ZoomRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8D240314D9ABA7006D3FED /* ZoomRectView.m */; };
+		CB8DA18415F0AB3100C3967E /* NSWindow+obscured.m in Sources */ = {isa = PBXBuildFile; fileRef = CB8DA18315F0AB3100C3967E /* NSWindow+obscured.m */; };
 		CBABA34414D8673700F74576 /* CHWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34314D8673700F74576 /* CHWindowController.m */; };
 		CBABA34814D8689000F74576 /* CHApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34714D8689000F74576 /* CHApplicationDelegate.m */; };
 		CBABA34E14D89B7D00F74576 /* CHDraggableWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CBABA34D14D89B7D00F74576 /* CHDraggableWindow.m */; };
@@ -48,6 +49,8 @@
 		CB785A8214E7EA8B00E9B57C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = en; path = en.lproj/Credits.html; sourceTree = "<group>"; };
 		CB8D240214D9ABA7006D3FED /* ZoomRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZoomRectView.h; sourceTree = "<group>"; };
 		CB8D240314D9ABA7006D3FED /* ZoomRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZoomRectView.m; sourceTree = "<group>"; };
+		CB8DA18215F0AB3100C3967E /* NSWindow+obscured.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSWindow+obscured.h"; sourceTree = "<group>"; };
+		CB8DA18315F0AB3100C3967E /* NSWindow+obscured.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSWindow+obscured.m"; sourceTree = "<group>"; };
 		CBABA34214D8673700F74576 /* CHWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHWindowController.h; sourceTree = "<group>"; };
 		CBABA34314D8673700F74576 /* CHWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CHWindowController.m; sourceTree = "<group>"; };
 		CBABA34614D8689000F74576 /* CHApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CHApplicationDelegate.h; sourceTree = "<group>"; };
@@ -177,6 +180,8 @@
 				CBC25A5614D861A400E15E47 /* Supporting Files */,
 				CBE5429314DBDF3C003C017D /* CHGeometryUtils.h */,
 				CBE5429414DBDF3C003C017D /* CHGeometryUtils.m */,
+				CB8DA18215F0AB3100C3967E /* NSWindow+obscured.h */,
+				CB8DA18315F0AB3100C3967E /* NSWindow+obscured.m */,
 			);
 			path = CamHolderApp;
 			sourceTree = "<group>";
@@ -336,6 +341,7 @@
 				CBABA34E14D89B7D00F74576 /* CHDraggableWindow.m in Sources */,
 				CB8D240414D9ABA7006D3FED /* ZoomRectView.m in Sources */,
 				CBE5429514DBDF3C003C017D /* CHGeometryUtils.m in Sources */,
+				CB8DA18415F0AB3100C3967E /* NSWindow+obscured.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

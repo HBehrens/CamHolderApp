@@ -240,7 +240,7 @@ NSArray* CHCachedCaptureDevices;
 }
 
 -(void)setRotation:(float)value {
-    rotation = (int)value % 360;
+    rotation = ((int)value % 360 + 360) % 360; 
 }
 
 -(void)rotateRight:(id)sender {

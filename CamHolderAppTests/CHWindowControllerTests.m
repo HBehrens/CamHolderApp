@@ -63,6 +63,14 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
     STAssertTrue(NSEqualRects(NSMakeRect(0.25,0.25, 0.5, 0.5), document.normalizedCroppingRect), @"second zoom");
 }
 
+- (void)testRotatedZoom
+{
+    [controller viewWillSelectRect:nil];
+    document.rotation = 90;
+    [controller view:nil didSelectRect:NSMakeRect(0, 0, 0.5, 0.5)];
+    STAssertTrue(NSEqualRects(NSMakeRect(0,0.5, 0.5, 0.5), document.normalizedCroppingRect), @"rotated zoom");
+}
+
 - (void)testUnrotatedCoordinateTransformation {
     NSPoint p = NSMakePoint(0.1, 0.2);
     STAssertEqualPoints(NSMakePoint(0.1, 0.2), [controller convertPointToDocumentSpace:p], @"no transformation");
@@ -86,6 +94,20 @@ withDescription:@"%@", STComposeString(description, ##__VA_ARGS__)])]; \
     
     document.rotation = 270;
     STAssertEqualPoints(NSMakePoint(1-b, a), [controller convertPointToDocumentSpace:p], @"180 degrees");
+}
+
+- (void)testRotationAngleWillBeNormalized {
+    document.rotation = 0;
+    STAssertEquals(0.0f, document.rotation, @"0");
+    document.rotation = -90;
+    STAssertEquals(270.0f, document.rotation, @"-90");
+    document.rotation = -180;
+    STAssertEquals(180.0f, document.rotation, @"-180");
+    document.rotation = -270;
+    STAssertEquals(90.0f, document.rotation, @"-270");
+    document.rotation = -0;
+    STAssertEquals(0.0f, document.rotation, @"-0");
+    
 }
 
 

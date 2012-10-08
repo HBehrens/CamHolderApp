@@ -37,6 +37,7 @@
 @property (nonatomic, assign) CHDraggableWindow *window;
 @property (nonatomic, readonly) QTCaptureSession *captureSession;
 @property (nonatomic, readonly) QTCaptureDevice *videoDevice;
+@property (assign) IBOutlet NSTextField *FPSLabel;
 
 -(BOOL)showsInspector;
 -(void)setShowsInspector:(BOOL)value;

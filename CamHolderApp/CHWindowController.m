@@ -97,7 +97,20 @@
     self.document.normalizedCroppingRect = NSRectFromPoints(p1, p2);
 }
 
+
 - (CIImage *)view:(QTCaptureView *)view willDisplayImage:(CIImage*)image {
+    static NSDate* lastDate;
+    static int frames = 0;
+    frames++;
+    
+    NSTimeInterval elapsed = lastDate ? -[lastDate timeIntervalSinceNow] : 1;
+    if(elapsed >= 1) {
+        self.FPSLabel.stringValue = [NSString stringWithFormat:@"%d FPS", (int)(frames/elapsed)];
+        frames = 0;
+        [lastDate release];
+        lastDate = [[NSDate date] retain];
+    };
+    
 	if(!NSEqualRects(NSZeroRect, self.document.normalizedCroppingRect)) {
 		float w = image.extent.size.width;
 		float h = image.extent.size.height;
@@ -221,6 +234,10 @@
 }
 
 #pragma mark - view options
+
+- (void)toggleDebugViews:(id)sender {
+    self.FPSLabel.hidden = !self.FPSLabel.isHidden;
+}
 
 - (void)tryToReduceRunningCaptureSessions {
     [NSApplication.sharedApplication.delegate performSelector:@selector(tryToReduceRunningCaptureSessions)];

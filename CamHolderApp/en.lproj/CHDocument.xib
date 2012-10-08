@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="8.00">
 	<data>
-		<int key="IBDocument.SystemTarget">1060</int>
-		<string key="IBDocument.SystemVersion">10K549</string>
-		<string key="IBDocument.InterfaceBuilderVersion">1938</string>
-		<string key="IBDocument.AppKitVersion">1038.36</string>
-		<string key="IBDocument.HIToolboxVersion">461.00</string>
+		<int key="IBDocument.SystemTarget">1070</int>
+		<string key="IBDocument.SystemVersion">11G56</string>
+		<string key="IBDocument.InterfaceBuilderVersion">2843</string>
+		<string key="IBDocument.AppKitVersion">1138.51</string>
+		<string key="IBDocument.HIToolboxVersion">569.00</string>
 		<dictionary class="NSMutableDictionary" key="IBDocument.PluginVersions">
-			<string key="com.apple.InterfaceBuilder.CocoaPlugin">1938</string>
-			<string key="com.apple.QTKitIBPlugin">822</string>
+			<string key="com.apple.InterfaceBuilder.CocoaPlugin">2843</string>
+			<string key="com.apple.QTKitIBPlugin">1810</string>
 		</dictionary>
 		<array key="IBDocument.IntegratedClassDependencies">
-			<string>QTCaptureView</string>
-			<string>NSComboBoxCell</string>
-			<string>NSScroller</string>
 			<string>NSButton</string>
-			<string>NSScrollView</string>
 			<string>NSButtonCell</string>
-			<string>NSTextFieldCell</string>
 			<string>NSComboBox</string>
+			<string>NSComboBoxCell</string>
+			<string>NSCustomObject</string>
+			<string>NSCustomView</string>
+			<string>NSScrollView</string>
+			<string>NSScroller</string>
 			<string>NSSlider</string>
 			<string>NSSliderCell</string>
-			<string>NSCustomView</string>
-			<string>NSCustomObject</string>
+			<string>NSTextField</string>
+			<string>NSTextFieldCell</string>
+			<string>NSUserDefaultsController</string>
 			<string>NSView</string>
 			<string>NSWindowTemplate</string>
-			<string>NSTextField</string>
-			<string>NSUserDefaultsController</string>
+			<string>QTCaptureView</string>
 		</array>
 		<array key="IBDocument.PluginDependencies">
 			<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -51,6 +51,7 @@
 				<string key="NSWindowTitle">Window</string>
 				<string key="NSWindowClass">CHDraggableWindow</string>
 				<string key="NSViewClass">View</string>
+				<nil key="NSUserInterfaceItemIdentifier"/>
 				<object class="NSView" key="NSWindowView" id="568628114">
 					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
@@ -72,7 +73,6 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{20, 83}, {164, 25}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="118931026"/>
 													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
@@ -99,7 +99,6 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{20, 326}, {167, 26}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="426651761"/>
 													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
@@ -134,14 +133,13 @@
 														<object class="NSComboTableView" key="NSTableView" id="386398412">
 															<reference key="NSNextResponder"/>
 															<int key="NSvFlags">274</int>
-															<string key="NSFrameSize">{15, 0}</string>
+															<string key="NSFrameSize">{13, 0}</string>
 															<reference key="NSSuperview"/>
 															<reference key="NSWindow"/>
 															<bool key="NSEnabled">YES</bool>
 															<array class="NSMutableArray" key="NSTableColumns">
 																<object class="NSTableColumn">
-																	<integer value="0" key="NSIdentifier"/>
-																	<double key="NSWidth">12</double>
+																	<double key="NSWidth">10</double>
 																	<double key="NSMinWidth">10</double>
 																	<double key="NSMaxWidth">1000</double>
 																	<object class="NSTableHeaderCell" key="NSHeaderCell">
@@ -195,7 +193,7 @@
 															</object>
 															<double key="NSRowHeight">19</double>
 															<string key="NSAction">tableViewAction:</string>
-															<int key="NSTvFlags">-767524864</int>
+															<int key="NSTvFlags">-765427712</int>
 															<reference key="NSDelegate" ref="75619711"/>
 															<reference key="NSDataSource" ref="75619711"/>
 															<reference key="NSTarget" ref="75619711"/>
@@ -204,6 +202,7 @@
 															<int key="NSDraggingSourceMaskForNonLocal">0</int>
 															<bool key="NSAllowsTypeSelect">YES</bool>
 															<int key="NSTableViewDraggingDestinationStyle">0</int>
+															<int key="NSTableViewGroupRowStyle">1</int>
 														</object>
 													</object>
 												</object>
@@ -212,7 +211,6 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{17, 163}, {170, 17}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="728529883"/>
 													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
@@ -236,7 +234,6 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{18, 141}, {168, 21}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="437871880"/>
 													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
@@ -265,7 +262,6 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{18, 186}, {168, 18}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="162088525"/>
 													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
@@ -295,7 +291,6 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{17, 256}, {138, 17}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="864156495"/>
 													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
@@ -314,7 +309,6 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{18, 229}, {168, 21}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="189023899"/>
 													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
@@ -339,7 +333,6 @@
 													<int key="NSvFlags">268</int>
 													<string key="NSFrame">{{18, 279}, {136, 18}}</string>
 													<reference key="NSSuperview" ref="561316497"/>
-													<reference key="NSWindow"/>
 													<reference key="NSNextKeyView" ref="844708647"/>
 													<int key="NSViewLayerContentsRedrawPolicy">2</int>
 													<bool key="NSEnabled">YES</bool>
@@ -362,7 +355,6 @@
 											</array>
 											<string key="NSFrameSize">{200, 360}</string>
 											<reference key="NSSuperview" ref="513638903"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="72450141"/>
 											<int key="NSViewLayerContentsRedrawPolicy">2</int>
 											<string key="NSClassName">NSView</string>
@@ -370,7 +362,6 @@
 									</array>
 									<string key="NSFrameSize">{200, 360}</string>
 									<reference key="NSSuperview" ref="267356803"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="561316497"/>
 									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSDocView" ref="561316497"/>
@@ -382,9 +373,7 @@
 									<int key="NSvFlags">-2147483392</int>
 									<string key="NSFrame">{{167, 1}, {15, 79}}</string>
 									<reference key="NSSuperview" ref="267356803"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView"/>
-									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<reference key="NSTarget" ref="267356803"/>
 									<string key="NSAction">_doScroller:</string>
 									<double key="NSCurValue">0.99375000000000002</double>
@@ -395,9 +384,7 @@
 									<int key="NSvFlags">-2147483392</int>
 									<string key="NSFrame">{{-100, -100}, {166, 15}}</string>
 									<reference key="NSSuperview" ref="267356803"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="513638903"/>
-									<int key="NSViewLayerContentsRedrawPolicy">2</int>
 									<int key="NSsFlags">1</int>
 									<reference key="NSTarget" ref="267356803"/>
 									<string key="NSAction">_doScroller:</string>
@@ -407,10 +394,9 @@
 							</array>
 							<string key="NSFrame">{{640, 0}, {200, 360}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="158833817"/>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
-							<int key="NSsFlags">528</int>
+							<int key="NSsFlags">133648</int>
 							<reference key="NSVScroller" ref="118931026"/>
 							<reference key="NSHScroller" ref="158833817"/>
 							<reference key="NSContentView" ref="513638903"/>
@@ -420,19 +406,44 @@
 							<int key="NSvFlags">274</int>
 							<string key="NSFrameSize">{640, 360}</string>
 							<reference key="NSSuperview" ref="568628114"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="1016824161"/>
+							<reference key="NSNextKeyView" ref="812082041"/>
 							<bool key="NSViewIsLayerTreeHost">YES</bool>
 							<int key="NSViewLayerContentsRedrawPolicy">2</int>
 							<reference key="kQTCaptureViewCoderFillColor" ref="1061943151"/>
 							<bool key="kQTCaptureViewCoderPreservesAspectRatio">YES</bool>
+						</object>
+						<object class="NSTextField" id="812082041">
+							<reference key="NSNextResponder" ref="568628114"/>
+							<int key="NSvFlags">-2147483380</int>
+							<string key="NSFrame">{{10, 333}, {60, 17}}</string>
+							<reference key="NSSuperview" ref="568628114"/>
+							<reference key="NSNextKeyView" ref="1016824161"/>
+							<int key="NSViewLayerContentsRedrawPolicy">2</int>
+							<string key="NSReuseIdentifierKey">_NS:1535</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSTextFieldCell" key="NSCell" id="54170590">
+								<int key="NSCellFlags">68157504</int>
+								<int key="NSCellFlags2">306189312</int>
+								<string key="NSContents">FPS</string>
+								<reference key="NSSupport" ref="128280105"/>
+								<string key="NSCellIdentifier">_NS:1535</string>
+								<reference key="NSControlView" ref="812082041"/>
+								<bool key="NSDrawsBackground">YES</bool>
+								<object class="NSColor" key="NSBackgroundColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAgMC41AA</bytes>
+								</object>
+								<object class="NSColor" key="NSTextColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MSAxIDEAA</bytes>
+								</object>
+							</object>
 						</object>
 						<object class="NSCustomView" id="1016824161">
 							<reference key="NSNextResponder" ref="568628114"/>
 							<int key="NSvFlags">268</int>
 							<string key="NSFrame">{{500, -8}, {153, 113}}</string>
 							<reference key="NSSuperview" ref="568628114"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="267356803"/>
 							<bool key="NSViewIsLayerTreeHost">YES</bool>
 							<object class="NSShadow" key="NSViewShadow">
@@ -444,13 +455,13 @@
 					</array>
 					<string key="NSFrameSize">{840, 360}</string>
 					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="809447555"/>
 					<bool key="NSViewIsLayerTreeHost">YES</bool>
 					<int key="NSViewLayerContentsRedrawPolicy">2</int>
 				</object>
-				<string key="NSScreenRect">{{0, 0}, {1600, 1178}}</string>
-				<string key="NSMaxSize">{1e+13, 1e+13}</string>
+				<string key="NSScreenRect">{{0, 0}, {2560, 1418}}</string>
+				<string key="NSMaxSize">{10000000000000, 10000000000000}</string>
+				<bool key="NSWindowIsRestorable">YES</bool>
 			</object>
 			<object class="NSCustomObject" id="796877042">
 				<string key="NSClassName">NSApplication</string>
@@ -516,6 +527,14 @@
 						<reference key="destination" ref="267356803"/>
 					</object>
 					<int key="connectionID">100116</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">FPSLabel</string>
+						<reference key="source" ref="512844837"/>
+						<reference key="destination" ref="812082041"/>
+					</object>
+					<int key="connectionID">100119</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBOutletConnection" key="connection">
@@ -718,6 +737,7 @@
 							<reference ref="267356803"/>
 							<reference ref="1016824161"/>
 							<reference ref="809447555"/>
+							<reference ref="812082041"/>
 						</array>
 						<reference key="parent" ref="275939982"/>
 					</object>
@@ -881,6 +901,20 @@
 						<reference key="object" ref="749047364"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100117</int>
+						<reference key="object" ref="812082041"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="54170590"/>
+						</array>
+						<reference key="parent" ref="568628114"/>
+						<string key="objectName">FPSLabel</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">100118</int>
+						<reference key="object" ref="54170590"/>
+						<reference key="parent" ref="812082041"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -915,6 +949,8 @@
 				<string key="100041.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100042.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="100043.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="100117.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="100118.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<boolean value="YES" key="5.IBNSWindowAutoPositionCentersHorizontal"/>
 				<boolean value="YES" key="5.IBNSWindowAutoPositionCentersVertical"/>
 				<string key="5.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -925,84 +961,9 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">100116</int>
+			<int key="maxID">100121</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">CHDraggableWindow</string>
-					<string key="superclassName">NSWindow</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/CHDraggableWindow.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">CHWindowController</string>
-					<string key="superclassName">NSWindowController</string>
-					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">captureDeviceChanged:</string>
-						<string key="NS.object.0">id</string>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<string key="NS.key.0">captureDeviceChanged:</string>
-						<object class="IBActionInfo" key="NS.object.0">
-							<string key="name">captureDeviceChanged:</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</object>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="captureDevicesCombobox">NSComboBox</string>
-						<string key="captureView">CroppingQTCaptureView</string>
-						<string key="exposureSlider">NSSlider</string>
-						<string key="inspectorView">NSView</string>
-						<string key="zoomRectView">NSView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="captureDevicesCombobox">
-							<string key="name">captureDevicesCombobox</string>
-							<string key="candidateClassName">NSComboBox</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="captureView">
-							<string key="name">captureView</string>
-							<string key="candidateClassName">CroppingQTCaptureView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="exposureSlider">
-							<string key="name">exposureSlider</string>
-							<string key="candidateClassName">NSSlider</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="inspectorView">
-							<string key="name">inspectorView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="zoomRectView">
-							<string key="name">zoomRectView</string>
-							<string key="candidateClassName">NSView</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/CHWindowController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">CroppingQTCaptureView</string>
-					<string key="superclassName">QTCaptureView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/CroppingQTCaptureView.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ZoomRectView</string>
-					<string key="superclassName">NSView</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ZoomRectView.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>

@@ -269,7 +269,7 @@ const uvc_controls_t uvc_controls = {
 	kr = (*interface)->ControlRequest( interface, 0, &controlRequest );
 	if( kr != kIOReturnSuccess ) {
 		kr = (*interface)->USBInterfaceClose(interface);
-		NSLog( @"CameraControl Error: Control request failed: %08x", kr );
+		//NSLog( @"CameraControl Error: Control request failed: %08x", kr );
 		return NO;
 	}
 	

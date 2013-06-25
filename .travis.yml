@@ -1,0 +1,7 @@
+language: objective-c
+before_install: 
+  - brew install xctool
+script:
+  - xctool -project CamHolderApp.xcodeproj -scheme CamHolderApp clean build archive
+  - export BINARY=`xctool -project CamHolderApp.xcodeproj -scheme CamHolderApp -showBuildSettings | grep "CODESIGNING_FOLDER_PATH = .*\.app$" | sed "s/.*= \(.*\.app\)/\1/g"`
+  - zip CamHolderApp.zip "$BINARY"

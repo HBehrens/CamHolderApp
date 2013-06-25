@@ -1,7 +1,15 @@
+--- 
 language: objective-c
 before_install: 
-  - brew install xctool
-script:
-  - xctool -project CamHolderApp.xcodeproj -scheme CamHolderApp clean build archive
-  - export BINARY=`xctool -project CamHolderApp.xcodeproj -scheme CamHolderApp -showBuildSettings | grep "CODESIGNING_FOLDER_PATH = .*\.app$" | sed "s/.*= \(.*\.app\)/\1/g"`
-  - zip CamHolderApp.zip "$BINARY"
+- brew install xctool
+script: 
+- xctool -project CamHolderApp.xcodeproj -scheme CamHolderApp clean build archive
+- export BINARY=`xctool -project CamHolderApp.xcodeproj -scheme CamHolderApp -showBuildSettings | grep "CODESIGNING_FOLDER_PATH = .*\.app$" | sed "s/.*= \(.*\.app\)/\1/g"`
+- ZIPDIR=`pwd` && pushd `dirname "$BINARY"` && zip "$ZIPDIR/CamHolderApp.zip" -r CamHolderApp.app && popd
+- ftp -u "ftp://$FTP_SERVER/download/CamHolderApp.zip" ./CamHolderApp.zip
+env: 
+  global: 
+    secure: |-
+      W53n5UY8qNQLwO3PS5FHamjibgLMXM5cEvxYzLIbTMCRuGAGsWw53AOB3Wqv
+      AorsL72LLozWrl0jc7D/KCWljMgNCxA/G2FatjhcnzUytYsfBe2aLjcuIvBD
+      z4Ndgv9R57UBHyhW8DLbnMBAj0Zi47SlglfYy1UcqzwJw469CII=

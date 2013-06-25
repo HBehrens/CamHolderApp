@@ -1,4 +1,5 @@
-# CamHolderApp
+# CamHolderApp [![Build Status](https://travis-ci.org/HBehrens/CamHolderApp.png)](https://travis-ci.org/HBehrens/CamHolderApp)
+
 
 A feature-rich Mac software to present live input from one or more Microsoft LifeCam Studio as software for http://CamHolder.org
 

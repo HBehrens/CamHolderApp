@@ -217,8 +217,10 @@ static NSString* PREF_ActiveSemiFullscreenResolution = @"activeSemiFullscreenRes
     [self periodicallyTryToReduceRunningCaptureSessionsWhileApplicationIsNotActive];
 }
 
--(void)applicationDidBecomeActive:(NSNotification *)notification {
-    [self tryToReduceRunningCaptureSessions];
+- (void)applicationDidBecomeActive:(NSNotification *)aNotification {
+    // when using spaces, windows might still be obscured during transition. Hence, wait a bit
+    // NOTE: is there any callback to determine when exactly?
+    [self performSelector:@selector(tryToReduceRunningCaptureSessions) withObject:0 afterDelay:0.5];
 }
 
 -(BOOL)shouldPeriodicallyTryToReduceRunningCaptureSessions {

@@ -1,3 +1,7 @@
+# ARCHIVED
+
+This project is not under development anymore. If you want to control your Microsoft LiveCam Studio on macOS Catalina, the [tool Webcam Settings](https://apps.apple.com/us/app/webcam-settings/id533696630) seems to be a working alternative according to [Olivier Lacan on this blog post](https://olivierlacan.com/posts/in-sight/) and [#23](https://github.com/HBehrens/CamHolderApp/issues/23).
+
 # CamHolderApp [![Build Status](https://travis-ci.org/HBehrens/CamHolderApp.png)](https://travis-ci.org/HBehrens/CamHolderApp)
 
 
